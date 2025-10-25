@@ -1,0 +1,748 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muktaṁ AI - Voice Agents for D2C</title>
+  <meta name="description" content="Indic AI helps D2C brands launch end-to-end AI voice agents for sales, support and retention across channels.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+    .invisible {
+      visibility: hidden !important;
+    }
+    .logo-wrapper{display:flex;align-items:center;gap:12px}.icon-wrapper{position:relative;width:32px;height:32px}.explosion-center{position:absolute;width:12px;height:12px;background:radial-gradient(circle,#FFD54F,#FFC107);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(255,213,79,0.8);animation:core-pulse 2s ease-in-out infinite}@keyframes core-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 12px rgba(255,213,79,0.8)}50%{transform:translate(-50%,-50%) scale(1.15);box-shadow:0 0 18px rgba(255,213,79,1)}}.particle{position:absolute;width:5px;height:5px;background:#64B5F6;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 6px rgba(100,181,246,0.7);opacity:0;animation:particle-burst 2.5s ease-out infinite}@keyframes particle-burst{0%{transform:translate(-50%,-50%) scale(0);opacity:0}20%{opacity:1}70%{transform:translate(var(--x),var(--y)) scale(0.6);opacity:0.8}100%{transform:translate(var(--x),var(--y)) scale(0.6);opacity:0}}.particle:nth-child(2){--x:30px;--y:-30px;animation-delay:0s}.particle:nth-child(3){--x:-30px;--y:-30px;animation-delay:0.1s}.particle:nth-child(4){--x:35px;--y:0;animation-delay:0.2s}.particle:nth-child(5){--x:-35px;--y:0;animation-delay:0.3s}.particle:nth-child(6){--x:30px;--y:30px;animation-delay:0.4s}.particle:nth-child(7){--x:-30px;--y:30px;animation-delay:0.5s}.particle:nth-child(8){--x:0;--y:35px;animation-delay:0.6s}.particle:nth-child(9){--x:0;--y:-35px;animation-delay:0.7s}.brand-name{display:flex;align-items:flex-end;gap:3px}.brand-primary{font-family:'Sentient',serif;font-size:18px;color:#E8EAED;letter-spacing:1px;line-height:1}.brand-suffix{font-family:'Sentient',serif;font-size:15px;color:#9AA0A6;line-height:1}
+    #voiceWidget *{box-sizing:border-box}#voiceWidget{width:100%;max-width:100%}#voiceWidget .voice-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px;backdrop-filter:blur(20px);width:100%;max-width:100%}#voiceWidget .voice-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}#voiceWidget .voice-header-left{display:flex;align-items:center;gap:10px}#voiceWidget .voice-icon-box{width:36px;height:36px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}#voiceWidget .voice-header-info h3{font-size:13px;font-weight:500;margin-bottom:2px}#voiceWidget .voice-header-info p{font-size:11px;color:rgba(255,255,255,0.6)}#voiceWidget .voice-badge{padding:3px 7px;border-radius:6px;font-size:10px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#6ee7b7}#voiceWidget .voice-badge.hidden{display:none}#voiceWidget .voice-waveform{height:56px;background:linear-gradient(to right,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0 6px;display:flex;align-items:center;gap:3px;margin-bottom:16px;overflow:hidden}#voiceWidget .voice-bars{display:flex;gap:3px;width:100%;justify-content:center}#voiceWidget .voice-bar{width:5px;background:rgba(255,255,255,0.5);border-radius:2px;transition:height 0.1s ease,opacity 0.1s ease}#voiceWidget .voice-transcript{height:160px;min-height:160px;overflow-y:auto;margin-bottom:16px;padding-right:6px;scroll-behavior:smooth}#voiceWidget .voice-transcript::-webkit-scrollbar{width:5px}#voiceWidget .voice-transcript::-webkit-scrollbar-track{background:transparent}#voiceWidget .voice-transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:3px}#voiceWidget .voice-message{display:flex;margin-bottom:10px;animation:voiceSlideIn 0.3s ease-out}@keyframes voiceSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}#voiceWidget .voice-message.agent{justify-content:flex-start}#voiceWidget .voice-message.customer{justify-content:flex-end}#voiceWidget .voice-message-content{max-width:75%;padding:8px 12px;border-radius:8px;font-size:12px;border:1px solid rgba(255,255,255,0.15);word-wrap:break-word;overflow-wrap:break-word}#voiceWidget .voice-message.agent .voice-message-content{background:rgba(255,255,255,0.1)}#voiceWidget .voice-message.customer .voice-message-content{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#d1fae5}#voiceWidget .voice-message-label{opacity:0.7;margin-right:6px;font-weight:500}#voiceWidget .voice-message-time{font-size:9px;opacity:0.5;margin-top:3px}#voiceWidget .voice-placeholder,#voiceWidget .voice-error{font-size:11px;text-align:center;padding:16px}#voiceWidget .voice-placeholder{color:rgba(255,255,255,0.5)}#voiceWidget .voice-error{color:#fca5a5}#voiceWidget .voice-progress-container{margin-bottom:16px}#voiceWidget .voice-progress-bar{height:5px;background:rgba(255,255,255,0.1);border-radius:3px;cursor:pointer;position:relative;overflow:hidden;margin-bottom:6px}#voiceWidget .voice-progress-fill{height:100%;background:linear-gradient(to right,#10b981,#34d399);border-radius:3px;width:0%;transition:width 0.1s linear}#voiceWidget .voice-time-display{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,0.6);font-variant-numeric:tabular-nums}#voiceWidget .voice-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap;gap:8px}#voiceWidget .voice-meta{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,0.6)}#voiceWidget .voice-button{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:white;font-size:11px;cursor:pointer;transition:all 0.2s}#voiceWidget .voice-button:hover:not(:disabled){background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.2)}#voiceWidget .voice-button:disabled{opacity:0.5;cursor:not-allowed}#voiceWidget .voice-button svg{width:14px;height:14px;flex-shrink:0}@media(max-width:640px){#voiceWidget .voice-card{padding:16px}#voiceWidget .voice-transcript{height:140px;min-height:140px}#voiceWidget .voice-waveform{height:48px}}
+  </style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style></head>
+<body class="antialiased selection:bg-white/10 selection:text-white text-white font-[Inter] bg-[#0A0B0E] overflow-x-hidden">
+
+  <!-- Background -->
+  <div class="aura-background-component fixed top-0 w-full -z-10 h-screen" data-alpha-mask="80" style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)">
+    <div data-us-project="N9XzvQXu7fA5SY2ewADJ" style="width:1440px; height: 900px"></div>
+    <script type="text/javascript">!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();</script>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-[radial-gradient(1200px_500px_at_50%_-10%,rgba(47,97,255,0.18),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(800px_400px_at_10%_10%,rgba(0,255,200,0.08),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(900px_500px_at_90%_20%,rgba(255,255,255,0.05),transparent_60%)]"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky z-30 supports-[backdrop-filter]:bg-black/30 bg-black/20 border-white/10 border-b top-0 backdrop-blur">
+    <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group logo-wrapper">
+          <div class="icon-wrapper">
+            <div class="explosion-center"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+          <div class="brand-name">
+            <div class="brand-primary xl:text-3xl lg:text-3xl text-2xl">muktaṁ</div>
+            <div class="brand-suffix xl:text-lg lg:text-xl text-base mr-1 ml-1">ai</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-sm transition font-sans text-white/70 hover:text-white">Features</a>
+          <a href="#pipeline" class="text-sm transition font-sans text-white/70 hover:text-white">How it works</a>
+          <a href="#integrations" class="text-sm transition font-sans text-white/70 hover:text-white">Integrations</a>
+          <a href="#pricing" class="text-sm transition font-sans text-white/70 hover:text-white">Pricing</a>
+          <a href="#faq" class="text-sm transition font-sans text-white/70 hover:text-white">FAQ</a>
+        </nav>
+        <div class="hidden md:flex gap-3 transition-opacity duration-300 items-center" id="navCtas">
+          <a href="https://calendly.com/mihirvt" class="transition hover:text-white hover:ring-white/20 text-sm text-white/80 ring-white/10 ring-1 rounded-md pt-2 pr-3.5 pb-2 pl-3.5">Book demo</a>
+          <a href="#" class="px-3.5 py-2 rounded-md text-sm font-semibold tracking-tight ring-1 transition font-sans bg-white text-black hover:bg-white/90 ring-white/10">Launch Studio</a>
+        </div>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-md ring-1 transition ring-white/10 hover:ring-white/20 hover:bg-white/5" aria-label="Open menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+        <div class="px-4 py-4 flex flex-col gap-2">
+          <a href="#features" class="px-3 py-2 rounded-md text-sm font-sans text-white/80 hover:text-white hover:bg-white/5">Features</a>
+          <a href="#pipeline" class="px-3 py-2 rounded-md text-sm font-sans text-white/80 hover:text-white hover:bg-white/5">How it works</a>
+          <a href="#integrations" class="px-3 py-2 rounded-md text-sm font-sans text-white/80 hover:text-white hover:bg-white/5">Integrations</a>
+          <a href="#pricing" class="px-3 py-2 rounded-md text-sm font-sans text-white/80 hover:text-white hover:bg-white/5">Pricing</a>
+          <a href="#faq" class="px-3 py-2 rounded-md text-sm font-sans text-white/80 hover:text-white hover:bg-white/5">FAQ</a>
+          <div class="mt-2 flex flex-col gap-2">
+            <a href="#" class="px-3.5 py-2 rounded-md text-sm ring-1 text-center font-sans text-white/80 hover:text-white ring-white/10 hover:ring-white/20">Book demo</a>
+            <a href="#" class="px-3.5 py-2 rounded-md text-sm font-semibold tracking-tight ring-1 text-center font-sans bg-white text-black hover:bg-white/90 ring-white/10">Launch Studio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="sm:px-6 lg:px-8 sm:pt-24 sm:pb-16 max-w-7xl mr-auto ml-auto pt-24 pr-4 pb-16 pl-4">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 rounded-full ring-1 px-3 py-1 text-xs mb-5 backdrop-blur ring-white/10 bg-white/5 text-white/70">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" class=""></path>
+              <path d="M20 2v4"></path>
+              <path d="M22 4h-4"></path>
+              <circle cx="4" cy="20" r="2"></circle>
+            </svg>
+            <span class="" style="">Built for D2C</span>
+          </div>
+          <h1 class="leading-[1.08] sm:text-5xl lg:text-6xl text-3xl font-semibold tracking-tight font-bricolage">Founder touch at scale</h1>
+          <p class="sm:text-lg text-base text-white/70 mt-4"><strong class="">Voice Agents</strong> that talks, converts &amp; cares like a founder.</p>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center gap-2 transition hover:bg-white/90 text-sm font-semibold text-black tracking-tight bg-white rounded-md ring-white/10 ring-1 pt-2.5 pr-4 pb-2.5 pl-4">Book a Demo</a>
+            
+          </div>
+
+          <div class="mt-6 flex flex-wrap items-center gap-4">
+            <div class="flex -space-x-2">
+              <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&amp;q=80" alt="Customer" class="h-8 w-8 rounded-full ring-2 ring-black/50">
+              <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&amp;q=80" alt="Customer" class="h-8 w-8 rounded-full ring-2 object-cover ring-black/50">
+              <img src="https://images.unsplash.com/photo-1621619856624-42fd193a0661?w=1080&amp;q=80" alt="Customer" class="h-8 w-8 rounded-full ring-2 ring-black/50">
+            </div>
+            <p class="sm:text-sm text-xs font-sans text-white/60">Trusted by scaled &amp; growing D2C teams across commerce.</p>
+          </div>
+        </div>
+
+        <!-- Demo / Visual -->
+        <div class="lg:col-span-6 w-full overflow-hidden">
+          <div class="relative">
+            <div class="pointer-events-none absolute -inset-x-6 -bottom-6 h-20 blur-2xl bg-[radial-gradient(400px_80px_at_50%_0%,rgba(255,255,255,0.10),transparent)]"></div>
+            <div class="w-full max-w-full" id="voiceWidget"><div class="voice-card"><div class="voice-header"><div class="voice-header-left"><div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg></div><div class="voice-header-info"><h3>Call Recording</h3><p id="voiceStatus">Loading audio...</p></div></div><span id="voiceBadge" class="voice-badge hidden">Playing</span></div><div class="voice-waveform"><div class="voice-bars" id="voiceBars"><div class="voice-bar" style="height: 29.6859px;"></div><div class="voice-bar" style="height: 28.332px;"></div><div class="voice-bar" style="height: 31.3308px;"></div><div class="voice-bar" style="height: 22.7241px;"></div><div class="voice-bar" style="height: 23.917px;"></div><div class="voice-bar" style="height: 25.6923px;"></div><div class="voice-bar" style="height: 28.486px;"></div><div class="voice-bar" style="height: 31.72px;"></div><div class="voice-bar" style="height: 35.6405px;"></div><div class="voice-bar" style="height: 26.8992px;"></div><div class="voice-bar" style="height: 33.3279px;"></div><div class="voice-bar" style="height: 36.1729px;"></div><div class="voice-bar" style="height: 38.2854px;"></div><div class="voice-bar" style="height: 25.8844px;"></div><div class="voice-bar" style="height: 35.1573px;"></div><div class="voice-bar" style="height: 30.7607px;"></div><div class="voice-bar" style="height: 27.3371px;"></div><div class="voice-bar" style="height: 37.1626px;"></div><div class="voice-bar" style="height: 20.6737px;"></div><div class="voice-bar" style="height: 30.0905px;"></div><div class="voice-bar" style="height: 21.121px;"></div><div class="voice-bar" style="height: 37.2px;"></div><div class="voice-bar" style="height: 34.8819px;"></div><div class="voice-bar" style="height: 33.9081px;"></div><div class="voice-bar" style="height: 23.076px;"></div></div></div><div class="voice-transcript" id="voiceTranscript"><div class="voice-placeholder">Transcript will appear as the call plays...</div></div><div class="voice-progress-container"><div class="voice-progress-bar" id="voiceProgressBar"><div class="voice-progress-fill" id="voiceProgressFill"></div></div><div class="voice-time-display"><span id="voiceCurrentTime">0:00</span><span id="voiceDuration">0:00</span></div></div><div class="voice-footer"><div class="voice-meta"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg><span>Duration: <span id="voiceCallDuration">—</span></span></div><button class="voice-button" id="voicePlayBtn" disabled=""><svg id="voicePlayIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span id="voicePlayLabel">Play</span></button></div></div><audio id="voiceAudio" preload="auto"></audio></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos -->
+  <section class="border-y overflow-hidden border-white/10 pt-8 pb-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-75">
+      <div class="text-xs uppercase tracking-[0.18em] font-sans text-white/60">Trusted by</div>
+      <div class="h-8 w-24 grid place-items-center rounded-md bg-white/[0.04] ring-1 text-xs font-medium tracking-tight font-sans ring-white/10">
+        BLUME</div>
+      <div class="grid place-items-center text-xs font-medium tracking-tight w-24 h-8 ring-white/10 ring-1 rounded-md" style="">VITA+</div>
+      <div class="grid place-items-center text-xs font-medium tracking-tight w-24 h-8 ring-white/10 ring-1 rounded-md" style="">Zero Nasties</div>
+      <div class="h-8 w-24 grid place-items-center rounded-md bg-white/[0.04] ring-1 text-xs font-medium tracking-tight font-sans ring-white/10">
+        NEST</div>
+      <div class="grid place-items-center text-xs font-medium tracking-tight w-24 h-8 ring-white/10 ring-1 rounded-md" style="">BuzzMall</div>
+    </div>
+  </div>
+</section>
+
+  <!-- Features -->
+  <section class="sm:py-20 overflow-hidden pt-14 pb-14" id="features">
+  <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+    <div class="max-w-2xl">
+      <h2 class="sm:text-3xl text-2xl tracking-tight font-semibold">Does everything for you</h2>
+      <p class="mt-3 font-sans text-white/70">Covers the end‑to‑end customer lifecycle.</p>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="rounded-lg border p-5 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+        <div class="flex gap-3 items-center">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <path d="M2 10v3"></path>
+              <path d="M6 6v11"></path>
+              <path d="M10 3v18"></path>
+              <path d="M14 8v7"></path>
+              <path d="M18 5v13"></path>
+              <path d="M22 10v3"></path>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Converts carts</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Understands reasons, objections &amp; answers them
+          empathetically.</p>
+      </div>
+
+      <div class="rounded-lg border p-5 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"></path>
+              <path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 22c0 1.1.9 2 2 2a2 2 0 0 0 2-c0-1.1.9-2 2-2h3.17"></path>
+              <path d="M11 2195V18a2 2 0 0 0-2-2a2 2 0 0 1--2v-1a2 2 0 0 0-2-2H2.05"></path>
+              <circle cx="12" cy="12" r="10" class=""></circle>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Confirms orders</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Qualifies customers before shipping for maximum delivery rates.
+        </p>
+      </div>
+
+      <div class="rounded-lg border p-5 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+        <div class="flex gap-3 items-center">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+              <path d="M3.103 6.034h17.794"></path>
+              <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z">
+              </path>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Takes action</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Automates repetitive tasks — places or cancels orders, sends
+          WhatsApp messages, and adds informative tags &amp; notes to each order.</p>
+      </div>
+
+      <div class="rounded-lg border p-5 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <path d="M10 17h4V5H2v12h3"></path>
+              <path d="M14 17h2"></path>
+              <path d="M5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
+              <path d="M19 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path>
+              <path d="M14 7h3l3 3v7h-3"></path>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Converts NDRs</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Don't let NDR happen! Alert customers on the day of delivery or
+          convince them to buy with a coupon.</p>
+      </div>
+
+      <div class="hover:bg-white/[0.06] transition border rounded-lg pt-5 pr-5 pb-5 pl-5 backdrop-blur hover:border-white/15 bg-white/5 border-white/10">
+        <div class="flex gap-3 items-center">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <path d="M12 2l3.09 3.09L18.18 8l-3.09 3.09L12 14.18l-3.09-3.09L5.82 8l3.09-3.09z"></path>
+              <path d="M9 9l6 6"></path>
+              <path d="M9 15h.01"></path>
+              <path d="M15 9h.01"></path>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Bargains &amp; offers discounts</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Our AI bargains &amp; starts with the lowest permissible
+          discount to convert.</p>
+      </div>
+
+      <div class="rounded-lg border p-5 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="m4.93 4.93 4.24 4.24"></path>
+              <path d="m14.83 9.17 4.24-4.24"></path>
+              <path d="m14.83 14.83 4.24 4.24"></path>
+              <path d="m9.17 14.83-4.24 4.24"></path>
+            </svg>
+          </div>
+          <div class="text-base font-medium tracking-tight font-sans">Before &amp; after‑sale support</div>
+        </div>
+        <p class="text-sm mt-3 font-sans text-white/70">Answers 95% of queries and offers empathetic support on edge
+          cases.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Why SwarX Agents -->
+  <section class="pt-0 pb-14 sm:pb-20 overflow-hidden">
+    <div class="sm:px-6 lg:px-8 max-w-7xl mx-auto px-4">
+      <div class="rounded-xl border backdrop-blur p-5 sm:p-6 border-white/10 bg-white/5">
+        <h3 class="sm:text-3xl text-2xl font-semibold tracking-tight">Why Mukt Agents?</h3>
+        <div class="mt-4 grid sm:grid-cols-2 gap-3">
+          <div class="flex items-start gap-3 rounded-lg border bg-white/[0.04] p-3 border-white/10">
+            <div class="h-8 w-8 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l3 3"></path>
+              </svg>
+            </div>
+            <div class="text-sm text-white/80">Works 7 days a week — never misses a follow‑up</div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border bg-white/[0.04] p-3 border-white/10">
+            <div class="h-8 w-8 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+                <path d="M20 2v4"></path>
+                <path d="M22 4h-4"></path>
+                <circle cx="4" cy="20" r="2"></circle>
+              </svg>
+            </div>
+            <div class="text-sm text-white/80">Adds personal touch automatically — pre‑fetches context before every call</div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border bg-white/[0.04] p-3 border-white/10">
+            <div class="h-8 w-8 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="text-sm text-white/80">Zero hallucinations — hands off to your human agents when unsure</div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border bg-white/[0.04] p-3 border-white/10">
+            <div class="h-8 w-8 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 8 6 6"></path>
+                <path d="m4 14 6-6 2-3"></path>
+                <path d="M2 5h12"></path>
+                <path d="M7 2v3"></path>
+                <path d="M22 22l-5-10-5 10"></path>
+                <path d="M14 18h6"></path>
+              </svg>
+            </div>
+            <div class="text-sm text-white/80">Speaks Hinglish, the way India actually speaks</div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border bg-white/[0.04] p-3 sm:col-span-2 border-white/10">
+            <div class="h-8 w-8 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <rect x="7" y="8" width="3" height="7" rx="1"></rect>
+                <rect x="12" y="6" width="3" height="9" rx="1"></rect>
+                <rect x="17" y="10" width="3" height="5" rx="1"></rect>
+              </svg>
+            </div>
+            <div class="text-sm text-white/80">Comprehensive call analytics — refined per‑call insights at scale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline -->
+  <section class="sm:py-20 border-t pt-14 pb-14 border-white/10 overflow-hidden" id="pipeline">
+    <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+      <div class="max-w-2xl">
+        <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">How it works</h2>
+        <p class="mt-3 font-sans text-white/70">Indic AI orchestrates speech, understanding and actions in a tight loop.</p>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-4 gap-4">
+        <div class="rounded-lg border p-5 backdrop-blur border-white/10 bg-white/5">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+                <path d="M12 19v3"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <rect x="9" y="2" width="6" height="13" rx="3"></rect>
+              </svg>
+            </div>
+            <div class="text-base font-medium tracking-tight font-sans">Capture</div>
+          </div>
+          <p class="text-sm mt-3 text-white/70">Telephony and HD WhatsApp calls with noise reduction and faulty speech detection.</p>
+        </div>
+
+        <div class="rounded-lg border p-5 backdrop-blur border-white/10 bg-white/5">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+                <path d="M12 18V5"></path>
+                <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path>
+                <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path>
+                <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path>
+                <path d="M18 18a4 4 0 0 0 2-7.464"></path>
+                <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path>
+                <path d="M6 18a4 4 0 0 1-2-7.464"></path>
+                <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path>
+              </svg>
+            </div>
+            <div class="text-base font-medium tracking-tight font-sans">Understand</div>
+          </div>
+          <p class="text-sm mt-3 text-white/70">ASR + NLU tuned for Indic code‑switching and the e‑commerce domain.</p>
+        </div>
+
+        <div class="rounded-lg border p-5 backdrop-blur border-white/10 bg-white/5">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+                <rect width="8" height="8" x="3" y="3" rx="2" class=""></rect>
+                <path d="M7 11v4a2 2 0 0 0 2 2h4"></path>
+                <rect width="8" height="8" x="13" y="13" rx="2"></rect>
+              </svg>
+            </div>
+            <div class="text-base font-medium tracking-tight font-sans">Decide</div>
+          </div>
+          <p class="text-sm mt-3 text-white/70">Context + policy + notes + intent tools: inventory, orders, payments, coupons, fulfillment, WhatsApp.</p>
+        </div>
+
+        <div class="rounded-lg border p-5 backdrop-blur border-white/10 bg-white/5">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur bg-white/5 ring-white/10 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4.5 w-4.5">
+                <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"></path>
+                <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"></path>
+                <path d="M8 6v8"></path>
+              </svg>
+            </div>
+            <div class="text-base font-medium tracking-tight font-sans">Speak</div>
+          </div>
+          <p class="text-sm mt-3 text-white/70">7+ state‑of‑the‑art neural voices designed for India.</p>
+        </div>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="mt-8 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-lg border backdrop-blur p-5 bg-white/5 border-white/10">
+          <div class="text-3xl font-semibold tracking-tight">38%</div>
+          <div class="text-sm mt-1 font-sans text-white/60">Avg. recovery on abandoned carts</div>
+        </div>
+        <div class="rounded-lg border backdrop-blur p-5 bg-white/5 border-white/10">
+          <div class="text-3xl font-semibold tracking-tight">61%+</div>
+          <div class="text-sm mt-1 text-white/60">Connection rates</div>
+        </div>
+        <div class="rounded-lg border backdrop-blur p-5 bg-white/5 border-white/10">
+          <div class="text-3xl font-semibold tracking-tight">12%</div>
+          <div class="text-sm mt-1 text-white/60">Fewer returns</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="sm:py-20 pt-14 pb-14 overflow-hidden" id="integrations">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div>
+          <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">Connect to your stack</h2>
+          <p class="text-white/70 mt-3"></p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="px-2.5 py-1 rounded-md text-[11px] ring-1 font-sans backdrop-blur bg-white/5 ring-white/10">Webhooks</div>
+          <div class="px-2.5 py-1 rounded-md text-[11px] ring-1 font-sans backdrop-blur bg-white/5 ring-white/10">API</div>
+          <div class="px-2.5 py-1 rounded-md text-[11px] ring-1 font-sans backdrop-blur bg-white/5 ring-white/10">No‑code</div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="flex gap-3 hover:bg-white/[0.06] transition hover:border-white/15 bg-white/5 h-20 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur items-center">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Storefronts</div>
+            <div class="text-xs text-white/60">Shopify, WooCommerce, Magento</div>
+          </div>
+        </div>
+        
+        <div class="flex gap-3 hover:bg-white/[0.06] transition hover:border-white/15 bg-white/5 h-20 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur items-center">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Whatsapp</div>
+            <div class="text-xs text-white/60">Notifications, follow-ups</div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 hover:bg-white/[0.06] transition hover:border-white/15 bg-white/5 h-20 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur items-center">
+          <div class="">
+            <div class="text-sm font-medium tracking-tight">Logistics</div>
+            <div class="text-xs text-white/60">Shiprocket, Nimbus, Goswift</div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 hover:bg-white/[0.06] transition hover:border-white/15 bg-white/5 h-20 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur items-center">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Telephony</div>
+            <div class="text-xs text-white/60">Exotel, Twilio, Kaleyra</div>
+          </div>
+        </div>
+
+        <div class="h-20 rounded-lg border p-4 flex items-center gap-3 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Payment links</div>
+            <div class="text-xs text-white/60">Razorpay, Cashfree</div>
+          </div>
+        </div>
+
+        <div class="h-20 rounded-lg border p-4 flex items-center gap-3 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Email</div>
+            <div class="text-xs text-white/60">Klaviyo, brevo</div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 hover:bg-white/[0.06] transition hover:border-white/15 bg-white/5 h-20 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur items-center">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Fast checkouts</div>
+            <div class="text-xs text-white/60">Shiprocket, GoKwik etc</div>
+          </div>
+        </div>
+
+        <div class="h-20 rounded-lg border p-4 flex items-center gap-3 hover:bg-white/[0.06] transition backdrop-blur border-white/10 bg-white/5 hover:border-white/15">
+          <div>
+            <div class="text-sm font-medium tracking-tight">Automations</div>
+            <div class="text-xs text-white/60">Zapier, Make.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-lg border p-4 backdrop-blur border-white/10 bg-white/5 gap-3">
+        <p class="text-sm text-white/70">Need a custom connector? Our team ships new integrations in days, not months.</p>
+        <a href="#" class="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs transition border-white/10 bg-white/10 hover:bg-white/20 whitespace-nowrap">
+          Request integration
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="sm:py-20 border-white/10 border-t pt-14 pb-14 overflow-hidden" id="pricing">
+    <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+      <div class="max-w-2xl">
+        <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">Simple, usage‑based pricing</h2>
+        <p class="text-white/70 mt-3">Start free. Scale as you go.</p>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-5">
+        <!-- Starter -->
+        <div class="rounded-xl border p-6 backdrop-blur transition border-white/10 bg-white/5 hover:border-white/20">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium tracking-tight">Test</h3>
+            <span class="rounded-full px-2 py-0.5 text-[11px] ring-1 bg-white/10 ring-white/15">Best for trying</span>
+          </div>
+          <div class="mt-4 flex items-baseline gap-1">
+            <span class="text-3xl font-semibold">Free</span>
+            <span class="text-xs text-white/60">up to 50 calls</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-orange-400/80 flex-shrink-0"></span>1 neural voice</li>
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-orange-400/80 flex-shrink-0"></span>Basic transcripts</li>
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-orange-400/80 flex-shrink-0"></span>Call support</li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-medium text-black bg-white w-full rounded-md ring-white/10 ring-1 mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
+        </div>
+
+        <!-- Growth -->
+        <div class="relative rounded-xl border bg-gradient-to-b p-6 backdrop-blur transition ring-1 border-white/10 from-white/10 to-white/5 hover:border-white/20 ring-white/10">
+          <div class="absolute -top-3 right-4 rounded-full text-[11px] px-2 py-0.5 font-semibold ring-1 bg-green-400 text-black ring-green-300/50">Most popular</div>
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium tracking-tight">Custom</h3>
+            <span class="rounded-full px-2 py-0.5 text-[11px] ring-1 bg-white/10 ring-white/15">Teams</span>
+          </div>
+          <div class="mt-4 flex items-baseline gap-1">
+            <span class="text-3xl font-semibold"></span>
+            <span class="text-xs text-white/60">per connected minute</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-white/80">
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-amber-400/80 flex-shrink-0"></span>All Starter +</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-amber-400/80 flex-shrink-0"></span>Multiple voices</li>
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-amber-400/80 flex-shrink-0"></span>2 Tool Calling Support</li>
+            <li class="flex items-center gap-2">Detailed Analytics + Voice Recordings</li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-semibold text-black bg-white w-full ring-white/10 ring-1 rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
+        </div>
+
+        <!-- Scale -->
+        <div class="rounded-xl border p-6 backdrop-blur transition border-white/10 bg-white/5 hover:border-white/20">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium tracking-tight">Scale</h3>
+            <span class="rounded-full px-2 py-0.5 text-[11px] ring-1 bg-white/10 ring-white/15">Custom</span>
+          </div>
+          <div class="mt-4 flex items-baseline gap-1">
+            <span class="text-3xl font-semibold">Talk to us</span>
+          </div>
+          <ul class="text-sm text-white/80 mt-4 space-y-2">
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 bg-yellow-400/80 rounded-full flex-shrink-0"></span>Premium Neural Voices</li>
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 bg-yellow-400/80 rounded-full flex-shrink-0"></span>Priority Call Support</li>
+            <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0"></span>Unlimited Tool Calling</li>
+          </ul>
+          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/20 text-sm bg-white/10 w-full border-white/15 border rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Contact sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="sm:py-20 pt-14 pb-14 border-t border-white/10 overflow-hidden">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">Frequently asked questions</h2>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        <details class="group rounded-lg border p-4 backdrop-blur border-white/10 bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+            How fast is the voice response?
+            <span class="ml-4 rounded-md px-2 py-0.5 text-[11px] ring-1 transition group-open:rotate-45 bg-white/10 ring-white/15 flex-shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-white/70">Median end‑to‑end latency is under 300ms with barge‑in support and crosstalk handling.</p>
+        </details>
+
+        <details class="group bg-white/5 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur">
+          <summary class="flex cursor-pointer list-none text-sm font-medium items-center justify-between">
+            How does onboarding works?
+            <span class="text-[11px] transition group-open:rotate-45 bg-white/10 rounded-md ring-white/15 ring-1 ml-4 pt-0.5 pr-2 pb-0.5 pl-2 flex-shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-white/70">First, we hop on a quick call to get your requirements. You hand over your knowledge base, and within 24 hours your AI agent is live (unless you've got special requests). We test with a few users for a week, fine-tune, and then go full-scale.</p>
+        </details>
+
+        <details class="group rounded-lg border p-4 backdrop-blur border-white/10 bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+            Can it speak multiple languages?
+            <span class="ml-4 rounded-md px-2 py-0.5 text-[11px] ring-1 transition group-open:rotate-45 bg-white/10 ring-white/15 flex-shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-white/70">Yes. We support English, Hindi and natural Hinglish out of the box. More Indic languages on request.</p>
+        </details>
+
+        <details class="group rounded-lg border p-4 backdrop-blur border-white/10 bg-white/5">
+          <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+            How do you ensure accuracy and safety?
+            <span class="ml-4 rounded-md px-2 py-0.5 text-[11px] ring-1 transition group-open:rotate-45 bg-white/10 ring-white/15 flex-shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-white/70">Domain‑tuned ASR + policies + tool guards. When uncertain, the agent escalates to a human seamlessly.</p>
+        </details>
+
+        <details class="group bg-white/5 border-white/10 border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur">
+          <summary class="flex cursor-pointer list-none text-sm font-medium items-center justify-between">
+            Do you integrate with my stack?
+            <span class="ml-4 rounded-md px-2 py-0.5 text-[11px] ring-1 transition group-open:rotate-45 bg-white/10 ring-white/15 flex-shrink-0">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-white/70">Most likely yes. We offer ready connectors and fast custom builds via API and webhooks.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative pt-10 pb-14 sm:py-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-xl border bg-gradient-to-br from-amber-500/10 to-yellow-500/10 p-6 sm:p-8 backdrop-blur border-white/10 via-white/5">
+        <div class="grid items-center gap-6 sm:grid-cols-2">
+          <div class="">
+            <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight">Ready to meet your best agent?</h3>
+            <p class="mt-3 text-white/70">Spin up your voice agent, connect WhatsApp, and start closing more carts today.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              
+              <a href="#" class="inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm transition border-white/15 bg-white/10 hover:bg-white/20">Book a demo</a>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="pointer-events-none absolute -inset-6 blur-3xl bg-[radial-gradient(400px_120px_at_60%_0%,rgba(255,255,255,0.15),transparent)]"></div>
+            <div class="rounded-lg border p-4 border-white/10 bg-black/30">
+              <div class="flex items-center gap-3">
+                <div class="h-9 w-9 grid place-items-center rounded-md ring-1 bg-white/5 ring-white/10 flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-[35px] h-[35px]" data-icon-replaced="true" data-lucide="heart" style="color: rgb(255, 255, 255); width: 35px; height: 35px;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                </div>
+                <div class="">
+                  <div class="text-lg font-medium">2000 +</div>
+                  <div class="text-xs text-white/60" style="">Average Calls a day</div>
+                </div>
+              </div>
+              <div class="mt-4 h-1.5 w-full rounded bg-white/10">
+                <div class="h-1.5 rounded bg-orange-400/80" style="width: 82%;"></div>
+              </div>
+              <p class="text-xs text-white/60 mt-3" style="">Across phone + WhatsApp with real‑time barge‑in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="">
+          <div class="flex gap-2 logo-wrapper gap-x-2 gap-y-2 items-center">
+            <div class="icon-wrapper">
+              <div class="explosion-center"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="brand-name">
+              <div class="brand-primary text-3xl">muktaṁ</div>
+              <div class="brand-suffix text-lg mx-1">ai</div>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-white/60">End‑to‑end voice AI built for D2C commerce in India.</p>
+        </div>
+        <div class="">
+          <div class="text-sm font-semibold">Product</div>
+          <ul class="mt-3 space-y-2 text-sm text-white/70">
+            <li class=""><a class="transition hover:text-white" href="#features">Features</a></li>
+            <li class=""><a class="transition hover:text-white" href="#pipeline">How it works</a></li>
+            <li class=""><a class="transition hover:text-white" href="#integrations">Integrations</a></li>
+            <li class=""><a class="transition hover:text-white" href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="">
+          <div class="text-sm font-semibold">Company</div>
+          <ul class="mt-3 space-y-2 text-sm text-white/70">
+            <li class=""><a class="transition hover:text-white" href="#">About</a></li>
+            <li class=""><a class="transition hover:text-white" href="#">Careers</a></li>
+            <li class=""><a class="transition hover:text-white" href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="">
+          <div class="text-sm font-semibold">Contact</div>
+          <ul class="mt-3 space-y-2 text-sm text-white/70">
+            <li class=""><a class="transition hover:text-white" href="/tel:+9157099561">9157099561</a></li>
+            <li class=""><a class="transition hover:text-white" href="#">X/Twitter</a></li>
+            <li class=""><a class="transition hover:text-white" href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 sm:flex-row border-white/10">
+        <p class="text-xs text-white/50">© <span id="year">2025</span> Indic AI. All rights reserved.</p>
+        <div class="flex items-center gap-4 text-xs text-white/60">
+          <a href="#" class="transition hover:text-white">Terms</a>
+          <a href="#" class="transition hover:text-white">Privacy</a>
+          <a href="#" class="transition hover:text-white">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const $ = (sel, parent = document) => parent.querySelector(sel);
+    const $$ = (sel, parent = document) => Array.from(parent.querySelectorAll(sel));
+
+    // Mobile menu toggle
+    (function nav() {
+      const btn = $('#menuBtn');
+      const menu = $('#mobileMenu');
+      const ctas = $('#navCtas');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(open));
+        if (ctas) ctas.classList.toggle('opacity-0', open);
+      });
+    })();
+
+    // Year in footer
+    (function year() {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <script>
+    (function(){const container=document.getElementById('voiceWidget');if(!container)return;const html=`<div class="voice-card"><div class="voice-header"><div class="voice-header-left"><div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg></div><div class="voice-header-info"><h3>Call Recording</h3><p id="voiceStatus">Loading...</p></div></div><span id="voiceBadge" class="voice-badge hidden">Playing</span></div><div class="voice-waveform"><div class="voice-bars" id="voiceBars"></div></div><div class="voice-transcript" id="voiceTranscript"><div class="voice-placeholder">Transcript will appear as the call plays...</div></div><div class="voice-progress-container"><div class="voice-progress-bar" id="voiceProgressBar"><div class="voice-progress-fill" id="voiceProgressFill"></div></div><div class="voice-time-display"><span id="voiceCurrentTime">0:00</span><span id="voiceDuration">0:00</span></div></div><div class="voice-footer"><div class="voice-meta"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg><span>Duration: <span id="voiceCallDuration">—</span></span></div><button class="voice-button" id="voicePlayBtn" disabled><svg id="voicePlayIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span id="voicePlayLabel">Play</span></button></div></div><audio id="voiceAudio" preload="auto"></audio>`;container.innerHTML=html;const $=id=>document.getElementById(id);const status=$('voiceStatus'),badge=$('voiceBadge'),transcript=$('voiceTranscript'),barsContainer=$('voiceBars'),audio=$('voiceAudio'),playBtn=$('voicePlayBtn'),playIcon=$('voicePlayIcon'),playLabel=$('voicePlayLabel'),progressBar=$('voiceProgressBar'),progressFill=$('voiceProgressFill'),currentTimeEl=$('voiceCurrentTime'),durationEl=$('voiceDuration'),callDurationEl=$('voiceCallDuration');let transcriptData=[],currentIndex=0,bars=[],rafId,audioContext,analyser,dataArray,audioSource;for(let i=0;i<25;i++){const bar=document.createElement('div');bar.className='voice-bar';bar.style.height=(20+Math.random()*20)+'px';barsContainer.appendChild(bar);bars.push(bar)}function formatTime(sec){if(!isFinite(sec))return '0:00';const m=Math.floor(sec/60),s=Math.floor(sec%60);return `${m}:${s.toString().padStart(2,'0')}`}function parseTime(ts){const parts=ts.split(' - ')[0].split(':'),mins=parseInt(parts[0])||0,secs=parseInt(parts[1])||0;return mins*60+secs}function escapeHtml(s){const div=document.createElement('div');div.textContent=s;return div.innerHTML}function addMessage(role,text,time){const msg=document.createElement('div');msg.className=`voice-message ${role}`;msg.innerHTML=`<div class="voice-message-content"><span class="voice-message-label">${role==='agent'?'Agent:':'Customer:'}</span>${escapeHtml(text)}${time?`<div class="voice-message-time">${time.split(' - ')[0]}</div>`:''}</div>`;transcript.appendChild(msg);msg.scrollIntoView({behavior:'smooth',block:'nearest'})}function animateBars(){if(!audio.paused&&analyser&&dataArray){analyser.getByteFrequencyData(dataArray);bars.forEach((bar,i)=>{const dataIndex=Math.floor(i*dataArray.length/bars.length),value=dataArray[dataIndex]/255,h=8+value*40;bar.style.height=h+'px';bar.style.opacity=0.3+value*0.5})}else if(!audio.paused){const t=performance.now()/200;bars.forEach((bar,i)=>{const v=(Math.sin(t+i*0.5)+1)/2,h=8+v*36;bar.style.height=h+'px';bar.style.opacity=0.3+v*0.5})}rafId=requestAnimationFrame(animateBars)}function updateTranscript(){const t=audio.currentTime;while(currentIndex<transcriptData.length&&transcriptData[currentIndex].time<=t){const m=transcriptData[currentIndex];addMessage(m.role,m.text,m.timestamp);currentIndex++}}let audioLoaded=false,transcriptLoaded=false;function checkReady(){if(audioLoaded&&transcriptLoaded){status.textContent='Ready to play';playBtn.disabled=false}}async function loadAudio(){try{status.textContent='Loading audio...';const res=await fetch('https://n8n.srv1066725.hstgr.cloud/webhook/265d38af-0407-41d4-b467-55d7da7731f0');if(!res.ok)throw new Error('Audio API error');const blob=await res.blob();audio.src=URL.createObjectURL(blob);audio.onloadeddata=()=>{audioLoaded=true;checkReady()};audio.load()}catch(err){status.textContent='Error loading audio';transcript.innerHTML=`<div class="voice-error">Failed to load audio</div>`}}async function loadTranscript(){try{const res=await fetch('https://n8n.srv1066725.hstgr.cloud/webhook/trans');if(!res.ok)throw new Error('Transcript API error');const text=await res.text(),lines=text.split('\n').filter(l=>l.trim());let speaker='',time='';for(const line of lines){if(line.includes('SwarX ai'))speaker='agent';else if(line.includes('Customer'))speaker='customer';else if(/^\d{2}:\d{2}/.test(line))time=line.trim();else if(line.trim()&&speaker&&time){transcriptData.push({role:speaker,text:line.trim(),timestamp:time,time:parseTime(time)})}}transcript.innerHTML='';transcriptLoaded=true;checkReady()}catch(err){status.textContent='Error loading transcript';transcript.innerHTML=`<div class="voice-error">Failed to load transcript</div>`}}playBtn.onclick=()=>{audio.paused?audio.play():audio.pause()};audio.onplay=()=>{playLabel.textContent='Pause';playIcon.innerHTML='<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';badge.classList.remove('hidden');status.textContent='Playing...';if(!audioContext){try{audioContext=new(window.AudioContext||window.webkitAudioContext)();analyser=audioContext.createAnalyser();analyser.fftSize=64;dataArray=new Uint8Array(analyser.frequencyBinCount);audioSource=audioContext.createMediaElementSource(audio);audioSource.connect(analyser);analyser.connect(audioContext.destination)}catch(e){}}animateBars()};audio.onpause=()=>{playLabel.textContent='Play';playIcon.innerHTML='<polygon points="5 3 19 12 5 21 5 3"></polygon>';badge.classList.add('hidden');status.textContent='Paused'};audio.onended=()=>{playLabel.textContent='Play';playIcon.innerHTML='<polygon points="5 3 19 12 5 21 5 3"></polygon>';badge.classList.add('hidden');status.textContent='Completed'};audio.ontimeupdate=()=>{const pct=(audio.currentTime/audio.duration)*100;progressFill.style.width=pct+'%';currentTimeEl.textContent=formatTime(audio.currentTime);updateTranscript()};audio.onloadedmetadata=()=>{durationEl.textContent=formatTime(audio.duration);callDurationEl.textContent=formatTime(audio.duration)};progressBar.onclick=e=>{const rect=progressBar.getBoundingClientRect(),pos=(e.clientX-rect.left)/rect.width;audio.currentTime=pos*audio.duration;transcript.innerHTML='';currentIndex=0;for(let i=0;i<transcriptData.length;i++){if(transcriptData[i].time<=audio.currentTime){addMessage(transcriptData[i].role,transcriptData[i].text,transcriptData[i].timestamp);currentIndex=i+1}else break}};loadAudio();loadTranscript();animateBars()})();
+  </script>
+
+</body></html>
