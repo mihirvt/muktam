@@ -91,8 +91,8 @@
   </header>
 
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="sm:px-6 lg:px-8 sm:pt-24 sm:pb-16 max-w-7xl mr-auto ml-auto pt-24 pr-4 pb-16 pl-4">
+  <section class="overflow-hidden relative">
+    <div class="sm:px-6 lg:px-8 sm:pt-24 sm:pb-16 max-w-7xl mr-auto ml-auto pt-20 pr-4 pb-16 pl-4">
       <div class="grid lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-6">
           <div class="inline-flex items-center gap-2 rounded-full ring-1 px-3 py-1 text-xs mb-5 backdrop-blur ring-white/10 bg-white/5 text-white/70">
@@ -102,13 +102,14 @@
               <path d="M22 4h-4"></path>
               <circle cx="4" cy="20" r="2"></circle>
             </svg>
-            <span class="" style="">Built for D2C</span>
+            <span class="">Made for D2C</span>
           </div>
-          <h1 class="leading-[1.08] sm:text-5xl lg:text-6xl text-3xl font-semibold tracking-tight font-bricolage">Founder touch at scale</h1>
-          <p class="sm:text-lg text-base text-white/70 mt-4"><strong class="">Voice Agents</strong> that talks, converts &amp; cares like a founder.</p>
+          <h1 class="leading-[1.08] sm:text-5xl lg:text-4xl text-3xl font-medium tracking-tight font-bricolage text-left relative">Voice
+  Agents that talks, converts &amp; cares like a founder.</h1>
+          <p class="sm:text-lg text-base text-white/70 mt-4" style="">Give <strong class="">founder touch</strong> to every call at scale.</p>
 
           <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center gap-2 transition hover:bg-white/90 text-sm font-semibold text-black tracking-tight bg-white rounded-md ring-white/10 ring-1 pt-2.5 pr-4 pb-2.5 pl-4">Book a Demo</a>
+            <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center gap-2 transition hover:bg-white/90 text-sm font-semibold text-black tracking-tight bg-white rounded-md ring-white/10 ring-1 pt-2.5 pr-4 pb-2.5 pl-4">Get Mukti</a>
             
           </div>
 
@@ -126,7 +127,7 @@
         <div class="lg:col-span-6 w-full overflow-hidden">
           <div class="relative">
             <div class="pointer-events-none absolute -inset-x-6 -bottom-6 h-20 blur-2xl bg-[radial-gradient(400px_80px_at_50%_0%,rgba(255,255,255,0.10),transparent)]"></div>
-            <div class="w-full max-w-full" id="voiceWidget"><div class="voice-card"><div class="voice-header"><div class="voice-header-left"><div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg></div><div class="voice-header-info"><h3>Call Recording</h3><p id="voiceStatus">Loading audio...</p></div></div><span id="voiceBadge" class="voice-badge hidden">Playing</span></div><div class="voice-waveform"><div class="voice-bars" id="voiceBars"><div class="voice-bar" style="height: 29.6859px;"></div><div class="voice-bar" style="height: 28.332px;"></div><div class="voice-bar" style="height: 31.3308px;"></div><div class="voice-bar" style="height: 22.7241px;"></div><div class="voice-bar" style="height: 23.917px;"></div><div class="voice-bar" style="height: 25.6923px;"></div><div class="voice-bar" style="height: 28.486px;"></div><div class="voice-bar" style="height: 31.72px;"></div><div class="voice-bar" style="height: 35.6405px;"></div><div class="voice-bar" style="height: 26.8992px;"></div><div class="voice-bar" style="height: 33.3279px;"></div><div class="voice-bar" style="height: 36.1729px;"></div><div class="voice-bar" style="height: 38.2854px;"></div><div class="voice-bar" style="height: 25.8844px;"></div><div class="voice-bar" style="height: 35.1573px;"></div><div class="voice-bar" style="height: 30.7607px;"></div><div class="voice-bar" style="height: 27.3371px;"></div><div class="voice-bar" style="height: 37.1626px;"></div><div class="voice-bar" style="height: 20.6737px;"></div><div class="voice-bar" style="height: 30.0905px;"></div><div class="voice-bar" style="height: 21.121px;"></div><div class="voice-bar" style="height: 37.2px;"></div><div class="voice-bar" style="height: 34.8819px;"></div><div class="voice-bar" style="height: 33.9081px;"></div><div class="voice-bar" style="height: 23.076px;"></div></div></div><div class="voice-transcript" id="voiceTranscript"><div class="voice-placeholder">Transcript will appear as the call plays...</div></div><div class="voice-progress-container"><div class="voice-progress-bar" id="voiceProgressBar"><div class="voice-progress-fill" id="voiceProgressFill"></div></div><div class="voice-time-display"><span id="voiceCurrentTime">0:00</span><span id="voiceDuration">0:00</span></div></div><div class="voice-footer"><div class="voice-meta"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg><span>Duration: <span id="voiceCallDuration">—</span></span></div><button class="voice-button" id="voicePlayBtn" disabled=""><svg id="voicePlayIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span id="voicePlayLabel">Play</span></button></div></div><audio id="voiceAudio" preload="auto"></audio></div>
+            <div class="w-full max-w-full" id="voiceWidget"><div class="voice-card"><div class="voice-header"><div class="voice-header-left"><div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg></div><div class="voice-header-info"><h3>Call Recording</h3><p id="voiceStatus">Ready to play</p></div></div><span id="voiceBadge" class="voice-badge hidden">Playing</span></div><div class="voice-waveform"><div class="voice-bars" id="voiceBars"><div class="voice-bar" style="height: 21.1688px;"></div><div class="voice-bar" style="height: 31.2022px;"></div><div class="voice-bar" style="height: 39.3831px;"></div><div class="voice-bar" style="height: 32.8143px;"></div><div class="voice-bar" style="height: 20.1455px;"></div><div class="voice-bar" style="height: 27.4524px;"></div><div class="voice-bar" style="height: 38.5733px;"></div><div class="voice-bar" style="height: 24.7523px;"></div><div class="voice-bar" style="height: 24.3539px;"></div><div class="voice-bar" style="height: 20.7908px;"></div><div class="voice-bar" style="height: 37.7245px;"></div><div class="voice-bar" style="height: 37.1198px;"></div><div class="voice-bar" style="height: 32.545px;"></div><div class="voice-bar" style="height: 37.0599px;"></div><div class="voice-bar" style="height: 25.3251px;"></div><div class="voice-bar" style="height: 30.5766px;"></div><div class="voice-bar" style="height: 37.2016px;"></div><div class="voice-bar" style="height: 29.1081px;"></div><div class="voice-bar" style="height: 39.8557px;"></div><div class="voice-bar" style="height: 33.6464px;"></div><div class="voice-bar" style="height: 26.6871px;"></div><div class="voice-bar" style="height: 31.441px;"></div><div class="voice-bar" style="height: 25.344px;"></div><div class="voice-bar" style="height: 36.0276px;"></div><div class="voice-bar" style="height: 37.7057px;"></div></div></div><div class="voice-transcript" id="voiceTranscript"></div><div class="voice-progress-container"><div class="voice-progress-bar" id="voiceProgressBar"><div class="voice-progress-fill" id="voiceProgressFill"></div></div><div class="voice-time-display"><span id="voiceCurrentTime">0:00</span><span id="voiceDuration">4:35</span></div></div><div class="voice-footer"><div class="voice-meta"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg><span>Duration: <span id="voiceCallDuration">4:35</span></span></div><button class="voice-button" id="voicePlayBtn"><svg id="voicePlayIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span id="voicePlayLabel">Play</span></button></div></div><audio id="voiceAudio" preload="auto" src="blob:https://www.aura.build/b107cf54-7735-4103-965d-08587cd28858"></audio></div>
           </div>
         </div>
       </div>
@@ -525,7 +526,7 @@
             <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-orange-400/80 flex-shrink-0"></span>Basic transcripts</li>
             <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-orange-400/80 flex-shrink-0"></span>Call support</li>
           </ul>
-          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-medium text-black bg-white w-full rounded-md ring-white/10 ring-1 mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
+          <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-medium text-black bg-white w-full ring-white/10 ring-1 rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
         </div>
 
         <!-- Growth -->
@@ -545,7 +546,7 @@
             <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-amber-400/80 flex-shrink-0"></span>2 Tool Calling Support</li>
             <li class="flex items-center gap-2">Detailed Analytics + Voice Recordings</li>
           </ul>
-          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-semibold text-black bg-white w-full ring-white/10 ring-1 rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
+          <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center transition hover:bg-white/90 text-sm font-semibold text-black bg-white w-full ring-white/10 ring-1 rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Book Intro</a>
         </div>
 
         <!-- Scale -->
@@ -562,7 +563,7 @@
             <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 bg-yellow-400/80 rounded-full flex-shrink-0"></span>Priority Call Support</li>
             <li class="flex gap-2 items-center"><span class="h-1.5 w-1.5 rounded-full bg-yellow-400/80 flex-shrink-0"></span>Unlimited Tool Calling</li>
           </ul>
-          <a href="#" class="inline-flex items-center justify-center transition hover:bg-white/20 text-sm bg-white/10 w-full border-white/15 border rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Contact sales</a>
+          <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center transition hover:bg-white/20 text-sm bg-white/10 w-full border-white/15 border rounded-md mt-6 pt-2 pr-4 pb-2 pl-4">Contact sales</a>
         </div>
       </div>
     </div>
@@ -629,7 +630,7 @@
             <p class="mt-3 text-white/70">Spin up your voice agent, connect WhatsApp, and start closing more carts today.</p>
             <div class="mt-6 flex flex-wrap gap-3">
               
-              <a href="#" class="inline-flex items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm transition border-white/15 bg-white/10 hover:bg-white/20">Book a demo</a>
+              <a href="https://calendly.com/mihirvt" class="inline-flex items-center justify-center gap-2 transition hover:bg-white/20 text-sm bg-white/10 border-white/15 border rounded-md pt-2 pr-4 pb-2 pl-4">Book a demo</a>
             </div>
           </div>
           <div class="relative">
