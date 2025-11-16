@@ -672,7 +672,7 @@ font-family: 'Nunito', sans-serif !important;
                             <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" class=""></path>
                             <path d="M20 2v4"></path>
                             <path d="M22 4h-4"></path>
-                            <circle cx="4" cy="20" r="2"></circle>
+                            <circle cx="4" cy="20" r="2" class=""></circle>
                         </svg>
                         <span class="">Made for D2C</span>
                     </div>
@@ -783,7 +783,7 @@ font-family: 'Nunito', sans-serif !important;
     }
 
     #voiceCallPlayer .voice-card {
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255, 255, 255, 0.14);
       border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 12px;
       padding: 24px;
@@ -818,19 +818,21 @@ font-family: 'Nunito', sans-serif !important;
     #voiceCallPlayer .voice-header-info h3 {
       font-size: 14px;
       font-weight: 500;
-      margin-bottom: 4px
+      margin-bottom: 4px;
+      color: rgba(255, 255, 255);
+
     }
 
     #voiceCallPlayer .voice-header-info p {
       font-size: 12px;
-      color: rgba(255, 255, 255, .6)
+      color: rgba(255, 255, 255)
     }
 
-    #voiceCallPlayer .voice-badge {
+    #voiceCallPlayer .voice-badge{
       padding: 4px 8px;
       border-radius: 6px;
       font-size: 11px;
-      background: (255, 255, 255, 0.5);
+      background: rgba(16, 185, 129, .1);
       border: 1px solid rgba(16, 185, 129, .2);
       color: #6ee7b7
     }
@@ -841,7 +843,7 @@ font-family: 'Nunito', sans-serif !important;
 
     #voiceCallPlayer .voice-waveform {
       height: 64px;
-      background: linear-gradient(to right, rgba(255, 255, 255, .05), rgba(255, 255, 255, .05));
+      background: linear-gradient(to right, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
       border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 8px;
       padding: 0 8px;
@@ -860,8 +862,8 @@ font-family: 'Nunito', sans-serif !important;
     }
 
     #voiceCallPlayer .voice-bar {
-      width: 100px;
-      background: rgba(255, 255, 255, .7);
+      width: 6px;
+      background: rgba(255, 255, 255, .5);
       border-radius: 2px;
       transition: height .1s ease, opacity .1s ease
     }
@@ -884,7 +886,7 @@ font-family: 'Nunito', sans-serif !important;
     }
 
     #voiceCallPlayer .voice-transcript::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, .5);
+      background: rgba(255, 255, 255, .2);
       border-radius: 3px
     }
 
@@ -923,14 +925,15 @@ font-family: 'Nunito', sans-serif !important;
     }
 
     #voiceCallPlayer .voice-message.agent .voice-message-content {
-      background: rgba(255, 255, 255, 0.2);
-      color: rgba(19, 19, 19, 0.8)
+      background: rgba(255, 255, 255, .4);
+      color: rgba(68, 68, 68, 1)
+
     }
 
     #voiceCallPlayer .voice-message.customer .voice-message-content {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, .4);
       border-color: rgba(16, 185, 129, .2);
-      color: rgba(19, 19, 19, 0.8)
+      color: rgba(68, 68, 68, 1)
     }
 
     #voiceCallPlayer .voice-message-label {
@@ -941,7 +944,7 @@ font-family: 'Nunito', sans-serif !important;
 
     #voiceCallPlayer .voice-message-time {
       font-size: 10px;
-      opacity: 1;
+      opacity: .5;
       margin-top: 4px
     }
 
@@ -1002,7 +1005,7 @@ font-family: 'Nunito', sans-serif !important;
       align-items: center;
       gap: 8px;
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.6)
+      color: rgba(255, 255, 255, .6)
     }
 
     #voiceCallPlayer .voice-button {
@@ -1010,8 +1013,8 @@ font-family: 'Nunito', sans-serif !important;
       align-items: center;
       gap: 8px;
       padding: 8px 16px;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: 0 0;
+      border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 6px;
       color: #fff;
       font-size: 12px;
@@ -1034,28 +1037,257 @@ font-family: 'Nunito', sans-serif !important;
       height: 16px
     }
   </style>
-  <div id="voiceCallPlayer" class="">
+  <div class="" id="voiceCallPlayer">
     <div class="voice-card">
       <div class="voice-header">
         <div class="voice-header-left">
-          <div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="">
+          <div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 19v3"></path>
               <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
               <rect x="9" y="2" width="6" height="13" rx="3"></rect>
             </svg></div>
           <div class="voice-header-info">
             <h3 class="">Call Recording Playback</h3>
-            <p class="" id="voiceStatus">Ready to play</p>
+            <p id="voiceStatus" class="">Loading audio...</p>
           </div>
         </div><span id="voiceBadge" class="voice-badge">Playing</span>
       </div>
-      
+      <div class="voice-waveform">
+        <div class="voice-bars" id="voiceBars">
+          <div class="voice-bar" style="height: 38.6352px;"></div>
+          <div class="voice-bar" style="height: 21.1343px;"></div>
+          <div class="voice-bar" style="height: 26.5419px;"></div>
+          <div class="voice-bar" style="height: 27.59px;"></div>
+          <div class="voice-bar" style="height: 31.4955px;"></div>
+          <div class="voice-bar" style="height: 20.133px;"></div>
+          <div class="voice-bar" style="height: 39.8157px;"></div>
+          <div class="voice-bar" style="height: 25.4368px;"></div>
+          <div class="voice-bar" style="height: 20.8037px;"></div>
+          <div class="voice-bar" style="height: 37.1743px;"></div>
+          <div class="voice-bar" style="height: 30.5473px;"></div>
+          <div class="voice-bar" style="height: 26.827px;"></div>
+          <div class="voice-bar" style="height: 36.7297px;"></div>
+          <div class="voice-bar" style="height: 27.4596px;"></div>
+          <div class="voice-bar" style="height: 35.2029px;"></div>
+          <div class="voice-bar" style="height: 28.4488px;"></div>
+          <div class="voice-bar" style="height: 37.2363px;"></div>
+          <div class="voice-bar" style="height: 27.45px;"></div>
+          <div class="voice-bar" style="height: 37.569px;"></div>
+          <div class="voice-bar" style="height: 25.145px;"></div>
+          <div class="voice-bar" style="height: 30.5887px;"></div>
+          <div class="voice-bar" style="height: 25.2364px;"></div>
+          <div class="voice-bar" style="height: 25.5186px;"></div>
+          <div class="voice-bar" style="height: 31.7977px;"></div>
+          <div class="voice-bar" style="height: 26.4638px;"></div>
+          <div class="voice-bar" style="height: 20.92px;"></div>
+          <div class="voice-bar" style="height: 33.1242px;"></div>
+          <div class="voice-bar" style="height: 27.5435px;"></div>
+          <div class="voice-bar" style="height: 26.8847px;"></div>
+          <div class="voice-bar" style="height: 25.2808px;"></div>
+          <div class="voice-bar" style="height: 28.7166px;"></div>
+          <div class="voice-bar" style="height: 30.2444px;"></div>
+          <div class="voice-bar" style="height: 38.803px;"></div>
+          <div class="voice-bar" style="height: 36.6908px;"></div>
+          <div class="voice-bar" style="height: 31.4744px;"></div>
+          <div class="voice-bar" style="height: 25.347px;"></div>
+          <div class="voice-bar" style="height: 22.6542px;"></div>
+          <div class="voice-bar" style="height: 33.9249px;"></div>
+          <div class="voice-bar" style="height: 27.9417px;"></div>
+          <div class="voice-bar" style="height: 23.4757px;"></div>
+          <div class="voice-bar" style="height: 38.7114px;"></div>
+          <div class="voice-bar" style="height: 35.4732px;"></div>
+          <div class="voice-bar" style="height: 25.8071px;"></div>
+          <div class="voice-bar" style="height: 21.4719px;"></div>
+          <div class="voice-bar" style="height: 31.0119px;"></div>
+          <div class="voice-bar" style="height: 34.481px;"></div>
+          <div class="voice-bar" style="height: 23.5251px;"></div>
+          <div class="voice-bar" style="height: 25.6032px;"></div>
+          <div class="voice-bar" style="height: 28.4483px;"></div>
+          <div class="voice-bar" style="height: 38.5256px;"></div>
+          <div class="voice-bar" style="height: 33.9832px;"></div>
+          <div class="voice-bar" style="height: 28.087px;"></div>
+          <div class="voice-bar" style="height: 30.8033px;"></div>
+          <div class="voice-bar" style="height: 39.7426px;"></div>
+          <div class="voice-bar" style="height: 26.7177px;"></div>
+          <div class="voice-bar" style="height: 37.9825px;"></div>
+          <div class="voice-bar" style="height: 38.7333px;"></div>
+          <div class="voice-bar" style="height: 31.1021px;"></div>
+          <div class="voice-bar" style="height: 23.714px;"></div>
+          <div class="voice-bar" style="height: 35.3894px;"></div>
+          <div class="voice-bar" style="height: 37.9146px;"></div>
+          <div class="voice-bar" style="height: 28.8833px;"></div>
+          <div class="voice-bar" style="height: 36.6717px;"></div>
+          <div class="voice-bar" style="height: 26.0862px;"></div>
+          <div class="voice-bar" style="height: 26.4431px;"></div>
+          <div class="voice-bar" style="height: 26.2373px;"></div>
+          <div class="voice-bar" style="height: 30.8183px;"></div>
+          <div class="voice-bar" style="height: 37.3799px;"></div>
+          <div class="voice-bar" style="height: 39.6529px;"></div>
+          <div class="voice-bar" style="height: 29.6029px;"></div>
+          <div class="voice-bar" style="height: 31.9739px;"></div>
+          <div class="voice-bar" style="height: 29.3489px;"></div>
+          <div class="voice-bar" style="height: 27.8439px;"></div>
+          <div class="voice-bar" style="height: 28.9316px;"></div>
+          <div class="voice-bar" style="height: 28.2649px;"></div>
+          <div class="voice-bar" style="height: 38.8221px;"></div>
+          <div class="voice-bar" style="height: 37.2847px;"></div>
+          <div class="voice-bar" style="height: 36.0101px;"></div>
+          <div class="voice-bar" style="height: 34.153px;"></div>
+          <div class="voice-bar" style="height: 36.678px;"></div>
+          <div class="voice-bar" style="height: 31.7433px;"></div>
+          <div class="voice-bar" style="height: 22.4286px;"></div>
+          <div class="voice-bar" style="height: 28.545px;"></div>
+          <div class="voice-bar" style="height: 20.6929px;"></div>
+          <div class="voice-bar" style="height: 29.1002px;"></div>
+          <div class="voice-bar" style="height: 33.334px;"></div>
+          <div class="voice-bar" style="height: 25.0698px;"></div>
+          <div class="voice-bar" style="height: 32.7867px;"></div>
+          <div class="voice-bar" style="height: 37.9675px;"></div>
+          <div class="voice-bar" style="height: 31.3538px;"></div>
+          <div class="voice-bar" style="height: 29.4322px;"></div>
+          <div class="voice-bar" style="height: 24.363px;"></div>
+          <div class="voice-bar" style="height: 21.6385px;"></div>
+          <div class="voice-bar" style="height: 29.8664px;"></div>
+          <div class="voice-bar" style="height: 33.3371px;"></div>
+          <div class="voice-bar" style="height: 37.1551px;"></div>
+          <div class="voice-bar" style="height: 35.7982px;"></div>
+          <div class="voice-bar" style="height: 39.1233px;"></div>
+          <div class="voice-bar" style="height: 31.0557px;"></div>
+          <div class="voice-bar" style="height: 27.2753px;"></div>
+          <div class="voice-bar" style="height: 36.1853px;"></div>
+          <div class="voice-bar" style="height: 26.9155px;"></div>
+          <div class="voice-bar" style="height: 32.3231px;"></div>
+          <div class="voice-bar" style="height: 36.6211px;"></div>
+          <div class="voice-bar" style="height: 32.3986px;"></div>
+          <div class="voice-bar" style="height: 31.0232px;"></div>
+          <div class="voice-bar" style="height: 39.1256px;"></div>
+          <div class="voice-bar" style="height: 33.7376px;"></div>
+          <div class="voice-bar" style="height: 28.359px;"></div>
+          <div class="voice-bar" style="height: 37.0883px;"></div>
+          <div class="voice-bar" style="height: 33.9075px;"></div>
+          <div class="voice-bar" style="height: 20.2042px;"></div>
+          <div class="voice-bar" style="height: 39.7196px;"></div>
+          <div class="voice-bar" style="height: 26.0174px;"></div>
+          <div class="voice-bar" style="height: 39.7417px;"></div>
+          <div class="voice-bar" style="height: 23.4506px;"></div>
+          <div class="voice-bar" style="height: 27.6457px;"></div>
+          <div class="voice-bar" style="height: 23.1651px;"></div>
+          <div class="voice-bar" style="height: 39.8014px;"></div>
+          <div class="voice-bar" style="height: 29.2232px;"></div>
+          <div class="voice-bar" style="height: 34.1072px;"></div>
+          <div class="voice-bar" style="height: 36.1326px;"></div>
+          <div class="voice-bar" style="height: 39.7683px;"></div>
+          <div class="voice-bar" style="height: 23.5272px;"></div>
+          <div class="voice-bar" style="height: 21.7503px;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 31.1469px;"></div>
+          <div class="voice-bar" style="height: 23.7964px;"></div>
+          <div class="voice-bar" style="height: 23.3451px;"></div>
+          <div class="voice-bar" style="height: 24.0066px;"></div>
+          <div class="voice-bar" style="height: 31.4756px;"></div>
+          <div class="voice-bar" style="height: 24.6744px;"></div>
+          <div class="voice-bar" style="height: 23.4267px;"></div>
+          <div class="voice-bar" style="height: 38.2582px;"></div>
+          <div class="voice-bar" style="height: 35.0088px;"></div>
+          <div class="voice-bar" style="height: 23.0452px;"></div>
+          <div class="voice-bar" style="height: 32.8986px;"></div>
+          <div class="voice-bar" style="height: 23.2664px;"></div>
+          <div class="voice-bar" style="height: 24.6761px;"></div>
+          <div class="voice-bar" style="height: 36.3324px;"></div>
+          <div class="voice-bar" style="height: 31.5313px;"></div>
+          <div class="voice-bar" style="height: 24.8532px;"></div>
+          <div class="voice-bar" style="height: 37.9616px;"></div>
+          <div class="voice-bar" style="height: 35.3146px;"></div>
+          <div class="voice-bar" style="height: 29.4319px;"></div>
+          <div class="voice-bar" style="height: 29.1355px;"></div>
+          <div class="voice-bar" style="height: 36.2423px;"></div>
+          <div class="voice-bar" style="height: 23.4233px;"></div>
+          <div class="voice-bar" style="height: 32.3479px;"></div>
+          <div class="voice-bar" style="height: 24.3547px;"></div>
+          <div class="voice-bar" style="height: 23.3553px;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+          <div class="voice-bar" style="height: 8px; opacity: 0.3;"></div>
+        <div class="voice-bar" style="height: 39.2554px;"></div><div class="voice-bar" style="height: 31.2318px;"></div><div class="voice-bar" style="height: 35.0413px;"></div><div class="voice-bar" style="height: 33.2448px;"></div><div class="voice-bar" style="height: 34.6129px;"></div><div class="voice-bar" style="height: 28.4347px;"></div><div class="voice-bar" style="height: 21.5685px;"></div><div class="voice-bar" style="height: 21.6407px;"></div><div class="voice-bar" style="height: 32.8729px;"></div><div class="voice-bar" style="height: 27.2147px;"></div><div class="voice-bar" style="height: 22.941px;"></div><div class="voice-bar" style="height: 28.8633px;"></div><div class="voice-bar" style="height: 23.9226px;"></div><div class="voice-bar" style="height: 29.4891px;"></div><div class="voice-bar" style="height: 24.6544px;"></div><div class="voice-bar" style="height: 21.3682px;"></div><div class="voice-bar" style="height: 21.2924px;"></div><div class="voice-bar" style="height: 31.5861px;"></div><div class="voice-bar" style="height: 26.5155px;"></div><div class="voice-bar" style="height: 24.2524px;"></div><div class="voice-bar" style="height: 32.5295px;"></div><div class="voice-bar" style="height: 24.4287px;"></div><div class="voice-bar" style="height: 22.432px;"></div><div class="voice-bar" style="height: 23.4953px;"></div><div class="voice-bar" style="height: 23.9724px;"></div><div class="voice-bar" style="height: 20.0446px;"></div><div class="voice-bar" style="height: 21.444px;"></div><div class="voice-bar" style="height: 24.8099px;"></div><div class="voice-bar" style="height: 38.8824px;"></div><div class="voice-bar" style="height: 28.7085px;"></div><div class="voice-bar" style="height: 39.1542px;"></div><div class="voice-bar" style="height: 33.9682px;"></div><div class="voice-bar" style="height: 29.7747px;"></div><div class="voice-bar" style="height: 27.9187px;"></div><div class="voice-bar" style="height: 25.0552px;"></div><div class="voice-bar" style="height: 31.4792px;"></div><div class="voice-bar" style="height: 35.0156px;"></div><div class="voice-bar" style="height: 21.0584px;"></div><div class="voice-bar" style="height: 30.4868px;"></div><div class="voice-bar" style="height: 30.1035px;"></div><div class="voice-bar" style="height: 31.6251px;"></div><div class="voice-bar" style="height: 30.5022px;"></div><div class="voice-bar" style="height: 21.7006px;"></div><div class="voice-bar" style="height: 28.5873px;"></div><div class="voice-bar" style="height: 37.5005px;"></div><div class="voice-bar" style="height: 35.995px;"></div><div class="voice-bar" style="height: 26.5994px;"></div><div class="voice-bar" style="height: 38.4098px;"></div><div class="voice-bar" style="height: 29.9581px;"></div><div class="voice-bar" style="height: 37.6418px;"></div></div>
+      </div>
       <div class="voice-transcript" id="voiceTranscript"></div>
       <div class="voice-progress-container">
         <div class="voice-progress-bar" id="voiceProgressBar">
-          <div class="voice-progress-fill" id="voiceProgressFill" style="width: 0.774827%;"></div>
+          <div class="voice-progress-fill" id="voiceProgressFill" style="width: 5.17322%;"></div>
         </div>
-        <div class="voice-time-display"><span id="voiceCurrentTime">0:00</span><span id="voiceDuration">0:00</span>
+        <div class="voice-time-display">
+          <span id="voiceCurrentTime">0:00</span><span id="voiceDuration" class="">0:00</span>
         </div>
       </div>
       <div class="voice-footer">
