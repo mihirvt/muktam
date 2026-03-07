@@ -1006,12 +1006,82 @@
                         </svg>
                         <span>Muktam AI is now GUSEC-incubated startup</span>
                     </div>
-                    <h1
-                        class="leading-[1.05] sm:text-5xl md:text-6xl lg:text-6xl text-5xl font-semibold text-slate-950 tracking-tighter font-instrument-serif">
-                        Voice Ai infra for tech enablers
+                    <h1 class="leading-[1.05] sm:text-5xl md:text-6xl lg:text-6xl text-5xl font-semibold text-slate-950 tracking-tighter font-instrument-serif"
+                        style="position: relative">
+                        <style>
+                            @keyframes wordFadeInOut {
+
+                                0%,
+                                10% {
+                                    opacity: 0;
+                                    transform: translateY(8px);
+                                }
+
+                                15%,
+                                35% {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+
+                                40%,
+                                100% {
+                                    opacity: 0;
+                                    transform: translateY(-8px);
+                                }
+                            }
+
+                            .animated-word-container {
+                                display: inline-block;
+                                position: relative;
+                                min-width: 4.em;
+                                text-align: left;
+                                height: 1em;
+                                overflow: hidden;
+                                vertical-align: top;
+                            }
+
+                            .animated-word {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                white-space: nowrap;
+                                opacity: 0;
+                                animation: wordFadeInOut 6s ease-in-out infinite;
+                            }
+
+                            .animated-word:nth-child(1) {
+                                animation-delay: 0s;
+                            }
+
+                            .animated-word:nth-child(2) {
+                                animation-delay: 2s;
+                            }
+
+                            .animated-word:nth-child(3) {
+                                animation-delay: 4s;
+                            }
+
+                            .animated-word-placeholder {
+                                opacity: 0;
+                                pointer-events: none;
+                                visibility: hidden;
+                            }
+                        </style>
+                        Voice agents that
+                        <span class="animated-word-container">
+                            <span class="animated-word">talk__</span>
+                            <span class="animated-word">listen_</span>
+                            <span class="animated-word">convert</span>
+                            <span class="animated-word-placeholder">convert</span>
+                        </span>
+                        like a
+                        <span
+                            class="bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-black mix-blend-normal">
+                            founder
+                        </span>
                     </h1>
-                    <p class="sm:text-lg text-base text-slate-900/70 mt-4">Launch AI voice agents for every client
-                        without building the stack from scratch.</p>
+                    <p class="sm:text-lg text-base text-slate-900/70 mt-4">Automate every d2c workflow with our human
+                        grade ai agents.</p>
 
                     <div class="mt-7 flex flex-col sm:flex-row gap-3">
                         <div data-fillout-id="6t6FLXYFhYus" data-fillout-embed-type="popup"
@@ -1020,7 +1090,10 @@
                             data-fillout-inherit-parameters="" data-fillout-popup-size="large"></div>
                     </div>
 
-
+                    <div class="mt-6 flex flex-wrap items-center gap-4">
+                        <p class="sm:text-sm text-xs font-normal text-slate-950/90">Don't trust, <span
+                                class="line-through">see</span> listen by yourself</p>
+                    </div>
                     <script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
 
@@ -1187,7 +1260,7 @@
     <section class="border-y overflow-hidden pt-8 pb-8 border-black/10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-75">
-                <div class="text-xs uppercase tracking-[0.18em] font-sans text-black/60">PARTNERS</div>
+                <div class="text-xs uppercase tracking-[0.18em] font-sans text-black/60">Trusted by</div>
                 <div
                     class="h-8 w-24 grid place-items-center rounded-md bg-white/60 backdrop-blur-sm ring-1 text-xs font-medium tracking-tight font-sans ring-black/10 shadow-sm">
                     Fiski Clothing</div>
@@ -1204,224 +1277,6 @@
         </div>
     </section>
 
-    <!-- Why Mukt Agents -->
-    <section class="sm:pb-20 overflow-hidden pt-14 pb-14">
-        <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
-            <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight pb-6">Why Mukt Agents?</h2>
-            <div class="mt-4 grid sm:grid-cols-2 gap-4">
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M12 2v4"></path>
-                                <path d="m16.2 7.8 2.9-2.9"></path>
-                                <path d="M18 12h4"></path>
-                                <path d="m16.2 16.2 2.9 2.9"></path>
-                                <path d="M12 18v4"></path>
-                                <path d="m4.9 19.1 2.9-2.9"></path>
-                                <path d="M2 12h4"></path>
-                                <path d="m4.9 4.9 2.9 2.9"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">SOTA responses
-                            powered by LLM
-                            trained on India</div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">While other agents get stuck on repeat when
-                        confused, our
-                        agents gracefully adapt.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 1 0 6 0V6a3 3 0 0 0-3-3Z"></path>
-                                <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
-                                <path d="M12 18v3"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Smoooooth Neural
-                            Voices</div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Most natural Indian sounding voices across 8+
-                        Indian languages.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80 sm:col-span-1">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M12 6v6l4 2"></path>
-                                <circle cx="12" cy="12" r="9"></circle>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">P95 Latency of sub
-                            1 sec</div>
-                    </div>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80 sm:col-span-1">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                                <polyline points="16 7 22 7 22 13"></polyline>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">72%+ Pickup rates
-                            for outbound</div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">In house methodologies results in 5-12% extra
-                        pickup rates compared to alternatives.</p>
-                </div>
-
-                <div
-                    class="sm:col-span-2 rounded-xl border border-amber-900/5 bg-gradient-to-r from-amber-50 to-orange-50/50 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md">
-                    <p class="text-[17px] font-semibold tracking-tight text-black/90">We deliver all three: top-tier
-                        intelligence, speed, and voice quality - at a pricing tailored for tech enablers.</p>
-                    <p class="mt-2 text-sm text-black/60 leading-relaxed">Most providers force a trade-off: fast but
-                        dumb, or lil
-                        smart but slow and robotic.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-                                <path d="m9 12 2 2 4-4"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">No halucinations
-                        </div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Agent knows when to transfer calls to human.
-                    </p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H7l-4 3V5a2 2 0 0 1 2-2h7"></path>
-                                <path d="M17 2v6"></path>
-                                <path d="M14 5h6"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Automatic
-                            follow-ups</div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Your agent might forget but Mukt doesn't.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
-                                <path d="m19 9-5 5-4-4-3 3"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Analytics built in
-                        </div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Custom metrics, per call insights, sentiment
-                        analysis, call recordings - you get everything.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M7 7h10v10"></path>
-                                <path d="M7 17 17 7"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Takes Action</div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Make it take action in ms with tool calling.
-                    </p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M2 12s3-5 10-5 10 5 10 5-3 5-10 5-10-5-10-5Z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Context aware
-                        </div>
-                    </div>
-                    <p class="mt-3 text-sm text-black/60 leading-relaxed">Pre-fetch dynamic context before every calls
-                        with
-                        variables.</p>
-                </div>
-
-                <div
-                    class="rounded-xl border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md hover:bg-white/80">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10 text-black/80">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                </path>
-                                <path d="M3.3 7 12 12l8.7-5"></path>
-                                <path d="M12 22V12"></path>
-                            </svg>
-                        </div>
-                        <div class="text-[15px] font-semibold text-black/90 tracking-tight font-sans">Plug n play API's
-                            ready</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
     <!-- Features -->
     <section class="sm:py-20 overflow-hidden pt-14 pb-14" id="features">
         <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
@@ -1430,28 +1285,7 @@
                 <p class="mt-3 font-sans text-black/70">Covers the end-to-end customer lifecycle.</p>
             </div>
 
-            <div class="mt-8 flex flex-wrap gap-2 mb-6" id="industry-tabs">
-                <button
-                    class="tab-btn active px-4 py-2 text-sm font-medium rounded-full bg-black text-white hover:bg-black/90 transition shadow-sm"
-                    data-target="tab-ecommerce">eCommerce</button>
-                <button
-                    class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-white/60 border border-black/10 text-black/70 hover:bg-white/80 transition shadow-sm"
-                    data-target="tab-healthcare">Healthcare</button>
-                <button
-                    class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-white/60 border border-black/10 text-black/70 hover:bg-white/80 transition shadow-sm"
-                    data-target="tab-hospitality">Hospitality</button>
-                <button
-                    class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-white/60 border border-black/10 text-black/70 hover:bg-white/80 transition shadow-sm"
-                    data-target="tab-finance">Financial Services</button>
-                <button
-                    class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-white/60 border border-black/10 text-black/70 hover:bg-white/80 transition shadow-sm"
-                    data-target="tab-law">Law Firms</button>
-                <button
-                    class="tab-btn px-4 py-2 text-sm font-medium rounded-full bg-white/60 border border-black/10 text-black/70 hover:bg-white/80 transition shadow-sm"
-                    data-target="tab-realestate">Real Estate</button>
-            </div>
-
-            <div id="tab-ecommerce" class="tab-content grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div
                     class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
                     <div class="flex gap-3 items-center">
@@ -1705,415 +1539,123 @@
                         qualify them and capture missing information.</p>
                 </div>
             </div>
-
-            <!-- Healthcare Tab -->
-            <div id="tab-healthcare" class="tab-content hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <rect width="18" height="18" x="3" y="3" rx="2" />
-                                <path d="M12 8v8" />
-                                <path d="M8 12h8" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Appointments</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Handles appointment reminders and confirmations
-                        smoothly.</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Post-discharge</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Manages post-discharge follow-up calls.</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <path
-                                    d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9C8.8 1 15.2 1 19.1 4.9C23 8.8 23 15.2 19.1 19.1C15.2 23 8.8 23 4.9 19.1Z" />
-                                <path d="M12 8v4l3 3" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Chronic care</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Check-ins for chronic care (diabetes, hypertension,
-                        oncology).</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <rect width="16" height="6" x="4" y="9" rx="3" />
-                                <path d="M12 9v6" />
-                                <path d="M8 9v6" />
-                                <path d="M16 9v6" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Medication</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Medication adherence monitoring.</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <path d="M14 2v6h6" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
-                                <polyline points="10 9 9 9 8 9" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Pre-appointment</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Pre-appointment prep instructions.</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <path d="m10 11.5 6-7" />
-                                <circle cx="15.5" cy="4.5" r="2.5" />
-                                <path d="m14 10.5-6 7" />
-                                <circle cx="8.5" cy="19.5" r="2.5" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Lab results</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Lab result notifications directly over call.</p>
-                </div>
-
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]">
-                                <path d="M12 2v20" />
-                                <path d="m17 12-5-5-5 5" />
-                                <path d="m17 19-5-5-5 5" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Surveys</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Patient satisfaction surveys over natural voice
-                        calls.</p>
-                </div>
-            </div>
-
-            <!-- Hospitality Tab -->
-            <div id="tab-hospitality" class="tab-content hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M3 2v20" />
-                                <path d="M21 2v20" />
-                                <path d="M3 10h18" />
-                                <path d="M10 2v20" />
-                                <path d="M14 2v20" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Reservations</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Handles bookings, reschedules, cancellations, and
-                        confirmations automatically without needing a human.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                                <path d="M12 17h.01" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Instant FAQs</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Answers questions about parking, Wi-Fi, breakfast
-                        hours, late checkout instantly and accurately.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">After-Hours Support</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Handles guest requests 24/7 - from extra pillows to
-                        airport transfers - keeping service smooth.</p>
-                </div>
-            </div>
-
-            <!-- Financial Services Tab -->
-            <div id="tab-finance" class="tab-content hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M12 2v20" />
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Customer Calls</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Answers inbound calls for loan, banking, and account
-                        queries in real time to resolve requests.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Lead Pre-Qualification</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Engages prospects over calls, verifies eligibility,
-                        collects key info, and routes qualified leads.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <path d="M14 2v6h6" />
-                                <path d="M16 13H8" />
-                                <path d="M16 17H8" />
-                                <path d="M10 9H8" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">End-to-End Inquiries</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Guides borrowers through applications, payment
-                        questions, and timely loan status updates.</p>
-                </div>
-            </div>
-
-            <!-- Law Firms Tab -->
-            <div id="tab-law" class="tab-content hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="m11 17 2 2a1 1 0 1 0 3-3" />
-                                <path
-                                    d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
-                                <path d="m21 3-6 6" />
-                                <path
-                                    d="M8.4 20.941c-2.43 1.09-5.111.455-6.6-1.034C.311 18.417.89 15.65 2 13.5l1.09-2.071L7.545 16l.855 4.941Z" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Intake & Triage</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Captures case details, runs conflict checks, and
-                        schedules consultations automatically.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                                <line x1="3" x2="21" y1="9" y2="9" />
-                                <path d="m9 16 3-3 3 3" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Status & Documents</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Clients can check updates, get next steps, or be
-                        guided to upload documents reducing calls.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="m12 14 4-4" />
-                                <path d="M3.34 19a10 10 0 1 1 17.32 0" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Lead Qualification</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Responds instantly, scores intent, and routes
-                        qualified prospects to the right attorney.</p>
-                </div>
-            </div>
-
-            <!-- Real Estate Tab -->
-            <div id="tab-realestate" class="tab-content hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Never Miss Leads</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Answers every call — day or night — qualifies
-                        prospects and books property visits automatically.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M12 2v20" />
-                                <path d="m17 12-5-5-5 5" />
-                                <path d="m17 19-5-5-5 5" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Cost Reduction</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">One AI agent handles thousands of calls
-                        simultaneously — eliminating hold times for callers.</p>
-                </div>
-                <div
-                    class="rounded-lg border p-5 hover:bg-white/80 transition backdrop-blur-md border-black/10 bg-white/60 hover:border-black/15 shadow-sm hover:shadow-md">
-                    <div class="flex gap-3 items-center">
-                        <div
-                            class="h-9 w-9 grid place-items-center rounded-md ring-1 backdrop-blur-sm bg-white/70 ring-black/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="w-[20px] h-[20px]" style="color: rgb(0, 0, 0);">
-                                <path d="M12 2a8 8 0 0 0-8 8c0 5.4 3.6 8.5 8 11.4 4.4-2.9 8-6 8-11.4a8 8 0 0 0-8-8z" />
-                                <path d="M9 10a3 3 0 1 0 6 0 3 3 0 0 0-6 0z" />
-                            </svg>
-                        </div>
-                        <div class="text-base font-medium tracking-tight font-sans">Human-Like Service</div>
-                    </div>
-                    <p class="text-sm mt-3 font-sans text-black/70">Speaks naturally, adapts to your brand tone, giving
-                        callers a professional experience.</p>
-                </div>
-            </div>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const tabBtns = document.querySelectorAll('.tab-btn');
-                    const tabContents = document.querySelectorAll('.tab-content');
-
-                    tabBtns.forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            // Removing active styling from all buttons
-                            tabBtns.forEach(b => {
-                                b.classList.remove('bg-black', 'text-white', 'hover:bg-black/90');
-                                b.classList.add('bg-white/60', 'text-black/70', 'border', 'border-black/10', 'hover:bg-white/80');
-                            });
-
-                            // Add active styling to clicked button
-                            btn.classList.add('bg-black', 'text-white', 'hover:bg-black/90');
-                            btn.classList.remove('bg-white/60', 'text-black/70', 'border', 'border-black/10', 'hover:bg-white/80');
-
-                            // Hide all contents
-                            tabContents.forEach(content => {
-                                content.classList.add('hidden');
-                            });
-
-                            // Show targeted content
-                            const targetId = btn.getAttribute('data-target');
-                            document.getElementById(targetId).classList.remove('hidden');
-
-                            // Toggle KPI strip visibility
-                            const ecomKpis = document.getElementById('ecommerce-kpis');
-                            if (ecomKpis) {
-                                if (targetId === 'tab-ecommerce') {
-                                    ecomKpis.style.display = '';
-                                } else {
-                                    ecomKpis.style.display = 'none';
-                                }
-                            }
-                        });
-                    });
-                });
-            </script>
         </div>
+    </section>
+
+    <!-- Why Mukt Agents -->
+    <section class="sm:pb-20 overflow-hidden pt-0 pb-14">
+        <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+            <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight pb-6">Why Mukt Agents?</h2>
+            <div
+                class="sm:p-6 bg-white/60 border-black/10 border rounded-xl pt-5 pr-5 pb-5 pl-5 shadow-sm backdrop-blur-md">
+
+                <div class="mt-4 grid sm:grid-cols-2 gap-3">
+                    <div
+                        class="flex bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[26px] h-[26px]" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" data-icon-replaced="true"
+                                style="width: 26px; height: 26px; color: rgb(0, 0, 0);">
+                                <circle cx="12" cy="12" r="10" class=""></circle>
+                                <path d="M12 6v6l3 3" class=""></path>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80 items-center justify-center">Works 7 days a week - 24 hrs
+                        </div>
+                    </div>
+                    <div
+                        class="flex gap-3 bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[28px] h-[28px]" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" data-icon-replaced="true"
+                                style="width: 28px; height: 28px; color: rgb(0, 0, 0);">
+                                <path
+                                    d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+                                    class=""></path>
+                                <path d="M20 2v4"></path>
+                                <path d="M22 4h-4"></path>
+                                <circle cx="4" cy="20" r="2"></circle>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80 items-center">Adds personal touch automatically - pre-fetches
+                            context before every call</div>
+                    </div>
+                    <div
+                        class="flex gap-3 bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[26px] h-[26px]" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" data-icon-replaced="true"
+                                style="width: 26px; height: 26px; color: rgb(0, 0, 0);">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" class=""></path>
+                                <path d="m9 12 2 2 4-4" class=""></path>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80 items-center justify-center">Zero hallucinations - hands off
+                            to your human agents when unsure</div>
+                    </div>
+                    <div
+                        class="flex gap-3 bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[24px] h-[24px]" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" data-icon-replaced="true"
+                                style="width: 24px; height: 24px; color: rgb(0, 0, 0);">
+                                <path d="m5 8 6 6"></path>
+                                <path d="m4 14 6-6 2-3"></path>
+                                <path d="M2 5h12"></path>
+                                <path d="M7 2v3"></path>
+                                <path d="M22 22l-5-10-5 10" class=""></path>
+                                <path d="M14 18h6"></path>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80 items-center justify-center">Speaks Hinglish, the way India
+                            actually speaks</div>
+                    </div>
+                    <div
+                        class="flex bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[24px] h-[24px]" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" data-icon-replaced="true"
+                                style="width: 24px; height: 24px; color: rgb(0, 0, 0);">
+                                <path d="m5 8 6 6"></path>
+                                <path d="m4 14 6-6 2-3"></path>
+                                <path d="M2 5h12"></path>
+                                <path d="M7 2v3"></path>
+                                <path d="M22 22l-5-10-5 10" class=""></path>
+                                <path d="M14 18h6"></path>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80 items-center justify-center">Automatic follow-ups - your agent
+                            might forget but mukt doesn't</div>
+                    </div>
+                    <div
+                        class="flex bg-white/70 border-black/10 border rounded-lg pt-3 pr-3 pb-3 pl-3 shadow-sm backdrop-blur-sm gap-x-3 gap-y-3 items-center">
+                        <div
+                            class="h-8 w-8 grid place-items-center rounded-md ring-1 flex-shrink-0 bg-white/80 ring-black/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="" data-icon-replaced="true" data-lucide="chart-area"
+                                style="color: rgb(0, 0, 0);">
+                                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+                                <path
+                                    d="M7 11.207a.5.5 0 0 1 .146-.353l2-2a.5.5 0 0 1 .708 0l3.292 3.292a.5.5 0 0 0 .708 0l4.292-4.292a.5.5 0 0 1 .854.353V16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="text-sm text-black/80">Agent analytics - Insights into each calls at scale</div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2206,7 +1748,7 @@
             </div>
 
             <!-- KPI strip -->
-            <div id="ecommerce-kpis" class="mt-8 grid sm:grid-cols-4 gap-4">
+            <div class="mt-8 grid sm:grid-cols-4 gap-4">
                 <div
                     class="bg-white/60 border-black/10 border rounded-lg pt-5 pr-5 pb-5 pl-5 shadow-sm backdrop-blur-md">
                     <div class="text-3xl font-semibold tracking-tight">18%</div>
@@ -2220,8 +1762,8 @@
                 </div>
                 <div
                     class="bg-white/60 border-black/10 border rounded-lg pt-5 pr-5 pb-5 pl-5 shadow-sm backdrop-blur-md">
-                    <div class="text-3xl font-semibold tracking-tight" style="">14%</div>
-                    <div class="text-sm text-black/60 mt-1" style="">Extra delivery rate</div>
+                    <div class="text-3xl font-semibold tracking-tight" style="">72%+</div>
+                    <div class="text-sm text-black/60 mt-1" style="">Pickup rates for outbound</div>
                 </div>
                 <div
                     class="bg-white/60 border-black/10 border rounded-lg pt-5 pr-5 pb-5 pl-5 shadow-sm backdrop-blur-md">
@@ -2465,7 +2007,7 @@
     </section>
 
     <!-- Pricing -->
-    <section class="sm:pb-20 pb-14 overflow-hidden" id="pricing">
+    <section class="sm:pb-20 sm:pt-14 pt-10 pb-14 overflow-hidden" id="pricing">
         <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
             <div class="max-w-2xl">
                 <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">Simple, usage-based pricing</h2>
@@ -2615,18 +2157,16 @@
                 <details
                     class="group border rounded-lg pt-4 pr-4 pb-4 pl-4 backdrop-blur-md bg-white/60 border-black/10 shadow-sm">
                     <summary class="flex cursor-pointer list-none text-sm font-medium items-center justify-between">
-                        How fast we can go live?
+                        How does onboarding works?
                         <span
                             class="text-[11px] transition group-open:rotate-45 rounded-md ring-1 ml-4 pt-0.5 pr-2 pb-0.5 pl-2 flex-shrink-0 bg-white/70 ring-black/15 backdrop-blur-sm">+</span>
                     </summary>
-                    <p class="mt-3 text-sm text-black/70">Our API's are ready to plug & play, so the time taken for
-                        integration & testing will be completely dependent on your team.<br><br>Most teams go live
-                        within 2 weeks. We’ll work with your team to configure voice agents for your workflows,
-                        integrate with your scheduling or web app, and train them on your communication guidelines.
+                    <p class="mt-3 text-sm text-black/70">First, we hop on a quick call to get your requirements.
+                        You
+                        hand over your knowledge base, and within 24 hours your AI agent is live (unless you've got
+                        special requests). We test with a few users for a week, fine-tune, and then go full-scale.
                     </p>
                 </details>
-
-
 
                 <details class="group rounded-lg border p-4 backdrop-blur-md border-black/10 bg-white/60 shadow-sm">
                     <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
@@ -2719,7 +2259,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="">
-                    <a href="/index.html" class="muktam-logo-container transition hover:opacity-80 pb-2">
+                    <a href="/index.html" class="muktam-logo-container transition hover:opacity-80">
                         <div class="muktam-icon-wrapper">
                             <div class="muktam-icon-core"></div>
                             <div class="muktam-logo-particle" style="--x: 30px; --y: -30px;"></div>
@@ -2736,8 +2276,8 @@
                             </div>
                         </div>
                         <div class="muktam-text-container">
-                            <span class="muktam-text-main text-3xl font-medium">muktaṁ</span>
-                            <span class="muktam-text-secondary text-lg">ai</span>
+                            <span class="muktam-text-main">muktaṁ</span>
+                            <span class="muktam-text-secondary">ai</span>
                         </div>
                     </a>
                     <p class="text-sm text-black/60 mt-3" style="">Give founder touch at scale.</p>
