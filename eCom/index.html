@@ -938,7 +938,7 @@
                         class="text-sm transition font-sans text-black/70 hover:text-black">Contact</a>
                 </nav>
                 <div class="hidden md:flex gap-3 transition-opacity duration-300 items-center" id="navCtas">
-                    <a href="https://calendly.com/mihirvt"
+                    <a href="#" onclick="openCustomForm(event)"
                         class="transition text-sm ring-1 rounded-md pt-2 pr-3.5 pb-2 pl-3.5 hover:text-black hover:ring-black/20 text-black/80 ring-black/10 bg-white/60 backdrop-blur-sm">Book
                         demo</a>
                     <a href="/contact.html"
@@ -975,7 +975,7 @@
                     <a href="/contact.html"
                         class="px-3 py-2 rounded-md text-sm font-sans text-black/80 hover:text-black hover:bg-black/5">Contact</a>
                     <div class="mt-2 flex flex-col gap-2">
-                        <a href="https://calendly.com/mihirvt"
+                        <a href="#" onclick="openCustomForm(event)"
                             class="px-3.5 py-2 rounded-md text-sm ring-1 text-center font-sans text-black/80 hover:text-black ring-black/10 hover:ring-black/20">Book
                             demo</a>
                         <a href="/contact.html"
@@ -1084,17 +1084,15 @@
                         grade ai agents.</p>
 
                     <div class="mt-7 flex flex-col sm:flex-row gap-3">
-                        <div data-fillout-id="6t6FLXYFhYus" data-fillout-embed-type="popup"
-                            data-fillout-button-text="Get a Call" data-fillout-dynamic-resize=""
-                            data-fillout-button-color="#000000" data-fillout-button-size="medium"
-                            data-fillout-inherit-parameters="" data-fillout-popup-size="large"></div>
+                        <button onclick="openCustomForm(event)"
+                            class="bg-black text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-black/90 transition">Get
+                            a Call</button>
                     </div>
 
                     <div class="mt-6 flex flex-wrap items-center gap-4">
                         <p class="sm:text-sm text-xs font-normal text-slate-950/90">Don't trust, <span
                                 class="line-through">see</span> listen by yourself</p>
                     </div>
-                    <script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
 
                 <!-- Demo / Visual -->
@@ -2047,7 +2045,7 @@
                         </li>
 
                     </ul>
-                    <a href="https://calendly.com/mihirvt"
+                    <a href="#" onclick="openCustomForm(event)"
                         class="inline-flex items-center justify-center transition text-sm font-semibold w-full ring-1 rounded-md mt-6 pt-2 pr-4 pb-2 pl-4 hover:bg-black/90 text-white bg-black ring-black/10">Book
                         Intro</a>
                 </div>
@@ -2106,7 +2104,7 @@
                             </li>
                         </ul>
                     </ul>
-                    <a href="https://calendly.com/mihirvt"
+                    <a href="#" onclick="openCustomForm(event)"
                         class="inline-flex items-center justify-center transition text-sm w-full border rounded-md mt-6 pt-2 pr-4 pb-2 pl-4 hover:bg-white bg-white/70 border-black/15 backdrop-blur-sm shadow-sm">Contact
                         sales</a>
                 </div>
@@ -2215,7 +2213,7 @@
                         <p class="text-black/70 mt-3">Get started in 10 mins.</p>
                         <div class="mt-6 flex flex-wrap gap-3">
 
-                            <a href="https://calendly.com/mihirvt"
+                            <a href="#" onclick="openCustomForm(event)"
                                 class="inline-flex items-center justify-center gap-2 transition text-sm border rounded-md pt-2 pr-4 pb-2 pl-4 hover:bg-white bg-white/70 border-black/15 backdrop-blur-sm shadow-sm">Book
                                 a demo</a>
                         </div>
@@ -2350,6 +2348,143 @@
 
 
 
+    <div id="customFormModal"
+        class="fixed inset-0 z-[999] flex items-center justify-center hidden bg-black/50 backdrop-blur-sm transition-opacity">
+        <div
+            class="relative w-full max-w-md bg-white rounded-xl shadow-2xl p-6 m-4 max-h-[90vh] overflow-y-auto font-sans text-black">
+            <button onclick="closeCustomForm()" class="absolute top-4 right-4 text-black/50 hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h3 class="text-2xl font-semibold mb-1">Get a Call</h3>
+            <p class="text-sm text-black/60 mb-6">Fill out the form below and we'll be in touch shortly.</p>
+            <form id="muktamLeadForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="name" required
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
+                        placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email <span class="text-red-500">*</span></label>
+                    <input type="email" name="email" required
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
+                        placeholder="john@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Mobile number (with country code) <span
+                            class="text-red-500">*</span></label>
+                    <input type="tel" name="phone" required
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
+                        placeholder="+1 234 567 8900">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Company Name</label>
+                    <input type="text" name="company"
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
+                        placeholder="Acme Corp">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Company Category</label>
+                    <input type="text" name="category"
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
+                        placeholder="e.g. E-commerce, Healthcare">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Estimated Call Volume (per day)</label>
+                    <select name="volume"
+                        class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20">
+                        <option value="">Select volume...</option>
+                        <option value="0-100">0 - 100</option>
+                        <option value="100-500">100 - 500</option>
+                        <option value="500-1000">500 - 1,000</option>
+                        <option value="1000+">1,000+</option>
+                    </select>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" id="muktamFormSubmit"
+                        class="w-full bg-black text-white font-medium py-2.5 rounded-md hover:bg-black/90 transition flex justify-center items-center">
+                        Submit
+                    </button>
+                </div>
+                <div id="muktamFormMessage" class="hidden text-sm text-center font-medium p-2 rounded"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openCustomForm(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('customFormModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeCustomForm() {
+            const modal = document.getElementById('customFormModal');
+            modal.classList.add('hidden');
+            document.getElementById('muktamFormMessage').classList.add('hidden');
+            document.getElementById('muktamLeadForm').reset();
+        }
+
+        document.getElementById('muktamLeadForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('muktamFormSubmit');
+            const msg = document.getElementById('muktamFormMessage');
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            btn.disabled = true;
+            btn.innerHTML = 'Loading...';
+            msg.classList.add('hidden');
+
+            try {
+                const response = await fetch('https://backend.muktam.online/webhook/mail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    if (typeof fbq === 'function') {
+                        let nameParts = (data.name || '').trim().split(' ');
+                        let fn = nameParts[0] || '';
+                        let ln = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+                        let ph = (data.phone || '').replace(/[^\d+]/g, '');
+                        let em = (data.email || '').trim().toLowerCase();
+
+                        fbq('init', '747197838381810', {
+                            em: em,
+                            ph: ph,
+                            fn: fn,
+                            ln: ln,
+                            external_id: ph || em
+                        });
+                        fbq('track', 'Lead');
+                    }
+
+                    msg.textContent = 'Thank you! We will be in touch shortly.';
+                    msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
+                    e.target.reset();
+                    setTimeout(() => { closeCustomForm(); }, 3000);
+                } else {
+                    throw new Error('Network error');
+                }
+            } catch (error) {
+                msg.textContent = 'Something went wrong. Please try again.';
+                msg.className = 'text-sm text-center font-medium p-2 rounded bg-red-100 text-red-800 mt-3';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit';
+            }
+        });
+
+        document.getElementById('customFormModal').addEventListener('mousedown', function (e) {
+            if (e.target === this) closeCustomForm();
+        });
+    </script>
 </body>
 
 </html>
