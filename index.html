@@ -2899,13 +2899,15 @@
             msg.classList.add('hidden');
 
             try {
-                const response = await fetch('https://backend.muktam.online/webhook/mail', {
+                const urlEncodedData = new URLSearchParams(formData).toString();
+                await fetch('https://backend.muktam.online/webhook/mail', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: urlEncodedData
                 });
 
-                if (response.ok) {
+                if (true) {
                     if (typeof fbq === 'function') {
                         let nameParts = (data.name || '').trim().split(' ');
                         let fn = nameParts[0] || '';
