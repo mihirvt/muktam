@@ -2455,13 +2455,24 @@
                         let ph = (data.phone || '').replace(/[^\d+]/g, '');
                         let em = (data.email || '').trim().toLowerCase();
 
-                        fbq('init', '747197838381810', {
+                        let fbInitData = {
                             em: em,
                             ph: ph,
                             fn: fn,
                             ln: ln,
-                            external_id: ph || em
-                        });
+                            external_id: ph || em,
+                            client_user_agent: navigator.userAgent
+                        };
+                        let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+                        if (fbp) fbInitData.fbp = fbp;
+                        let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+                        if (!fbc) {
+                            let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+                            if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+                        }
+                        if (fbc) fbInitData.fbc = fbc;
+
+                        fbq('init', '747197838381810', fbInitData);
                         fbq('track', 'Lead');
                     }
 
