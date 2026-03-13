@@ -21,15 +21,17 @@ serve(async (req) => {
       });
     }
 
-    // Provided Access Token
-    const token = "AQWvFP2EUg0vBOSfL9fvBQlIr0Vp0mnT9gCXq1D5EoaViltFw13szyxC-MQDg_rS6GuC_4Iuh6wlLJAlXUVni3ld0cVuMdhJ-6GCVryhdbHG4O2yNElmkSsyLStcBCDXOPtrWXTlnsWN5hi-JmF56ccXMIx4ng9mQhqxLZSkJN-lqSXLLCkbetI44-Yl7T9374kvfgDXBpaTLGsgZM-HwAcDYmeHVNcEiSObPWbiC9L5_rXiJY-ttD64CsT7rdY0S-rSloUoT25MUXhkdYs95Ga4sC5NLJ31mCjAG3sj13kvHAC_P3EMIiFjCCGuLrkbwhpAJsgEG_zFNP67pza-meMA2YNg7Q";
-    
-    // Ad Account URN
+    // Use token from environment variable if available, otherwise fallback to hardcoded (for now)
+    const token = Deno.env.get("LINKEDIN_ACCESS_TOKEN") || "AQWvFP2EUg0vBOSfL9fvBQlIr0Vp0mnT9gCXq1D5EoaViltFw13szyxC-MQDg_rS6GuC_4Iuh6wlLJAlXUVni3ld0cVuMdhJ-6GCVryhdbHG4O2yNElmkSsyLStcBCDXOPtrWXTlnsWN5hi-JmF56ccXMIx4ng9mQhqxLZSkJN-lqSXLLCkbetI44-Yl7T9374kvfgDXBpaTLGsgZM-HwAcDYmeHVNcEiSObPWbiC9L5_rXiJY-ttD64CsT7rdY0S-rSloUoT25MUXhkdYs95Ga4sC5NLJ31mCjAG3sj13kvHAC_P3EMIiFjCCGuLrkbwhpAJsgEG_zFNP67pza-meMA2YNg7Q";
+
+    // Ad Account URN (not strictly required in payload for current CAPI version, but good for reference)
     const accountUrn = "urn:li:sponsorAccount:509096400";
-    
+
     // Format the conversion event payload for LinkedIn
+    // IMPORTANT: The conversion URN prefix for Conversions API MUST be "urn:lla:llaPartnerConversion:"
+    const conversionRuleId = "24698092";
     const conversionEvent: any = {
-      conversion: "urn:li:sponsorConversion:24698092", 
+      conversion: `urn:lla:llaPartnerConversion:${conversionRuleId}`,
       conversionHappenedAt: linkedinData.conversion_happened_at || Date.now(),
       eventId: linkedinData.event_id,
       user: {
@@ -53,6 +55,11 @@ serve(async (req) => {
       });
     }
 
+    // LinkedIn CAPI requires at least one user identifier
+    if (conversionEvent.user.userIds.length === 0) {
+      console.warn("[linkedin-conversions] No user identifiers found. Request might be rejected.");
+    }
+
     // Populate user info if available (LEAD events)
     if (linkedinData.user?.first_name) {
       conversionEvent.user.userInfo.firstName = linkedinData.user.first_name;
@@ -64,7 +71,7 @@ serve(async (req) => {
       conversionEvent.user.userInfo.companyName = linkedinData.user.company_name;
     }
 
-    console.log("[linkedin-conversions] Sending to LinkedIn:", conversionEvent);
+    console.log("[linkedin-conversions] Sending to LinkedIn:", JSON.stringify(conversionEvent, null, 2));
 
     // Call LinkedIn Conversions API
     const response = await fetch('https://api.linkedin.com/rest/conversionEvents', {
@@ -72,8 +79,9 @@ serve(async (req) => {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-        'LinkedIn-Version': '2024-02', // Standard stable version
-        'X-Restli-Protocol-Version': '2.0.0'
+        'LinkedIn-Version': '2024-02',
+        'X-Restli-Protocol-Version': '2.0.0',
+        'X-Restli-Method': 'create' // Required for some Rest.li collections
       },
       body: JSON.stringify(conversionEvent)
     });
@@ -83,7 +91,7 @@ serve(async (req) => {
 
     return new Response(JSON.stringify({ success: response.ok, result: result }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      status: response.ok ? 200 : response.status
+      status: response.ok ? 200 : (response.status === 201 ? 200 : response.status)
     });
 
   } catch (error: any) {

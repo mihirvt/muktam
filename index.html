@@ -3140,6 +3140,16 @@
                         fbq('track', 'Lead', {}, { eventID: eventId });
                     }
 
+                    // Send to LinkedIn Conversions Edge Function
+                    fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
+                        },
+                        body: JSON.stringify(payload)
+                    }).catch(err => console.error('LinkedIn CAPI Error:', err));
+
 
                     msg.textContent = 'Thank you! We will be in touch shortly.';
                     msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
