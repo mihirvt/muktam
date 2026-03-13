@@ -29,8 +29,7 @@ serve(async (req) => {
     
     // Format the conversion event payload for LinkedIn
     const conversionEvent: any = {
-      // NOTE: You will need to replace this with your actual conversion rule ID from LinkedIn Campaign Manager
-      conversion: "urn:li:sponsorConversion:YOUR_CONVERSION_RULE_ID", 
+      conversion: "urn:li:sponsorConversion:24698092", 
       conversionHappenedAt: linkedinData.conversion_happened_at || Date.now(),
       eventId: linkedinData.event_id,
       user: {
