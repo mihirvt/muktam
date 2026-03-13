@@ -32,9 +32,16 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders })
   }
 
-  // Hardcoded tokens as requested
-  const accessToken = "EAAMZAdsviqNABQ0eShhbWQJQtZBZBqaws6eUF5exL5snZBxplsqOdhQXxkjc4SncWESA6P10fme2U6UATJtjMWZCg4sISbpY6raOWHZBzAdiTUKx05saoLkus7uMM43xOb4Q68DngffWL8xQRGqJZBF4tI6pbDpKYMDMtP4SHtxQ96Onj6JrRlULimp7UEPvqgJGgZDZD"
-  const pixelId = "747197838381810"
+  const accessToken = Deno.env.get("FB_ACCESS_TOKEN")
+  const pixelId = Deno.env.get("FB_PIXEL_ID") || "747197838381810"
+
+  if (!accessToken) {
+    console.error("[facebook-conversions] Missing FB_ACCESS_TOKEN secret")
+    return new Response(JSON.stringify({ error: "Missing FB_ACCESS_TOKEN" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    })
+  }
 
   const payload = await req.json()
 
@@ -53,11 +60,6 @@ serve(async (req) => {
 
   const fn = normalizeText(fb?.first_name)
   const ln = normalizeText(fb?.last_name)
-  
-  const city = normalizeText(fb?.city)
-  const state = normalizeText(fb?.state)
-  const zip = normalizeText(fb?.zip)
-  const country = normalizeText(fb?.country)
 
   const externalIdRaw = normalizeText(payload?.external_id)
 
@@ -80,18 +82,6 @@ serve(async (req) => {
 
   const lnHash = await sha256Hex(ln)
   if (lnHash) user_data.ln = [lnHash]
-
-  const ctHash = await sha256Hex(city)
-  if (ctHash) user_data.ct = [ctHash]
-
-  const stHash = await sha256Hex(state)
-  if (stHash) user_data.st = [stHash]
-
-  const zpHash = await sha256Hex(zip)
-  if (zpHash) user_data.zp = [zpHash]
-
-  const countryHash = await sha256Hex(country)
-  if (countryHash) user_data.country = [countryHash]
 
   const externalIdHash = await sha256Hex(externalIdRaw)
   if (externalIdHash) user_data.external_id = [externalIdHash]
