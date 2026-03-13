@@ -3016,6 +3016,15 @@
 
             try {
                 const emailSha256 = await sha256Hex(normalizedEmail);
+
+                // Get Facebook cookies for CAPI
+                let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+                let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+                if (!fbc) {
+                    let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+                    if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+                }
+
                 const payload = {
                     ...data,
                     email: normalizedEmail,
@@ -3060,6 +3069,21 @@
                             company_category: data.category || '',
                             website: normalizedWebsite
                         }
+                    },
+                    facebook: {
+                        event_id: eventId,
+                        conversion_happened_at: submittedAtMs,
+                        page_url: window.location.href,
+                        external_id: externalId,
+                        fbp: fbp,
+                        fbc: fbc,
+                        client_user_agent: navigator.userAgent,
+                        user: {
+                            email: normalizedEmail,
+                            phone: normalizedPhone,
+                            first_name: firstName,
+                            last_name: lastName
+                        }
                     }
                 };
 
@@ -3068,6 +3092,13 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+                
+                // Fire off the Facebook CAPI request asynchronously
+                fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-capi', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ facebook: payload.facebook })
+                }).catch(err => console.error('Failed to send FB CAPI event', err));
 
                 if (response.ok) {
                     if (typeof fbq === 'function') {
