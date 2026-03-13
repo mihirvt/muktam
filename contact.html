@@ -488,28 +488,6 @@
 
             fbq('init', '747197838381810', fbInitData);
             fbq('track', 'Lead');
-
-            // Fire-and-forget: Meta Conversions API (CAPI)
-            fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/meta-capi', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                meta: {
-                  event_name: 'Lead',
-                  event_id: eventId,
-                  conversion_happened_at: submittedAtMs,
-                  email: normalizedEmail,
-                  phone: normalizedPhone,
-                  first_name: firstName,
-                  last_name: lastName,
-                  external_id: externalId,
-                  page_url: window.location.href,
-                  fbp: fbp || '',
-                  fbc: fbc || '',
-                  user_agent: navigator.userAgent
-                }
-              })
-            }).catch(err => console.error('Meta CAPI error:', err));
           }
 
           msg.textContent = 'Thank you! We will be in touch shortly.';
