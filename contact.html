@@ -518,7 +518,10 @@
       const tracking = captureAttribution();
       fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
+        },
         body: JSON.stringify({
           linkedin: {
             conversion_type: 'PAGE_VIEW',
