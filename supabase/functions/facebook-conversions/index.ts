@@ -21,14 +21,16 @@ serve(async (req) => {
   try {
     const payload = await req.json();
     const fb_pixel_id = "747197838381810";
-    const fb_access_token = Deno.env.get("FB_ACCESS_TOKEN");
+    const fb_access_token = Deno.env.get("FB_ACCESS_TOKEN") || "EAAMZAdsviqNABQ0eShhbWQJQtZBZBqaws6eUF5exL5snZBxplsqOdhQXxkjc4SncWESA6P10fme2U6UATJtjMWZCg4sISbpY6raOWHZBzAdiTUKx05saoLkus7uMM43xOb4Q68DngffWL8xQRGqJZBF4tI6pbDpKYMDMtP4SHtxQ96Onj6JrRlULimp7UEPvqgJGgZDZD";
 
     if (!fb_access_token) {
       console.warn("[facebook-conversions] Missing FB_ACCESS_TOKEN secret.");
       return new Response(JSON.stringify({ error: "Missing config" }), { headers: corsHeaders, status: 500 });
     }
 
-    const clientIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || null;
+    // Extract correct single IP address if behind multiple proxies
+    const rawIp = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip');
+    const clientIp = rawIp ? rawIp.split(',')[0].trim() : null;
 
     const eventData = {
       data: [
@@ -47,6 +49,10 @@ serve(async (req) => {
             ph: payload.phone ? [await hashStr(payload.phone)] : undefined,
             fn: payload.facebook?.first_name ? [await hashStr(payload.facebook.first_name)] : undefined,
             ln: payload.facebook?.last_name ? [await hashStr(payload.facebook.last_name)] : undefined,
+            ct: payload.facebook?.city ? [await hashStr(payload.facebook.city)] : undefined,
+            st: payload.facebook?.state ? [await hashStr(payload.facebook.state)] : undefined,
+            zp: payload.facebook?.zip ? [await hashStr(payload.facebook.zip)] : undefined,
+            country: payload.facebook?.country ? [await hashStr(payload.facebook.country)] : undefined,
             external_id: payload.external_id ? [await hashStr(payload.external_id)] : undefined
           }
         }
