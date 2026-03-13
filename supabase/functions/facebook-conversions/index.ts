@@ -32,7 +32,7 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders })
   }
 
-  const accessToken = Deno.env.get("FB_ACCESS_TOKEN") || "EAAMZAdsviqNABQ0eShhbWQJQtZBZBqaws6eUF5exL5snZBxplsqOdhQXxkjc4SncWESA6P10fme2U6UATJtjMWZCg4sISbpY6raOWHZBzAdiTUKx05saoLkus7uMM43xOb4Q68DngffWL8xQRGqJZBF4tI6pbDpKYMDMtP4SHtxQ96Onj6JrRlULimp7UEPvqgJGgZDZD"
+  const accessToken = Deno.env.get("FB_ACCESS_TOKEN")
   const pixelId = Deno.env.get("FB_PIXEL_ID") || "747197838381810"
 
   if (!accessToken) {
