@@ -396,12 +396,6 @@
       const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
       const externalId = normalizedPhone || normalizedEmail || eventId;
 
-      let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1] || '';
-      let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1] || '';
-      if (!fbc && tracking.fbclid) {
-        fbc = 'fb.1.' + Date.now() + '.' + tracking.fbclid;
-      }
-
       btn.disabled = true;
       btn.innerHTML = 'Loading...';
       msg.classList.add('hidden');
@@ -435,16 +429,6 @@
           li_fat_id: tracking.li_fat_id || '',
           msclkid: tracking.msclkid || '',
           attribution: tracking,
-          facebook: {
-            fbp: fbp,
-            fbc: fbc,
-            first_name: firstName,
-            last_name: lastName,
-            city: data.city || '',
-            state: data.state || '',
-            zip: data.zip || '',
-            country: data.country || ''
-          },
           linkedin: {
             conversion_type: 'LEAD',
             event_id: eventId,
@@ -478,23 +462,32 @@
           body: JSON.stringify(payload)
         }).catch(err => console.error('LinkedIn Conversion API error:', err));
 
-        // Fire and forget to Supabase Edge Function for Facebook Conversions
-        fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-conversions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).catch(err => console.error('Facebook Conversion API error:', err));
-
         if (response.ok) {
           if (typeof fbq === 'function') {
-            fbq('init', '747197838381810', {
-              em: normalizedEmail,
-              ph: normalizedPhone,
-              fn: firstName,
-              ln: lastName,
-              external_id: externalId
-            });
-            fbq('track', 'Lead', {}, { eventID: eventId });
+            let fn = firstName;
+            let ln = lastName;
+            let ph = normalizedPhone;
+            let em = normalizedEmail;
+
+            let fbInitData = {
+              em: em,
+              ph: ph,
+              fn: fn,
+              ln: ln,
+              external_id: ph || em,
+              client_user_agent: navigator.userAgent
+            };
+            let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+            if (fbp) fbInitData.fbp = fbp;
+            let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+            if (!fbc) {
+              let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+              if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+            }
+            if (fbc) fbInitData.fbc = fbc;
+
+            fbq('init', '747197838381810', fbInitData);
+            fbq('track', 'Lead');
           }
 
           msg.textContent = 'Thank you! We will be in touch shortly.';
