@@ -15,25 +15,6 @@
       font-family: Inter, sans-serif;
     }
   </style>
-  <!-- Meta Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '747197838381810');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=747197838381810&ev=PageView&noscript=1" /></noscript>
-  <!-- End Meta Pixel Code -->
 </head>
 
 <body class="bg-white text-black antialiased">
@@ -480,35 +461,6 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         }).catch(err => console.error('LinkedIn Conversion API error:', err));
-        
-        const fbCapiPayload = {
-            event_name: 'Lead',
-            event_time: Math.floor(submittedAtMs / 1000),
-            event_id: eventId,
-            user_data: {
-                em: normalizedEmail,
-                ph: normalizedPhone,
-                fn: firstName,
-                ln: lastName,
-                client_user_agent: navigator.userAgent,
-                fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1],
-                fbc: document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1] || (new URLSearchParams(window.location.search).get('fbclid') ? 'fb.1.' + Date.now() + '.' + new URLSearchParams(window.location.search).get('fbclid') : undefined),
-                external_id: externalId
-            },
-            custom_data: {
-                source: window.location.href,
-                company_name: data.company || '',
-                company_category: data.category || ''
-            }
-        };
-
-        // Fire and forget to Supabase Edge Function for Facebook CAPI
-        fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-capi', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(fbCapiPayload)
-        }).catch(err => console.error('Facebook CAPI error:', err));
-
 
         if (response.ok) {
           if (typeof fbq === 'function') {
@@ -535,7 +487,7 @@
             if (fbc) fbInitData.fbc = fbc;
 
             fbq('init', '747197838381810', fbInitData);
-            fbq('track', 'Lead', {}, { eventID: eventId });
+            fbq('track', 'Lead');
           }
 
           msg.textContent = 'Thank you! We will be in touch shortly.';
