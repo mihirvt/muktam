@@ -455,6 +455,13 @@
           body: JSON.stringify(payload)
         });
 
+        // Fire and forget to Supabase Edge Function for LinkedIn Conversions
+        fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.error('LinkedIn Conversion API error:', err));
+
         if (response.ok) {
           if (typeof fbq === 'function') {
             let fn = firstName;
@@ -501,6 +508,23 @@
 
     document.getElementById('customFormModal').addEventListener('mousedown', function (e) {
       if (e.target === this) closeCustomForm();
+    });
+
+    // Track Page Visit to LinkedIn via Edge Function
+    window.addEventListener('load', function() {
+      const tracking = captureAttribution();
+      fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          linkedin: {
+            conversion_type: 'PAGE_VIEW',
+            event_id: createEventId(),
+            conversion_happened_at: Date.now(),
+            li_fat_id: tracking.li_fat_id || ''
+          }
+        })
+      }).catch(err => console.error('LinkedIn Visit Tracking error:', err));
     });
   </script>
 </body>
