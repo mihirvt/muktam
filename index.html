@@ -2468,30 +2468,43 @@
                     <h2 class="sm:text-3xl text-2xl font-semibold tracking-tight">Simple, usage-based pricing</h2>
                 </div>
                 <div class="flex items-center p-1 bg-white/60 backdrop-blur-md border border-black/10 rounded-lg shadow-sm w-fit">
-                    <button id="tab-m2" onclick="setPricingTab('m2')" class="px-4 py-1.5 text-sm font-medium rounded-md bg-black text-white shadow-sm transition-colors">m2 flagship</button>
-                    <button id="tab-m3" onclick="setPricingTab('m3')" class="px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors">m3 expressive</button>
+                    <button id="tab-m1" onclick="setPricingTab('m1')" class="px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors">M1 Standard</button>
+                    <button id="tab-m2" onclick="setPricingTab('m2')" class="px-4 py-1.5 text-sm font-medium rounded-md bg-black text-white shadow-sm transition-colors">M2 Flagship</button>
+                    <button id="tab-m3" onclick="setPricingTab('m3')" class="px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors">M3 Expressive</button>
                 </div>
             </div>
             
             <script>
                 function setPricingTab(tab) {
+                    const tabM1 = document.getElementById('tab-m1');
                     const tabM2 = document.getElementById('tab-m2');
                     const tabM3 = document.getElementById('tab-m3');
                     const amount = document.getElementById('pricing-amount');
                     
-                    if (tab === 'm2') {
-                        tabM2.className = 'px-4 py-1.5 text-sm font-medium rounded-md bg-black text-white shadow-sm transition-colors';
-                        tabM3.className = 'px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors';
+                    const activeClass = 'px-4 py-1.5 text-sm font-medium rounded-md bg-black text-white shadow-sm transition-colors';
+                    const inactiveClass = 'px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors';
+                    
+                    if (tab === 'm1') {
+                        tabM1.className = activeClass;
+                        tabM2.className = inactiveClass;
+                        tabM3.className = inactiveClass;
+                        amount.innerText = '4.5';
+                    } else if (tab === 'm2') {
+                        tabM1.className = inactiveClass;
+                        tabM2.className = activeClass;
+                        tabM3.className = inactiveClass;
                         amount.innerText = '2.8';
                     } else {
-                        tabM3.className = 'px-4 py-1.5 text-sm font-medium rounded-md bg-black text-white shadow-sm transition-colors';
-                        tabM2.className = 'px-4 py-1.5 text-sm font-medium rounded-md text-black/70 hover:text-black transition-colors';
+                        tabM1.className = inactiveClass;
+                        tabM2.className = inactiveClass;
+                        tabM3.className = activeClass;
                         amount.innerText = '3.5';
                     }
                 }
             </script>
             <div class="mt-8 grid md:grid-cols-3 gap-5">
                 <!-- Starter -->
+
 
 
                 <!-- Growth -->
@@ -2511,8 +2524,7 @@
                     </div>
                     <ul class="mt-4 space-y-2 text-sm text-black/80">
                         <li class="flex items-center gap-2"><span
-                                class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>200-500 calls a
-                            day</li>
+                                class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>200 to 1000 mins a day</li>
                         <li class="flex items-center gap-2"><span
                                 class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>1 neural voice
                         </li>
@@ -2520,7 +2532,7 @@
                                 class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>2 Tool Calling
                             Support</li>
                         <li class="flex gap-2 gap-x-2 gap-y-2 items-center"><span
-                                class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>1 concurrent call
+                                class="h-1.5 w-1.5 rounded-full flex-shrink-0 bg-amber-600/80"></span>0 concurrent calls
                         </li>
 
                     </ul>
@@ -2626,7 +2638,7 @@
                         <span
                             class="ml-4 rounded-md px-2 py-0.5 text-[11px] ring-1 transition group-open:rotate-45 flex-shrink-0 bg-white/70 ring-black/15 backdrop-blur-sm">+</span>
                     </summary>
-                    <p class="mt-3 text-sm text-black/70">M2 & M3 models are our SOTA TTS models combined with finetuned LLM trained for telephony & India.<br><br>M2 model beats ElevenLab's flash v2.5 & is comparable to v2 multilingual & M3 model is comparable to ElevenLab's v3, our M3 model supports 50+ emotion tags which makes it indistinguishable from human speech.</p>
+                    <p class="mt-3 text-sm text-black/70">Our M2 and M3 models represent the state-of-the-art in Text-to-Speech (TTS), seamlessly integrated with large language models fine-tuned specifically for telephony and the Indian context.<br><br>The M2 model outperforms ElevenLabs' Flash v2.5 and goes head-to-head with their v2 multilingual offerings. Meanwhile, the M3 model rivals ElevenLabs' v3, providing an unparalleled conversational experience. Crucially, the M3 model supports over 200+ emotion tags, rendering it completely indistinguishable from human speech.</p>
                 </details>
                 
                 <details class="group rounded-lg border p-4 backdrop-blur-md border-black/10 bg-white/60 shadow-sm">
