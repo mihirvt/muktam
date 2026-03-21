@@ -383,8 +383,8 @@
             color: #000;
             scroll-behavior: smooth;
             padding-right: 12px;
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            padding-bottom: 120px; /* added depth */
+            
         }
         .m3-transcript-box::-webkit-scrollbar { width: 3px; }
         .m3-transcript-box::-webkit-scrollbar-track { background: transparent; }
@@ -851,11 +851,8 @@
 
                 <!-- Demo / Visual -->
                 
-                <!-- Demo / Visual (Empty or Decorative) -->
+                <!-- Demo / Visual (Empty) -->
                 <div class="lg:col-span-6 w-full lg:flex justify-center hidden items-center">
-                    <div class="relative w-72 h-72">
-                         <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2545,226 +2542,44 @@
     </script>
 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const clips = [
-        { 
-            trans: 'https://backend.muktam.online/webhook/trans1', 
-            audio: 'https://backend.muktam.online/webhook/Audio1', 
-            name: 'Expressive Voice', 
-            desc: 'High energy outbound'
-        },
-        { 
-            trans: 'https://backend.muktam.online/webhook/trans2', 
-            audio: 'https://backend.muktam.online/webhook/Audio2', 
-            name: 'Sales Persona', 
-            desc: 'Assertive and confident'
-        },
-        { 
-            trans: 'https://backend.muktam.online/webhook/trans3', 
-            audio: 'https://backend.muktam.online/webhook/Audio3', 
-            name: 'Support Agent', 
-            desc: 'Calm and collected context'
-        }
-    ];
+                document.addEventListener('DOMContentLoaded', () => {
+                    const tabBtns = document.querySelectorAll('.tab-btn');
+                    const tabContents = document.querySelectorAll('.tab-content');
 
-    const container = document.getElementById('m3CardsContainer');
-    if (!container) return;
+                    tabBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            // Removing active styling from all buttons
+                            tabBtns.forEach(b => {
+                                b.classList.remove('bg-black', 'text-white', 'hover:bg-black/90');
+                                b.classList.add('bg-white/60', 'text-black/70', 'border', 'border-black/10', 'hover:bg-white/80');
+                            });
 
-    function parseTranscript(text) {
-        const blocks = text.trim().split(/\n\s*\n/);
-        const parsed = [];
-        for (let block of blocks) {
-            const lines = block.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-            if (lines.length >= 2) {
-                const timeStr = lines[0].match(/\[(\d{2}):(\d{2})\s*-/i);
-                let blockStartTime = 0;
-                if (timeStr) {
-                    blockStartTime = parseInt(timeStr[1]) * 60 + parseInt(timeStr[2]);
-                }
+                            // Add active styling to clicked button
+                            btn.classList.add('bg-black', 'text-white', 'hover:bg-black/90');
+                            btn.classList.remove('bg-white/60', 'text-black/70', 'border', 'border-black/10', 'hover:bg-white/80');
 
-                const timeMatch = lines[0].match(/\[(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})\]\s*(.*?):/i);
-                if (!timeMatch) continue;
-                let speaker = timeMatch[3].trim();
-                speaker = speaker.includes("1") ? "Mukt Agent" : (speaker.includes("2") ? "Customer" : "Mukt Agent");
-                
-                const sentence = lines[1];
-                let words = [];
-                
-                const wordLine = lines.find(l => l.startsWith('Word-level:'));
-                if (wordLine) {
-                    const wordLevelStr = wordLine.replace('Word-level:', '').trim();
-                    const wordRegex = /([^\s()]+(?:\s+[^\s()]+)*?)\s*\(([\d.]+)s\)/g;
-                    let match;
-                    while ((match = wordRegex.exec(wordLevelStr)) !== null) {
-                        words.push({ text: match[1], time: parseFloat(match[2]) });
-                    }
-                } else {
-                     sentence.split(' ').forEach((w, i) => {
-                         words.push({ text: w, time: blockStartTime + (i+1) * 0.3 });
-                     });
-                }
-                parsed.push({ speaker, sentence, words, blockStartTime });
-            }
-        }
-        return parsed;
-    }
+                            // Hide all contents
+                            tabContents.forEach(content => {
+                                content.classList.add('hidden');
+                            });
 
-    clips.forEach((clip, index) => {
-        const cardNode = document.createElement('div');
-        cardNode.className = 'm3-card';
-        cardNode.innerHTML = `
-            <div class="m3-card-content">
-                <div class="m3-badge">
-                    <div class="m3-status-dot" id="dot-${index}"></div>
-                    M3 Model
-                </div>
-                <div class="mb-6">
-                    <h3 class="text-2xl font-semibold font-instrument-serif text-slate-900">` + clip.name + `</h3>
-                    <p class="text-sm text-slate-500 mt-1">` + clip.desc + `</p>
-                </div>
-                
-                <div class="m3-transcript-box font-sans" id="ts-box-${index}">
-                     <div class="flex items-center justify-center h-full text-slate-400 text-sm">Loading transcript...</div>
-                </div>
-                <button class="m3-play-btn font-sans" id="play-btn-${index}">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-                        <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
-                    </svg>
-                    Listen to Call
-                </button>
-                <audio id="audio-${index}" src="${clip.audio}" preload="none"></audio>
-            </div>
-        `;
-        container.appendChild(cardNode);
+                            // Show targeted content
+                            const targetId = btn.getAttribute('data-target');
+                            document.getElementById(targetId).classList.remove('hidden');
 
-        const btn = cardNode.querySelector(`#play-btn-${index}`);
-        const audio = cardNode.querySelector(`#audio-${index}`);
-        const tsBox = cardNode.querySelector(`#ts-box-${index}`);
-        const dot = cardNode.querySelector(`#dot-${index}`);
-        
-        let transcriptData = [];
-        let rAF;
-
-        // Fetch transcript without enforcing cross-origin limitations if possible, but CORS headers from webhook are required.
-        fetch(clip.trans)
-            .then(res => res.ok ? res.text() : Promise.reject(res.status))
-            .then(text => {
-                transcriptData = parseTranscript(text);
-                renderTranscript(transcriptData, tsBox, index);
-            })
-            .catch(err => {
-                console.error('Failed to load transcript:', err);
-                tsBox.innerHTML = '<div class="flex h-full items-center justify-center text-red-400 text-sm text-center px-4">Failed to fetch transcript. Please ensure n8n Response Headers include Access-Control-Allow-Origin: *</div>';
-            });
-
-        function renderTranscript(data, containerEl, idx) {
-            containerEl.innerHTML = '';
-            data.forEach((block, bIdx) => {
-                const spkDiv = document.createElement('div');
-                spkDiv.className = 'm3-speaker ' + (block.speaker === 'Customer' ? 'customer' : 'agent');
-                spkDiv.innerHTML = block.speaker === 'Mukt Agent' ? 
-                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Mukt Agent' :
-                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Customer';
-                containerEl.appendChild(spkDiv);
-                
-                const senDiv = document.createElement('div');
-                block.words.forEach((w, wIdx) => {
-                    const wSpan = document.createElement('span');
-                    wSpan.className = 'm3-word';
-                    wSpan.style.opacity = '0.3';
-                    wSpan.textContent = w.text;
-                    wSpan.id = `w-${idx}-${bIdx}-${wIdx}`;
-                    wSpan.dataset.time = w.time;
-                    senDiv.appendChild(wSpan);
+                            // Toggle KPI strip visibility
+                            const ecomKpis = document.getElementById('ecommerce-kpis');
+                            if (ecomKpis) {
+                                if (targetId === 'tab-ecommerce') {
+                                    ecomKpis.style.display = '';
+                                } else {
+                                    ecomKpis.style.display = 'none';
+                                }
+                            }
+                        });
+                    });
                 });
-                containerEl.appendChild(senDiv);
-            });
-        }
-
-        function updateHighlights() {
-            if (audio.paused) return;
-            const t = audio.currentTime;
-            let activeWordSpan = null;
-            
-            transcriptData.forEach((block, bIdx) => {
-                let blockStartTime = block.blockStartTime;
-                block.words.forEach((w, wIdx) => {
-                    const span = document.getElementById(`w-${index}-${bIdx}-${wIdx}`);
-                    if (!span) return;
-                    
-                    const prevTime = wIdx === 0 ? blockStartTime : block.words[wIdx - 1].time;
-                    const nextTime = w.time;
-                    
-                    if (t >= prevTime && t < nextTime) {
-                        span.classList.add('highlight');
-                        span.style.opacity = '1';
-                        activeWordSpan = span;
-                    } else if (t >= nextTime) {
-                        span.classList.remove('highlight');
-                        span.style.opacity = '0.4';
-                    } else {
-                        span.classList.remove('highlight');
-                        span.style.opacity = '0.3';
-                    }
-                });
-            });
-            
-            if (activeWordSpan) {
-                tsBox.scrollTop = activeWordSpan.offsetTop - tsBox.offsetTop - 80;
-            }
-            rAF = requestAnimationFrame(updateHighlights);
-        }
-
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('audio').forEach(a => {
-                if (a !== audio) {
-                    a.pause();
-                    a.currentTime = 0;
-                }
-            });
-            document.querySelectorAll('.m3-play-btn').forEach(b => {
-                if (b !== btn) {
-                    b.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg> Listen to Call';
-                }
-            });
-            document.querySelectorAll('.m3-status-dot').forEach(d => {
-                d.classList.remove('playing');
-            });
-
-            if (audio.paused) {
-                audio.play().then(() => {
-                    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16" fill="currentColor"></rect><rect x="14" y="4" width="4" height="16" fill="currentColor"></rect></svg> Pause Call';
-                    dot.classList.add('playing');
-                    updateHighlights();
-                }).catch(e => {
-                    console.error('Audio play failed', e);
-                    alert("Audio couldn't play: " + e.message + "\\n\\nPlease make sure your n8n webhook returns exactly 'Access-Control-Allow-Origin: *' in the Response Headers.");
-                });
-            } else {
-                audio.pause();
-                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg> Listen to Call';
-                dot.classList.remove('playing');
-                cancelAnimationFrame(rAF);
-            }
-        });
-
-        audio.addEventListener('error', (e) => {
-             console.error('Audio native error:', audio.error);
-        });
-
-        audio.addEventListener('ended', () => {
-            btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg> Listen to Call';
-            dot.classList.remove('playing');
-            cancelAnimationFrame(rAF);
-            tsBox.querySelectorAll('.m3-word').forEach(span => {
-                span.classList.remove('highlight');
-                span.style.opacity = '0.3';
-            });
-            tsBox.scrollTop = 0;
-        });
-    });
-});
-</script>
+            </script>
 
 
 
