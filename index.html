@@ -2504,8 +2504,8 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <div class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium">Extra Phone No: ₹500/mo</div>
-                        <div class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium">Extra Custom Agent: ₹1000 each</div>
+                        <div id="addon-phone" class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium">Extra Phone No: ₹500/mo</div>
+                        <div id="addon-agent" class="px-4 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium">Extra Custom Agent: ₹1000 each</div>
                     </div>
                 </div>
             </div>
@@ -2519,16 +2519,16 @@
 
         const pData = {
             m2: {
-                exp: { inr: '₹846', usd: '$9', rate: '5' },
-                c99: { inr: '₹9,306', usd: '$99', rate: '3.5' },
-                c600: { inr: '₹56,400', usd: '$600', rate: '3.2' },
-                c1200: { inr: '₹1,12,800', usd: '$1,200', rate: '2.79' }
+                exp: { inr: '₹846', usd: '$9', r_inr: '5', r_usd: '$0.053' },
+                c99: { inr: '₹9,306', usd: '$99', r_inr: '3.5', r_usd: '$0.037' },
+                c600: { inr: '₹56,400', usd: '$600', r_inr: '3.2', r_usd: '$0.034' },
+                c1200: { inr: '₹1,12,800', usd: '$1,200', r_inr: '2.79', r_usd: '$0.030' }
             },
             m3: {
-                exp: { inr: '₹846', usd: '$9', rate: '6.5' },
-                c99: { inr: '₹9,306', usd: '$99', rate: '4.2' },
-                c600: { inr: '₹56,400', usd: '$600', rate: '3.8' },
-                c1200: { inr: '₹1,12,800', usd: '$1,200', rate: '3.25' }
+                exp: { inr: '₹846', usd: '$9', r_inr: '6.5', r_usd: '$0.069' },
+                c99: { inr: '₹9,306', usd: '$99', r_inr: '4.2', r_usd: '$0.045' },
+                c600: { inr: '₹56,400', usd: '$600', r_inr: '3.8', r_usd: '$0.040' },
+                c1200: { inr: '₹1,12,800', usd: '$1,200', r_inr: '3.25', r_usd: '$0.035' }
             }
         };
 
@@ -2541,12 +2541,24 @@
                 const el = document.getElementById(id);
                 if (el) {
                     const plan = id.split('-')[1];
-                    const type = id.startsWith('p') ? curCurrency : 'rate';
-                    el.innerText = data[plan][type];
+                    const isRate = id.startsWith('r');
+                    let val;
+                    if (isRate) {
+                        val = curCurrency === 'inr' ? data[plan].r_inr : data[plan].r_usd;
+                    } else {
+                        val = data[plan][curCurrency];
+                    }
+                    el.innerText = val;
                 }
             });
 
             document.querySelectorAll('.text-curr').forEach(el => el.innerText = currSymbol);
+
+            // Update Add-ons
+            const phoneAddon = document.getElementById('addon-phone');
+            const agentAddon = document.getElementById('addon-agent');
+            if (phoneAddon) phoneAddon.innerText = curCurrency === 'inr' ? 'Extra Phone No: ₹500/mo' : 'Extra Phone No: $5.32/mo';
+            if (agentAddon) agentAddon.innerText = curCurrency === 'inr' ? 'Extra Custom Agent: ₹1000 each' : 'Extra Custom Agent: $10.64 each';
         }
 
         function updatePricingModel(model) {
