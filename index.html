@@ -2174,7 +2174,7 @@
     <style>
         .pricing-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 320px;
+            min-width: 380px;
         }
         .pricing-card:hover {
             transform: translateY(-8px);
@@ -2534,19 +2534,37 @@
 
         function updatePricingUI() {
             const data = pData[curModel];
-            const currSymbol = curCurrency === 'inr' ? 'rs' : 'usd';
+            const isUsd = curCurrency === 'usd';
+            const currSymbol = isUsd ? 'usd' : 'rs';
             
             const ids = ['p-exp', 'r-exp', 'p-c99', 'r-c99', 'p-c600', 'r-c600', 'p-c1200', 'r-c1200'];
             ids.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) {
                     const plan = id.split('-')[1];
-                    const type = id.startsWith('p') ? curCurrency : 'rate';
-                    el.innerText = data[plan][type];
+                    const isPrice = id.startsWith('p'); // Price (p-xx) vs Rate (r-xx)
+                    
+                    if (isPrice) {
+                        el.innerText = data[plan][curCurrency];
+                    } else {
+                        // Rate conversion for USD
+                        let val = parseFloat(data[plan].rate);
+                        if (isUsd) {
+                            val = (val / 94).toFixed(3);
+                            el.innerText = '$' + val;
+                        } else {
+                            el.innerText = val;
+                        }
+                    }
                 }
             });
 
-            document.querySelectorAll('.text-curr').forEach(el => el.innerText = currSymbol);
+            // Update currency indicators throughout cards
+            document.querySelectorAll('.text-curr').forEach(el => {
+                el.innerText = currSymbol;
+                // If it's pure USD we already prefixed it in the innerText above for rates, 
+                // but for total price we might want to hide the symbol div if it's redundant.
+            });
         }
 
         function updatePricingModel(model) {
