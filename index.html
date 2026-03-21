@@ -2174,12 +2174,44 @@
     <style>
         .pricing-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 320px;
         }
         .pricing-card:hover {
             transform: translateY(-8px);
         }
         .pricing-card ul li {
             position: relative;
+        }
+        .pricing-track::-webkit-scrollbar {
+            display: none;
+        }
+        .pricing-track {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            transition: all 0.2s;
+        }
+        .scroll-btn:hover {
+            background-color: #f8fafc;
+        }
+        .scroll-btn:active {
+            scale: 0.95;
         }
     </style>
     <!-- Pricing Section -->
@@ -2214,239 +2246,247 @@
                 </div>
             </div>
 
-            <!-- Pricing Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 items-stretch">
-                <!-- Card 1: Experience It -->
-                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
-                            <span class="w-2 h-2 rounded-full bg-slate-200"></span>
-                            Trial
+            <!-- Pricing Container with Arrows -->
+            <div class="relative group/track">
+                <!-- Navigation Arrows (Hidden if not needed, but showing for desktop UX) -->
+                <button onclick="scrollPricing('left')" class="scroll-btn -left-6 hidden lg:flex opacity-0 group-hover/track:opacity-100 -translate-x-4 transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button onclick="scrollPricing('right')" class="scroll-btn -right-6 hidden lg:flex opacity-0 group-hover/track:opacity-100 translate-x-4 transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+
+                <!-- Scrollable Track -->
+                <div id="pricingTrack" class="pricing-track flex gap-6 overflow-x-auto pb-12 pt-4 px-2 -mx-2 items-stretch">
+                    <!-- Card 1: Experience It -->
+                    <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
+                        <div class="mb-6">
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
+                                <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+                                Trial
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-950">Experience It</h3>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-exp">₹846</span>
+                                <span class="ml-1 text-slate-400 text-sm font-medium">one-time</span>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-950">Experience It</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-exp">₹750</span>
-                            <span class="ml-1 text-slate-400 text-sm font-medium">one-time</span>
+                        
+                        <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-amber-50/50 transition-colors">
+                            <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
+                            <div class="text-2xl font-bold text-slate-950"><span id="r-exp">5</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
                         </div>
-                    </div>
-                    
-                    <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-amber-50/50 transition-colors">
-                        <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
-                        <div class="text-2xl font-bold text-slate-950"><span id="r-exp">5</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
+
+                        <ul class="space-y-4 text-sm text-slate-600 flex-grow mb-8 font-medium">
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-950 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                1 neural voice
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-950 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Tool Calling Support
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </div>
+                                0 concurrent calls
+                            </li>
+                        </ul>
+                        
+                        <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-slate-50 text-slate-950 border border-slate-200 rounded-2xl font-bold hover:bg-slate-950 hover:text-white transition-all duration-300 active:scale-[0.98]">Get Access</button>
                     </div>
 
-                    <ul class="space-y-4 text-sm text-slate-600 flex-grow mb-8 font-medium">
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-950 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                    <!-- Card 2: Starter -->
+                    <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
+                        <div class="mb-6 pt-2">
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-4">
+                                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                                Starter
                             </div>
-                            1 neural voice
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-950 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-c99">₹9,306</span>
+                                <span class="ml-1 text-slate-400 text-sm font-medium">/mo</span>
                             </div>
-                            Tool Calling Support
-                        </li>
-                        <li class="flex items-start gap-3 text-slate-300">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </div>
-                            0 concurrent calls
-                        </li>
-                    </ul>
-                    
-                    <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-slate-50 text-slate-950 border border-slate-200 rounded-2xl font-bold hover:bg-slate-950 hover:text-white transition-all duration-300 active:scale-[0.98]">Get Access</button>
-                </div>
+                        </div>
+                        
+                        <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-blue-50/50 transition-colors">
+                            <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
+                            <div class="text-2xl font-bold text-slate-950"><span id="r-c99">3.5</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
+                        </div>
 
-                <!-- Card 2: Commit 99 -->
-                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-4">
-                            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                            Starter
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-950">Commit 99</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-c99">₹8,500</span>
-                            <span class="ml-1 text-slate-400 text-sm font-medium">/mo</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-blue-50/50 transition-colors">
-                        <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
-                        <div class="text-2xl font-bold text-slate-950"><span id="r-c99">3.5</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
-                    </div>
-
-                    <ul class="space-y-4 text-sm text-slate-600 flex-grow mb-8 font-medium italic">
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            Premium Neural Voices
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            WhatsApp Support
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            Advance Analytics
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            Transcripts + Recordings
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            Free unlimited tool calling
-                        </li>
-                        <li class="flex items-start gap-3 text-slate-300">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </div>
-                            0 concurrent calls
-                        </li>
-                    </ul>
-                    
-                    <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all duration-300 active:scale-[0.98]">Subscribe</button>
-                </div>
-
-                <!-- Card 3: Commit 600 -->
-                <div class="pricing-card flex flex-col p-8 bg-slate-950 border border-slate-800 rounded-[2.5rem] shadow-2xl transition-all duration-500 group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 blur-[60px] rounded-full"></div>
-                    <div class="mb-6 relative z-10">
-                        <div class="flex items-center gap-2 text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-4">
-                            <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-                            Growth
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Commit 600</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold text-white tracking-tight" id="p-c600">₹50,000</span>
-                            <span class="ml-1 text-slate-500 text-sm font-medium">/mo</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8 p-5 bg-white/5 rounded-2xl border border-white/10 shadow-inner group-hover:bg-white/10 transition-colors relative z-10">
-                        <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
-                        <div class="text-2xl font-bold text-white"><span id="r-c600">3.2</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
+                        <ul class="space-y-4 text-sm text-slate-600 flex-grow mb-8 font-medium italic">
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Premium Neural Voices
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                WhatsApp Support
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Advance Analytics
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Transcripts + Recordings
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Free unlimited tool calling
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white border border-slate-200 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </div>
+                                0 concurrent calls
+                            </li>
+                        </ul>
+                        
+                        <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all duration-300 active:scale-[0.98]">Subscribe</button>
                     </div>
 
-                    <ul class="space-y-4 text-sm text-slate-400 flex-grow mb-8 font-medium relative z-10">
-                        <li class="flex items-center gap-3 text-white">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                    <!-- Card 3: Growth -->
+                    <div class="pricing-card flex flex-col p-8 bg-slate-950 border border-slate-800 rounded-[2.5rem] shadow-2xl transition-all duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 blur-[60px] rounded-full"></div>
+                        <div class="mb-6 relative z-10 pt-2">
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-4">
+                                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                                Growth
                             </div>
-                            Everything in Starter
-                        </li>
-                        <li class="flex items-start gap-3 text-indigo-300">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-bold text-white tracking-tight" id="p-c600">₹56,400</span>
+                                <span class="ml-1 text-slate-500 text-sm font-medium">/mo</span>
                             </div>
-                            One time custom integration
-                        </li>
-                        <li class="flex items-start gap-3 text-white">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            Advanced Analytics
-                        </li>
-                        <li class="flex items-start gap-3 opacity-30">
-                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
-                                <svg class="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </div>
-                            0 concurrent calls
-                        </li>
-                    </ul>
-                    
-                    <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-900/20 hover:bg-indigo-500 transition-all duration-300 active:scale-[0.98] relative z-10">Get Growth</button>
-                </div>
+                        </div>
+                        
+                        <div class="mb-8 p-5 bg-white/5 rounded-2xl border border-white/10 shadow-inner group-hover:bg-white/10 transition-colors relative z-10">
+                            <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
+                            <div class="text-2xl font-bold text-white"><span id="r-c600">3.2</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
+                        </div>
 
-                <!-- Card 4: Commit 1200 -->
-                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
-                            <span class="w-2 h-2 rounded-full bg-slate-200"></span>
-                            Scale
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-950">Commit 1200</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-c1200">₹1,00,000</span>
-                            <span class="ml-1 text-slate-400 text-sm font-medium">/mo</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-slate-100/50 transition-colors">
-                        <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
-                        <div class="text-2xl font-bold text-slate-950"><span id="r-c1200">2.79</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
-                    </div>
-
-                    <ul class="space-y-3 text-[13px] text-slate-600 flex-grow mb-8 font-medium italic">
-                        <li class="flex items-center gap-2 text-slate-900">
-                            <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Everything in Growth+
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            White Glove onboarding
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Direct Phone Support
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Exclusive Access to Early Features
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Custom integrations
-                        </li>
-                        <li class="flex items-center gap-2 font-bold text-slate-900 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                            <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Concurrent calls on request
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Custom analytics & metrics
-                        </li>
-                    </ul>
-                    
-                    <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-slate-950 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all duration-300">Contact Sales</button>
-                </div>
-
-                <!-- Card 5: Hyper Scale -->
-                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
-                            <span class="w-2 h-2 rounded-full bg-slate-200"></span>
-                            Unlimited
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-950">Hyper Scale</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span class="text-3xl font-bold text-slate-950 tracking-tight">Talk to us</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 italic text-sm text-slate-500 flex items-center justify-center text-center">
-                        Best pricing at committed high volumes.
+                        <ul class="space-y-4 text-sm text-slate-400 flex-grow mb-8 font-medium relative z-10">
+                            <li class="flex items-center gap-3 text-white">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Everything in Starter
+                            </li>
+                            <li class="flex items-start gap-3 text-indigo-300">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                One time custom integration
+                            </li>
+                            <li class="flex items-start gap-3 text-white">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                Advanced Analytics
+                            </li>
+                            <li class="flex items-start gap-3 opacity-30">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
+                                    <svg class="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </div>
+                                0 concurrent calls
+                            </li>
+                        </ul>
+                        
+                        <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-900/20 hover:bg-indigo-500 transition-all duration-300 active:scale-[0.98] relative z-10">Get Growth</button>
                     </div>
 
-                    <div class="flex-grow flex flex-col justify-center items-center text-center">
-                        <p class="text-lg font-semibold text-slate-900 mb-2">For large brands</p>
-                        <p class="text-slate-500 text-sm">Doing atleast <span class="font-bold text-slate-900">$2,500</span> a month in volume.</p>
+                    <!-- Card 4: Scale -->
+                    <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
+                        <div class="mb-6 pt-2">
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
+                                <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+                                Scale
+                            </div>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-bold text-slate-950 tracking-tight" id="p-c1200">₹1,12,800</span>
+                                <span class="ml-1 text-slate-400 text-sm font-medium">/mo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner group-hover:bg-slate-100/50 transition-colors">
+                            <div class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 italic">Usage Rate</div>
+                            <div class="text-2xl font-bold text-slate-950"><span id="r-c1200">2.79</span> <span class="text-curr text-sm font-medium opacity-50 uppercase">rs</span>/min</div>
+                        </div>
+
+                        <ul class="space-y-3 text-[13px] text-slate-600 flex-grow mb-8 font-medium italic">
+                            <li class="flex items-center gap-2 text-slate-900">
+                                <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Everything in Growth+
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                White Glove onboarding
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Direct Phone Support
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Exclusive Access to Early Features
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Custom integrations
+                            </li>
+                            <li class="flex items-center gap-2 font-bold text-slate-900 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
+                                <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Concurrent calls on request
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Custom analytics & metrics
+                            </li>
+                        </ul>
+                        
+                        <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-slate-950 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all duration-300">Contact Sales</button>
                     </div>
-                    
-                    <div class="mt-8">
-                        <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-white text-slate-950 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all duration-300">Book Demo</button>
+
+                    <!-- Card 5: Hyper Scale -->
+                    <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
+                        <div class="mb-6 relative z-10">
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
+                                <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+                                Unlimited
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-950">Hyper Scale</h3>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-3xl font-bold text-slate-950 tracking-tight">Talk to us</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 p-5 bg-slate-50 rounded-2xl border border-slate-100 italic text-sm text-slate-500 flex items-center justify-center text-center">
+                            Best pricing at committed high volumes.
+                        </div>
+
+                        <div class="flex-grow flex flex-col justify-center items-center text-center">
+                            <p class="text-lg font-semibold text-slate-900 mb-2">For large brands</p>
+                            <p class="text-slate-500 text-sm">Doing atleast <span class="font-bold text-slate-900">$2,500</span> a month in volume.</p>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-white text-slate-950 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all duration-300">Book Demo</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2479,16 +2519,16 @@
 
         const pData = {
             m2: {
-                exp: { inr: '₹750', usd: '$9', rate: '5' },
-                c99: { inr: '₹8,500', usd: '$99', rate: '3.5' },
-                c600: { inr: '₹50,000', usd: '$600', rate: '3.2' },
-                c1200: { inr: '₹1,00,000', usd: '$1,200', rate: '2.79' }
+                exp: { inr: '₹846', usd: '$9', rate: '5' },
+                c99: { inr: '₹9,306', usd: '$99', rate: '3.5' },
+                c600: { inr: '₹56,400', usd: '$600', rate: '3.2' },
+                c1200: { inr: '₹1,12,800', usd: '$1,200', rate: '2.79' }
             },
             m3: {
-                exp: { inr: '₹750', usd: '$9', rate: '6.5' },
-                c99: { inr: '₹8,500', usd: '$99', rate: '4.2' },
-                c600: { inr: '₹50,000', usd: '$600', rate: '3.8' },
-                c1200: { inr: '₹1,00,000', usd: '$1,200', rate: '3.25' }
+                exp: { inr: '₹846', usd: '$9', rate: '6.5' },
+                c99: { inr: '₹9,306', usd: '$99', rate: '4.2' },
+                c600: { inr: '₹56,400', usd: '$600', rate: '3.8' },
+                c1200: { inr: '₹1,12,800', usd: '$1,200', rate: '3.25' }
             }
         };
 
@@ -2531,6 +2571,13 @@
             if(btnInr) btnInr.className = curr === 'inr' ? active : inactive;
             if(btnUsd) btnUsd.className = curr === 'usd' ? active : inactive;
             updatePricingUI();
+        }
+
+        function scrollPricing(dir) {
+            const track = document.getElementById('pricingTrack');
+            const scrollAmt = 350;
+            if (dir === 'left') track.scrollLeft -= scrollAmt;
+            else track.scrollLeft += scrollAmt;
         }
     </script>
 
