@@ -313,302 +313,104 @@
             line-height: 1
         }
 
-        #voiceWidget * {
-            box-sizing: border-box
-        }
-
-        #voiceWidget {
-            width: 100%;
-            max-width: 100%
-        }
-
-        #voiceWidget .voice-card {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 20px;
+        
+        .m3-card {
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             backdrop-filter: blur(20px);
-            width: 100%;
-            max-width: 100%;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06)
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        #voiceWidget .voice-header {
+        .m3-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .m3-card-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(20,184,166,0.05) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .m3-card-content {
+            position: relative;
+            z-index: 1;
+            padding: 24px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 8px
+            flex-direction: column;
+            height: 100%;
         }
-
-        #voiceWidget .voice-header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px
+        .m3-sphere {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 32px;
+            animation: float 4s ease-in-out infinite;
         }
-
-        #voiceWidget .voice-icon-box {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .m3-transcript-box {
+            flex-grow: 1;
+            height: 220px;
+            overflow-y: auto;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+            padding-right: 8px;
+        }
+        .m3-transcript-box::-webkit-scrollbar { width: 4px; }
+        .m3-transcript-box::-webkit-scrollbar-track { background: transparent; }
+        .m3-transcript-box::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+        
+        .m3-word {
+            transition: color 0.1s, opacity 0.3s, transform 0.2s;
+            display: inline-block;
+            margin-right: 4px;
+            transform-origin: bottom center;
+        }
+        .m3-word.highlight {
+            color: #059669;
+            font-weight: 600;
+        }
+        .m3-speaker {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: #666;
+            margin-top: 14px;
+        }
+        .m3-speaker.agent { color: #059669; }
+        .m3-speaker.customer { color: #2563eb; }
+        
+        .m3-play-btn {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0
-        }
-
-        #voiceWidget .voice-header-info h3 {
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 2px;
-            color: #1a1a1a
-        }
-
-        #voiceWidget .voice-header-info p {
-            font-size: 11px;
-            color: rgba(0, 0, 0, 0.6)
-        }
-
-        #voiceWidget .voice-badge {
-            padding: 3px 7px;
-            border-radius: 6px;
-            font-size: 10px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: #059669
-        }
-
-        #voiceWidget .voice-badge.hidden {
-            display: none
-        }
-
-        #voiceWidget .voice-waveform {
-            height: 56px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
-            padding: 0 6px;
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            margin-bottom: 16px;
-            overflow: hidden;
-            backdrop-filter: blur(10px)
-        }
-
-        #voiceWidget .voice-bars {
-            display: flex;
-            gap: 3px;
-            width: 100%;
-            justify-content: center
-        }
-
-        #voiceWidget .voice-bar {
-            width: 5px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 2px;
-            transition: height 0.1s ease, opacity 0.1s ease
-        }
-
-        #voiceWidget .voice-transcript {
-            height: 160px;
-            min-height: 160px;
-            overflow-y: auto;
-            margin-bottom: 16px;
-            padding-right: 6px;
-            scroll-behavior: smooth
-        }
-
-        #voiceWidget .voice-transcript::-webkit-scrollbar {
-            width: 5px
-        }
-
-        #voiceWidget .voice-transcript::-webkit-scrollbar-track {
-            background: transparent
-        }
-
-        #voiceWidget .voice-transcript::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px
-        }
-
-        #voiceWidget .voice-message {
-            display: flex;
-            margin-bottom: 10px;
-            animation: voiceSlideIn 0.3s ease-out
-        }
-
-        @keyframes voiceSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        #voiceWidget .voice-message.agent {
-            justify-content: flex-start
-        }
-
-        #voiceWidget .voice-message.customer {
-            justify-content: flex-end
-        }
-
-        #voiceWidget .voice-message-content {
-            max-width: 75%;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            color: #1a1a1a
-        }
-
-        #voiceWidget .voice-message.agent .voice-message-content {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px)
-        }
-
-        #voiceWidget .voice-message.customer .voice-message-content {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: rgba(16, 185, 129, 0.2);
-            color: #065f46
-        }
-
-        #voiceWidget .voice-message-label {
-            opacity: 0.7;
-            margin-right: 6px;
-            font-weight: 500
-        }
-
-        #voiceWidget .voice-message-time {
-            font-size: 9px;
-            opacity: 0.5;
-            margin-top: 3px
-        }
-
-        #voiceWidget .voice-placeholder,
-        #voiceWidget .voice-error {
-            font-size: 11px;
-            text-align: center;
-            padding: 16px
-        }
-
-        #voiceWidget .voice-placeholder {
-            color: rgba(0, 0, 0, 0.5)
-        }
-
-        #voiceWidget .voice-error {
-            color: #dc2626
-        }
-
-        #voiceWidget .voice-progress-container {
-            margin-bottom: 16px
-        }
-
-        #voiceWidget .voice-progress-bar {
-            height: 5px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 6px
-        }
-
-        #voiceWidget .voice-progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, #10b981, #34d399);
-            border-radius: 3px;
-            width: 0%;
-            transition: width 0.1s linear
-        }
-
-        #voiceWidget .voice-time-display {
-            display: flex;
-            justify-content: space-between;
-            font-size: 10px;
-            color: rgba(0, 0, 0, 0.6);
-            font-variant-numeric: tabular-nums
-        }
-
-        #voiceWidget .voice-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 14px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            flex-wrap: wrap;
-            gap: 8px
-        }
-
-        #voiceWidget .voice-meta {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: rgba(0, 0, 0, 0.6)
-        }
-
-        #voiceWidget .voice-meta svg {
-            stroke: rgba(0, 0, 0, 0.6)
-        }
-
-        #voiceWidget .voice-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            color: #1a1a1a;
-            font-size: 11px;
-            cursor: pointer;
+            gap: 8px;
             transition: all 0.2s;
-            backdrop-filter: blur(10px)
+            width: 100%;
         }
-
-        #voiceWidget .voice-button:hover:not(:disabled) {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(0, 0, 0, 0.15)
+        .m3-play-btn:hover {
+            background: #333;
         }
-
-        #voiceWidget .voice-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed
-        }
-
-        #voiceWidget .voice-button svg {
-            width: 14px;
-            height: 14px;
-            flex-shrink: 0;
-            stroke: #1a1a1a
-        }
-
-        @media(max-width:640px) {
-            #voiceWidget .voice-card {
-                padding: 16px
-            }
-
-            #voiceWidget .voice-transcript {
-                height: 140px;
-                min-height: 140px
-            }
-
-            #voiceWidget .voice-waveform {
-                height: 48px
-            }
-        }
-    </style>
+        </style>
 
 
 
@@ -1021,134 +823,15 @@
                 </div>
 
                 <!-- Demo / Visual -->
-                <div class="lg:col-span-6 w-full overflow-hidden">
-                    <div class="relative">
-                        <div
-                            class="pointer-events-none absolute -inset-x-6 -bottom-6 h-20 blur-2xl bg-[radial-gradient(400px_80px_at_50%_0%,rgba(100,100,100,0.08),transparent)]">
-                        </div>
-                        <div class="w-full max-w-full" id="voiceWidget">
-                            <div class="voice-card">
-                                <div class="voice-header">
-                                    <div class="voice-header-left">
-                                        <div class="voice-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18"
-                                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2">
-                                                <path d="M12 19v3"></path>
-                                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                                                <rect x="9" y="2" width="6" height="13" rx="3"></rect>
-                                            </svg></div>
-                                        <div class="voice-header-info">
-                                            <h3 class="sm:text-sm text-xs font-normal text-slate-950/90">Don't trust,
-                                                <span class="line-through flex-shrink-0">see</span> listen by yourself
-                                            </h3>
-                                            <p id="voiceStatus" class="">Ready to play</p>
-                                        </div>
-                                    </div><span id="voiceBadge" class="voice-badge hidden">Playing</span>
-                                </div>
-                                <div class="voice-waveform">
-                                    <div class="voice-bars" id="voiceBars">
-                                        <div class="voice-bar" style="height: 37.885px;"></div>
-                                        <div class="voice-bar" style="height: 39.3773px;"></div>
-                                        <div class="voice-bar" style="height: 30.2095px;"></div>
-                                        <div class="voice-bar" style="height: 30.7286px;"></div>
-                                        <div class="voice-bar" style="height: 23.6199px;"></div>
-                                        <div class="voice-bar" style="height: 26.5964px;"></div>
-                                        <div class="voice-bar" style="height: 21.6424px;"></div>
-                                        <div class="voice-bar" style="height: 21.8967px;"></div>
-                                        <div class="voice-bar" style="height: 28.3896px;"></div>
-                                        <div class="voice-bar" style="height: 23.61px;"></div>
-                                        <div class="voice-bar" style="height: 29.9147px;"></div>
-                                        <div class="voice-bar" style="height: 29.7356px;"></div>
-                                        <div class="voice-bar" style="height: 31.2147px;"></div>
-                                        <div class="voice-bar" style="height: 37.3282px;"></div>
-                                        <div class="voice-bar" style="height: 39.7564px;"></div>
-                                        <div class="voice-bar" style="height: 38.5654px;"></div>
-                                        <div class="voice-bar" style="height: 34.1908px;"></div>
-                                        <div class="voice-bar" style="height: 21.0219px;"></div>
-                                        <div class="voice-bar" style="height: 27.2265px;"></div>
-                                        <div class="voice-bar" style="height: 22.2359px;"></div>
-                                        <div class="voice-bar" style="height: 38.9574px;"></div>
-                                        <div class="voice-bar" style="height: 31.6365px;"></div>
-                                        <div class="voice-bar" style="height: 30.3358px;"></div>
-                                        <div class="voice-bar" style="height: 28.3364px;"></div>
-                                        <div class="voice-bar" style="height: 27.8886px;"></div>
-                                        <div class="voice-bar" style="height: 37.4997px;"></div>
-                                        <div class="voice-bar" style="height: 25.8609px;"></div>
-                                        <div class="voice-bar" style="height: 37.3001px;"></div>
-                                        <div class="voice-bar" style="height: 31.8646px;"></div>
-                                        <div class="voice-bar" style="height: 22.3031px;"></div>
-                                        <div class="voice-bar" style="height: 38.6296px;"></div>
-                                        <div class="voice-bar" style="height: 32.5371px;"></div>
-                                        <div class="voice-bar" style="height: 20.8501px;"></div>
-                                        <div class="voice-bar" style="height: 20.8275px;"></div>
-                                        <div class="voice-bar" style="height: 21.0462px;"></div>
-                                        <div class="voice-bar" style="height: 21.0478px;"></div>
-                                        <div class="voice-bar" style="height: 30.7907px;"></div>
-                                        <div class="voice-bar" style="height: 20.8371px;"></div>
-                                        <div class="voice-bar" style="height: 37.6985px;"></div>
-                                        <div class="voice-bar" style="height: 28.3956px;"></div>
-                                        <div class="voice-bar" style="height: 26.6681px;"></div>
-                                        <div class="voice-bar" style="height: 25.7103px;"></div>
-                                        <div class="voice-bar" style="height: 30.1679px;"></div>
-                                        <div class="voice-bar" style="height: 39.7206px;"></div>
-                                        <div class="voice-bar" style="height: 36.8286px;"></div>
-                                        <div class="voice-bar" style="height: 21.8983px;"></div>
-                                        <div class="voice-bar" style="height: 34.3942px;"></div>
-                                        <div class="voice-bar" style="height: 39.2102px;"></div>
-                                        <div class="voice-bar" style="height: 36.3361px;"></div>
-                                        <div class="voice-bar" style="height: 36.6724px;"></div>
-                                        <div class="voice-bar" style="height: 24.1445px;"></div>
-                                        <div class="voice-bar" style="height: 31.7196px;"></div>
-                                        <div class="voice-bar" style="height: 38.977px;"></div>
-                                        <div class="voice-bar" style="height: 39.1839px;"></div>
-                                        <div class="voice-bar" style="height: 22.2478px;"></div>
-                                        <div class="voice-bar" style="height: 32.8124px;"></div>
-                                        <div class="voice-bar" style="height: 35.1976px;"></div>
-                                        <div class="voice-bar" style="height: 23.6015px;"></div>
-                                        <div class="voice-bar" style="height: 35.4196px;"></div>
-                                        <div class="voice-bar" style="height: 37.2773px;"></div>
-                                        <div class="voice-bar" style="height: 25.0961px;"></div>
-                                        <div class="voice-bar" style="height: 24.5133px;"></div>
-                                        <div class="voice-bar" style="height: 24.4614px;"></div>
-                                        <div class="voice-bar" style="height: 29.5511px;"></div>
-                                        <div class="voice-bar" style="height: 28.2427px;"></div>
-                                        <div class="voice-bar" style="height: 30.8098px;"></div>
-                                        <div class="voice-bar" style="height: 32.3902px;"></div>
-                                        <div class="voice-bar" style="height: 27.4413px;"></div>
-                                        <div class="voice-bar" style="height: 26.6866px;"></div>
-                                        <div class="voice-bar" style="height: 38.0827px;"></div>
-                                        <div class="voice-bar" style="height: 39.5365px;"></div>
-                                        <div class="voice-bar" style="height: 31.1883px;"></div>
-                                        <div class="voice-bar" style="height: 27.4682px;"></div>
-                                        <div class="voice-bar" style="height: 31.8145px;"></div>
-                                        <div class="voice-bar" style="height: 26.3432px;"></div>
-                                        <div class="voice-bar" style="height: 21.8289px;"></div>
-                                        <div class="voice-bar" style="height: 22.8417px;"></div>
-                                        <div class="voice-bar" style="height: 35.7788px;"></div>
-                                        <div class="voice-bar" style="height: 25.3423px;"></div>
-                                        <div class="voice-bar" style="height: 33.667px;"></div>
-                                        <div class="voice-bar" style="height: 32.0881px;"></div>
-                                        <div class="voice-bar" style="height: 27.173px;"></div>
-                                        <div class="voice-bar" style="height: 30.7968px;"></div>
-                                        <div class="voice-bar" style="height: 38.1084px;"></div>
-                                        <div class="voice-bar" style="height: 25.8634px;"></div>
-                                        <div class="voice-bar" style="height: 39.0331px;"></div>
-                                        <div class="voice-bar" style="height: 37.7559px;"></div>
-                                        <div class="voice-bar" style="height: 34.5842px;"></div>
-                                        <div class="voice-bar" style="height: 39.394px;"></div>
-                                        <div class="voice-bar" style="height: 37.5352px;"></div>
-                                        <div class="voice-bar" style="height: 21.6082px;"></div>
-                                        <div class="voice-bar" style="height: 29.1456px;"></div>
-                                        <div class="voice-bar" style="height: 39.4998px;"></div>
-                                        <div class="voice-bar" style="height: 21.5634px;"></div>
-                                        <div class="voice-bar" style="height: 27.6445px;"></div>
-                                        <div class="voice-bar" style="height: 34.5063px;"></div>
-                                        <div class="voice-bar" style="height: 31.3317px;"></div>
-                                        <div class="voice-bar" style="height: 26.1977px;"></div>
-                                        <div class="voice-bar" style="height: 36.6043px;"></div>
-                                        <div class="voice-bar" style="height: 24.218px;"></div>
-                                    </div>
-                                </div>
+                
+                <!-- Demo / Visual (Empty or Decorative) -->
+                <div class="lg:col-span-6 w-full lg:flex justify-center hidden items-center">
+                    <div class="relative w-72 h-72">
+                         <div class="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
                                 <div class="voice-transcript" id="voiceTranscript"></div>
                                 <div class="voice-progress-container">
                                     <div class="voice-progress-bar" id="voiceProgressBar">
@@ -1196,6 +879,22 @@
                     Be Pragma Ai</div>
                 <div class="grid place-items-center text-xs font-medium tracking-tight w-24 h-8 ring-1 rounded-md ring-black/10 bg-white/60 backdrop-blur-sm shadow-sm"
                     style="">BuzzMall</div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Try M3 Showcase Section -->
+    <section class="py-24 relative overflow-hidden bg-[#fafafa] border-b border-black/5" id="sota-models">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#fff,#fafafa)] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 mb-4 font-instrument-serif">Experience M3 SOTA Models</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto font-sans">Listen to the most advanced indic TTS in action with perfect expression, emotion and word-level accuracy.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8" id="m3CardsContainer">
+                <!-- Cards injected by JS -->
             </div>
         </div>
     </section>
@@ -2846,7 +2545,238 @@
         })();
     </script>
 
-    <script>const AUDIO_URL = 'https://backend.muktam.online/webhook/265d38af-0407-41d4-b467-55d7da7731f0'; const TRANSCRIPT_URL = 'https://backend.muktam.online/webhook/trans'; (function () { const $ = id => document.getElementById(id); const status = $('voiceStatus'), badge = $('voiceBadge'), transcript = $('voiceTranscript'), barsContainer = $('voiceBars'), audio = $('voiceAudio'), playBtn = $('voicePlayBtn'), playIcon = $('voicePlayIcon'), playLabel = $('voicePlayLabel'), progressBar = $('voiceProgressBar'), progressFill = $('voiceProgressFill'), currentTimeEl = $('voiceCurrentTime'), durationEl = $('voiceDuration'), callDurationEl = $('voiceCallDuration'); let transcriptData = [], currentIndex = 0, bars = [], rafId, audioContext, analyser, dataArray, audioSource; for (let i = 0; i < 25; i++) { const bar = document.createElement('div'); bar.className = 'voice-bar'; bar.style.height = (20 + Math.random() * 20) + 'px'; barsContainer.appendChild(bar); bars.push(bar) } function formatTime(sec) { if (!isFinite(sec)) return '0:00'; const m = Math.floor(sec / 60), s = Math.floor(sec % 60); return `${m}:${s.toString().padStart(2, '0')}` } function parseTime(ts) { const parts = ts.split(' - ')[0].split(':'), mins = parseInt(parts[0]) || 0, secs = parseInt(parts[1]) || 0; return mins * 60 + secs } function escapeHtml(s) { const div = document.createElement('div'); div.textContent = s; return div.innerHTML } function addMessage(role, text, time) { const msg = document.createElement('div'); msg.className = `voice-message ${role}`; msg.innerHTML = `<div class="voice-message-content"><span class="voice-message-label">${role === 'agent' ? 'Agent:' : 'Customer:'}</span>${escapeHtml(text)}${time ? `<div class="voice-message-time">${time.split(' - ')[0]}</div>` : ''}</div>`; transcript.appendChild(msg); msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) } function animateBars() { if (!audio.paused && analyser && dataArray) { analyser.getByteFrequencyData(dataArray); bars.forEach((bar, i) => { const dataIndex = Math.floor(i * dataArray.length / bars.length), value = dataArray[dataIndex] / 255, h = 8 + value * 40; bar.style.height = h + 'px'; bar.style.opacity = 0.3 + value * 0.5 }) } else if (!audio.paused) { const t = performance.now() / 200; bars.forEach((bar, i) => { const v = (Math.sin(t + i * 0.5) + 1) / 2, h = 8 + v * 36; bar.style.height = h + 'px'; bar.style.opacity = 0.3 + v * 0.5 }) } rafId = requestAnimationFrame(animateBars) } function updateTranscript() { const t = audio.currentTime; while (currentIndex < transcriptData.length && transcriptData[currentIndex].time <= t + 0.3) { const m = transcriptData[currentIndex]; addMessage(m.role, m.text, m.timestamp); currentIndex++ } } let transcriptLoaded = false; function checkReady() { if (transcriptLoaded) { status.textContent = 'Ready to play'; playBtn.disabled = false } } async function loadAudio() { try { status.textContent = 'Loading audio...'; audio.src = AUDIO_URL; audio.onloadedmetadata = () => { if (transcriptLoaded) { status.textContent = 'Ready to play'; playBtn.disabled = false } }; audio.oncanplay = () => { if (transcriptLoaded && playBtn.disabled) { status.textContent = 'Ready to play'; playBtn.disabled = false } }; audio.onerror = (e) => { status.textContent = 'Error loading audio'; transcript.innerHTML = `<div class="voice-error">Audio format not supported in this browser.</div>` }; audio.load() } catch (err) { status.textContent = 'Error loading audio'; transcript.innerHTML = `<div class="voice-error">Failed to load audio</div>` } } async function loadTranscript() { try { const res = await fetch(TRANSCRIPT_URL); if (!res.ok) throw new Error('Transcript API error'); const text = await res.text(), lines = text.split('\n').filter(l => l.trim()); let speaker = '', time = ''; for (const line of lines) { if (line.includes('SwarX ai')) speaker = 'agent'; else if (line.includes('Customer')) speaker = 'customer'; else if (/^\d{2}:\d{2}/.test(line)) time = line.trim(); else if (line.trim() && speaker && time) { const parsedTime = parseTime(time); transcriptData.push({ role: speaker, text: line.trim(), timestamp: time, time: parsedTime }) } } transcriptData.sort((a, b) => a.time - b.time); transcript.innerHTML = ''; transcriptLoaded = true; checkReady() } catch (err) { status.textContent = 'Error loading transcript'; transcript.innerHTML = `<div class="voice-error">Failed to load transcript</div>` } } playBtn.onclick = () => { if (audio.paused) { audio.play().catch(err => { status.textContent = 'Error playing audio' }) } else { audio.pause() } }; audio.onplay = () => { playLabel.textContent = 'Pause'; playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>'; badge.classList.remove('hidden'); status.textContent = 'Playing...'; if (!audioContext) { try { audioContext = new (window.AudioContext || window.webkitAudioContext)(); analyser = audioContext.createAnalyser(); analyser.fftSize = 64; dataArray = new Uint8Array(analyser.frequencyBinCount); audioSource = audioContext.createMediaElementSource(audio); audioSource.connect(analyser); analyser.connect(audioContext.destination) } catch (e) { } } animateBars() }; audio.onpause = () => { playLabel.textContent = 'Play'; playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>'; badge.classList.add('hidden'); status.textContent = 'Paused' }; audio.onended = () => { playLabel.textContent = 'Play'; playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>'; badge.classList.add('hidden'); status.textContent = 'Completed' }; audio.ontimeupdate = () => { const pct = (audio.currentTime / audio.duration) * 100; progressFill.style.width = pct + '%'; currentTimeEl.textContent = formatTime(audio.currentTime); updateTranscript() }; audio.onloadedmetadata = () => { durationEl.textContent = formatTime(audio.duration); callDurationEl.textContent = formatTime(audio.duration) }; progressBar.onclick = e => { const rect = progressBar.getBoundingClientRect(), pos = (e.clientX - rect.left) / rect.width; audio.currentTime = pos * audio.duration; transcript.innerHTML = ''; currentIndex = 0; for (let i = 0; i < transcriptData.length; i++) { if (transcriptData[i].time <= audio.currentTime) { addMessage(transcriptData[i].role, transcriptData[i].text, transcriptData[i].timestamp); currentIndex = i + 1 } else break } }; loadAudio(); loadTranscript(); animateBars() })();</script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const clips = [
+        { 
+            trans: 'https://backend.muktam.online/webhook/trans1', 
+            audio: 'https://backend.muktam.online/webhook/Audio1', 
+            name: 'Expressive Call', 
+            desc: 'A dynamic, high-energy agent.',
+            sphereGradient: 'radial-gradient(circle at 30% 30%, #34d399, #065f46)',
+            boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.15), 0 20px 40px rgba(52, 211, 153, 0.4)'
+        },
+        { 
+            trans: 'https://backend.muktam.online/webhook/trans2', 
+            audio: 'https://backend.muktam.online/webhook/Audio2', 
+            name: 'Sales Agent', 
+            desc: 'A confident, assertive persona for sales.',
+            sphereGradient: 'radial-gradient(circle at 30% 30%, #60a5fa, #1e3a8a)',
+            boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.15), 0 20px 40px rgba(96, 165, 250, 0.4)'
+        },
+        { 
+            trans: 'https://backend.muktam.online/webhook/trans3', 
+            audio: 'https://backend.muktam.online/webhook/Audio3', 
+            name: 'Support Agent', 
+            desc: 'A calm, resolving character for support.',
+            sphereGradient: 'radial-gradient(circle at 30% 30%, #f472b6, #831843)',
+            boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.15), 0 20px 40px rgba(244, 114, 182, 0.4)'
+        }
+    ];
+
+    const container = document.getElementById('m3CardsContainer');
+
+    function parseTranscript(text) {
+        const blocks = text.trim().split(/\n\s*\n/);
+        const parsed = [];
+        for (let block of blocks) {
+            const lines = block.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            if (lines.length >= 2) {
+                const timeStr = lines[0].match(/\[(\d{2}):(\d{2})\s*-/i);
+                let blockStartTime = 0;
+                if (timeStr) {
+                    blockStartTime = parseInt(timeStr[1]) * 60 + parseInt(timeStr[2]);
+                }
+
+                const timeMatch = lines[0].match(/\[(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})\]\s*(.*?):/i);
+                if (!timeMatch) continue;
+                let speaker = timeMatch[3].trim();
+                speaker = speaker.includes("1") ? "Mukt Agent" : (speaker.includes("2") ? "Customer" : "Mukt Agent");
+                
+                const sentence = lines[1];
+                let words = [];
+                
+                const wordLine = lines.find(l => l.startsWith('Word-level:'));
+                if (wordLine) {
+                    const wordLevelStr = wordLine.replace('Word-level:', '').trim();
+                    const wordRegex = /([^\s()]+(?:\s+[^\s()]+)*?)\s*\(([\d.]+)s\)/g;
+                    let match;
+                    while ((match = wordRegex.exec(wordLevelStr)) !== null) {
+                        words.push({ text: match[1], time: parseFloat(match[2]) });
+                    }
+                } else {
+                     sentence.split(' ').forEach((w, i) => {
+                         words.push({ text: w, time: blockStartTime + (i+1) * 0.3 });
+                     });
+                }
+                parsed.push({ speaker, sentence, words, blockStartTime });
+            }
+        }
+        return parsed;
+    }
+
+    // Default Fallback
+    const exampleText = `
+[00:00 - 00:03] Speaker 1:
+ओके, अब बस मुझे कुछ डिटेल्स फिल अप करवा दीजिए।
+Word-level: ओके, (0.2s) अब (1.0s) बस (1.3s) मुझे (1.5s) कुछ (1.8s) डिटेल्स (2.1s) फिल (2.5s) अप (2.7s) करवा (2.9s) दीजिए। (3.1s)
+
+[00:04 - 00:06] Speaker 1:
+Um पहले तो आपका पूरा नाम क्या है?
+Word-level: Um (4.2s) पहले (4.9s) तो (5.2s) आपका (5.5s) पूरा (5.8s) नाम (6.0s) क्या (6.2s) है? (6.4s)
+
+[00:07 - 00:09] Speaker 2:
+जी अभिनव नाम है मेरा।
+Word-level: जी (7.8s) अभिनव (8.7s) नाम (9.0s) है (9.2s) मेरा। (9.3s)
+`;
+
+    if (!container) return;
+
+    clips.forEach((clip, index) => {
+        const cardNode = document.createElement('div');
+        cardNode.className = 'm3-card';
+        cardNode.innerHTML = `
+            <div class="m3-card-bg"></div>
+            <div class="m3-card-content">
+                <div class="mb-8 text-center">
+                    <h3 class="text-xl font-semibold font-sans">` + clip.name + `</h3>
+                    <p class="text-sm text-slate-500 mt-1">` + clip.desc + `</p>
+                </div>
+                <div class="m3-sphere" style="background: ` + clip.sphereGradient + `; box-shadow: ` + clip.boxShadow + `;"></div>
+                <div class="m3-transcript-box" id="ts-box-` + index + `">
+                     <div class="flex items-center justify-center h-full opacity-50 text-sm">Loading ...</div>
+                </div>
+                <button class="m3-play-btn" id="play-btn-` + index + `">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Play Audio
+                </button>
+                <audio id="audio-` + index + `" src="` + clip.audio + `" crossorigin="anonymous" preload="none"></audio>
+            </div>
+        `;
+        container.appendChild(cardNode);
+
+        const btn = cardNode.querySelector(`#play-btn-${index}`);
+        const audio = cardNode.querySelector(`#audio-${index}`);
+        const tsBox = cardNode.querySelector(`#ts-box-${index}`);
+        const sphere = cardNode.querySelector('.m3-sphere');
+        let transcriptData = [];
+        let rAF;
+
+        fetch(clip.trans)
+            .then(res => res.ok ? res.text() : Promise.reject('request failed'))
+            .then(text => {
+                transcriptData = parseTranscript(text);
+                renderTranscript(transcriptData, tsBox, index);
+            })
+            .catch(err => {
+                console.warn('Backend transcript fetch failed, rendering fallback text');
+                transcriptData = parseTranscript(exampleText);
+                renderTranscript(transcriptData, tsBox, index);
+            });
+
+        function renderTranscript(data, containerEl, idx) {
+            containerEl.innerHTML = '';
+            data.forEach((block, bIdx) => {
+                const spkDiv = document.createElement('div');
+                spkDiv.className = 'm3-speaker ' + (block.speaker === 'Customer' ? 'customer' : 'agent');
+                spkDiv.textContent = block.speaker;
+                containerEl.appendChild(spkDiv);
+                
+                const senDiv = document.createElement('div');
+                block.words.forEach((w, wIdx) => {
+                    const wSpan = document.createElement('span');
+                    wSpan.className = 'm3-word';
+                    wSpan.textContent = w.text;
+                    wSpan.id = `w-${idx}-${bIdx}-${wIdx}`;
+                    wSpan.dataset.time = w.time;
+                    senDiv.appendChild(wSpan);
+                });
+                containerEl.appendChild(senDiv);
+            });
+        }
+
+        function updateHighlights() {
+            if (audio.paused) return;
+            const t = audio.currentTime;
+            let activeWordSpan = null;
+            
+            transcriptData.forEach((block, bIdx) => {
+                let blockStartTime = block.blockStartTime;
+                block.words.forEach((w, wIdx) => {
+                    const span = document.getElementById(`w-${idx}-${bIdx}-${wIdx}`);
+                    if (!span) return;
+                    
+                    const prevTime = wIdx === 0 ? blockStartTime : block.words[wIdx - 1].time;
+                    const nextTime = w.time;
+                    
+                    if (t >= prevTime && t < nextTime) {
+                        span.classList.add('highlight');
+                        activeWordSpan = span;
+                        span.style.transform = 'scale(1.05)';
+                    } else if (t >= nextTime) {
+                        span.classList.remove('highlight');
+                        span.style.opacity = '0.4';
+                        span.style.transform = 'none';
+                    } else {
+                        span.classList.remove('highlight');
+                        span.style.opacity = '1';
+                        span.style.transform = 'none';
+                    }
+                });
+            });
+            
+            if (activeWordSpan) {
+                tsBox.scrollTop = activeWordSpan.offsetTop - tsBox.offsetTop - 60;
+            }
+            rAF = requestAnimationFrame(updateHighlights);
+        }
+
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('audio').forEach(a => {
+                if (a !== audio) {
+                    a.pause();
+                    a.currentTime = 0;
+                }
+            });
+            document.querySelectorAll('.m3-play-btn').forEach(b => {
+                if (b !== btn) {
+                    b.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Play Audio';
+                }
+            });
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg> Pause';
+                    sphere.style.animationDuration = '1.5s'; 
+                    updateHighlights();
+                }).catch(e => {
+                    console.error('Audio play failed', e);
+                });
+            } else {
+                audio.pause();
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Play Audio';
+                sphere.style.animationDuration = '4s';
+                cancelAnimationFrame(rAF);
+            }
+        });
+
+        audio.addEventListener('ended', () => {
+            btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Play Audio';
+            sphere.style.animationDuration = '4s';
+            cancelAnimationFrame(rAF);
+            tsBox.querySelectorAll('.m3-word').forEach(span => {
+                span.classList.remove('highlight');
+                span.style.opacity = '1';
+                span.style.transform = 'none';
+            });
+            tsBox.scrollTop = 0;
+        });
+    });
+});
+</script>
+
 
 
 
