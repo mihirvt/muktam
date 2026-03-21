@@ -316,28 +316,25 @@
         
         
         #sota-models {
-            background-color: #fafafa;
-            background-image: radial-gradient(at 0% 0%, rgba(255, 237, 213, 0.3) 0px, transparent 50%),
-                              radial-gradient(at 100% 100%, rgba(252, 211, 77, 0.15) 0px, transparent 50%);
+            background: transparent !important;
         }
 
         .m3-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.02),
-                        inset 0 0 0 1px rgba(255,255,255,0.4);
+            background: rgba(255, 255, 255, 0.05); /* even more transparent to show wallpaper */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05),
+                        inset 0 0 0 1px rgba(255,255,255,0.1);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             overflow: hidden;
             position: relative;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
         }
         .m3-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0,0,0,0.08);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
-            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.12);
         }
         
         .m3-card-content {
@@ -394,7 +391,9 @@
             color: #1e293b;
             scroll-behavior: smooth;
             padding-right: 12px;
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+            padding-bottom: 220px; /* massive padding to ensure last sentence floats to the middle-top on scroll */
         }
         .m3-transcript-box::-webkit-scrollbar { width: 4px; }
         .m3-transcript-box::-webkit-scrollbar-track { background: transparent; }
@@ -2682,7 +2681,7 @@
                                 </svg>
                                 <span>Listen to Call</span>
                             </button>
-                            <audio id="audio-${index}" src="${clip.audio}" preload="none" crossorigin="anonymous"></audio>
+                            <audio id="audio-${index}" src="${clip.audio}" preload="auto" crossorigin="anonymous"></audio>
                         </div>
                     `;
                     container.appendChild(cardNode);
