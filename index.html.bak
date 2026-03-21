@@ -315,35 +315,25 @@
 
         
         
-        #sota-models {
-            background-color: #fafafa;
-            background-image: radial-gradient(at 0% 0%, rgba(255, 237, 213, 0.3) 0px, transparent 50%),
-                              radial-gradient(at 100% 100%, rgba(252, 211, 77, 0.15) 0px, transparent 50%);
-        }
-
         .m3-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.02),
-                        inset 0 0 0 1px rgba(255,255,255,0.4);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .m3-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0,0,0,0.08);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
-            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.07);
         }
         
         .m3-card-content {
             position: relative;
             z-index: 1;
-            padding: 32px;
+            padding: 32px 28px;
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -352,107 +342,100 @@
         .m3-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 5px 12px;
-            background: rgba(0,0,0,0.03);
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.05);
             border-radius: 100px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #64748b;
-            letter-spacing: 0.8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             margin-bottom: 24px;
             width: fit-content;
         }
         
         div.m3-status-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background-color: #cbd5e1;
-            transition: all 0.3s;
+            background-color: #94a3b8;
+            transition: background-color 0.3s;
         }
         div.m3-status-dot.playing {
-            background-color: #f59e0b;
-            box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
-            animation: m3-pulse 2s infinite;
+            background-color: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+            animation: m3-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         @keyframes m3-pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
         }
 
         .m3-transcript-box {
             flex-grow: 1;
-            height: 260px;
+            height: 240px;
             overflow-y: auto;
             margin-bottom: 32px;
             font-size: 15px;
-            line-height: 1.8;
-            color: #1e293b;
+            line-height: 1.7;
+            color: #000;
             scroll-behavior: smooth;
             padding-right: 12px;
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            padding-bottom: 120px; /* added depth */
+            
         }
-        .m3-transcript-box::-webkit-scrollbar { width: 4px; }
+        .m3-transcript-box::-webkit-scrollbar { width: 3px; }
         .m3-transcript-box::-webkit-scrollbar-track { background: transparent; }
-        .m3-transcript-box::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 10px; }
+        .m3-transcript-box::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
         
         .m3-word {
-            transition: all 0.2s ease;
+            transition: color 0.1s, opacity 0.2s;
             display: inline-block;
-            margin-right: 2px;
-            border-radius: 4px;
-            padding: 0 2px;
+            margin-right: 4px;
         }
         .m3-word.highlight {
             color: #000;
-            background: rgba(251, 191, 36, 0.15);
             font-weight: 500;
-            transform: scale(1.05);
         }
         .m3-speaker {
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 10px;
-            margin-top: 24px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #64748b;
+            margin-top: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            opacity: 0.8;
+            gap: 6px;
         }
         .m3-speaker:first-child { margin-top: 0; }
-        .m3-speaker.agent { color: #f59e0b; }
-        .m3-speaker.customer { color: #64748b; }
+        .m3-speaker.agent { color: #0f172a; }
+        .m3-speaker.customer { color: #475569; }
         
         .m3-play-btn {
-            background: #111;
-            color: #fff;
-            border: none;
-            padding: 16px 24px;
-            border-radius: 14px;
-            font-weight: 600;
+            background: #fff;
+            color: #0f172a;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 500;
             font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 10px;
+            transition: all 0.2s ease;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .m3-play-btn:hover {
-            background: #000;
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .m3-play-btn:active {
-            transform: scale(0.98);
+            background: #f8fafc;
+            border-color: rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 </style>
 
@@ -2594,223 +2577,9 @@
                                 }
                             }
                         });
-                });
-
-            // M3 Audio Showcase Logic
-            const clips = [
-                { 
-                    trans: 'https://backend.muktam.online/webhook/trans1', 
-                    audio: 'https://backend.muktam.online/webhook/Audio1', 
-                    name: 'Expressive Voice', 
-                    desc: 'High energy outbound with personality'
-                },
-                { 
-                    trans: 'https://backend.muktam.online/webhook/trans2', 
-                    audio: 'https://backend.muktam.online/webhook/Audio2', 
-                    name: 'Sales Persona', 
-                    desc: 'Assertive, confident and persuasive'
-                },
-                { 
-                    trans: 'https://backend.muktam.online/webhook/trans3', 
-                    audio: 'https://backend.muktam.online/webhook/Audio3', 
-                    name: 'Support Agent', 
-                    desc: 'Calm, empathetic and collected'
-                }
-            ];
-
-            const container = document.getElementById('m3CardsContainer');
-            if (container) {
-                function parseTranscript(text) {
-                    const blocks = text.trim().split(/\n\s*\n/);
-                    const parsed = [];
-                    for (let block of blocks) {
-                        const lines = block.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-                        if (lines.length >= 2) {
-                            const timeStr = lines[0].match(/\[(\d{2}):(\d{2})\s*-/i);
-                            let blockStartTime = 0;
-                            if (timeStr) {
-                                blockStartTime = parseInt(timeStr[1]) * 60 + parseInt(timeStr[2]);
-                            }
-
-                            const timeMatch = lines[0].match(/\[(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})\]\s*(.*?):/i);
-                            if (!timeMatch) continue;
-                            let speaker = timeMatch[3].trim();
-                            speaker = speaker.includes("1") ? "Mukt Agent" : (speaker.includes("2") ? "Customer" : "Mukt Agent");
-                            
-                            const sentence = lines[1];
-                            let words = [];
-                            
-                            const wordLine = lines.find(l => l.startsWith('Word-level:'));
-                            if (wordLine) {
-                                const wordLevelStr = wordLine.replace('Word-level:', '').trim();
-                                const wordRegex = /([^\s()]+(?:\s+[^\s()]+)*?)\s*\(([\d.]+)s\)/g;
-                                let match;
-                                while ((match = wordRegex.exec(wordLevelStr)) !== null) {
-                                    words.push({ text: match[1], time: parseFloat(match[2]) });
-                                }
-                            } else {
-                                sentence.split(' ').forEach((w, i) => {
-                                    words.push({ text: w, time: blockStartTime + (i+1) * 0.3 });
-                                });
-                            }
-                            parsed.push({ speaker, sentence, words, blockStartTime });
-                        }
-                    }
-                    return parsed;
-                }
-
-                clips.forEach((clip, index) => {
-                    const cardNode = document.createElement('div');
-                    cardNode.className = 'm3-card';
-                    cardNode.innerHTML = `
-                        <div class="m3-card-content">
-                            <div class="m3-badge">
-                                <div class="m3-status-dot" id="dot-${index}"></div>
-                                M3 Model
-                            </div>
-                            <div class="mb-6">
-                                <h3 class="text-2xl font-semibold font-instrument-serif text-slate-900">${clip.name}</h3>
-                                <p class="text-sm text-slate-500 mt-1">${clip.desc}</p>
-                            </div>
-                            
-                            <div class="m3-transcript-box font-sans" id="ts-box-${index}">
-                                <div class="flex items-center justify-center h-full text-slate-400 text-sm italic">Initializing transcript...</div>
-                            </div>
-                            <button class="m3-play-btn font-sans" id="play-btn-${index}">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
-                                    <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
-                                </svg>
-                                <span>Listen to Call</span>
-                            </button>
-                            <audio id="audio-${index}" src="${clip.audio}" preload="none" crossorigin="anonymous"></audio>
-                        </div>
-                    `;
-                    container.appendChild(cardNode);
-
-                    const btn = cardNode.querySelector(`#play-btn-${index}`);
-                    const audio = cardNode.querySelector(`#audio-${index}`);
-                    const tsBox = cardNode.querySelector(`#ts-box-${index}`);
-                    const dot = cardNode.querySelector(`#dot-${index}`);
-                    
-                    let transcriptData = [];
-                    let rAF;
-
-                    // Fetch transcript
-                    fetch(clip.trans)
-                        .then(res => res.ok ? res.text() : Promise.reject(res.status))
-                        .then(text => {
-                            transcriptData = parseTranscript(text);
-                            renderTranscript(transcriptData, tsBox, index);
-                        })
-                        .catch(err => {
-                            console.error('Failed to load transcript:', err);
-                            tsBox.innerHTML = '<div class="flex h-full items-center justify-center text-red-500 text-sm text-center px-4 font-medium">Failed to fetch transcript. Check CORS settings on n8n.</div>';
-                        });
-
-                    function renderTranscript(data, containerEl, idx) {
-                        containerEl.innerHTML = '';
-                        data.forEach((block, bIdx) => {
-                            const spkDiv = document.createElement('div');
-                            spkDiv.className = 'm3-speaker ' + (block.speaker === 'Customer' ? 'customer' : 'agent');
-                            spkDiv.innerHTML = block.speaker === 'Mukt Agent' ? 
-                                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Mukt Agent' :
-                                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Customer';
-                            containerEl.appendChild(spkDiv);
-                            
-                            const senDiv = document.createElement('div');
-                            block.words.forEach((w, wIdx) => {
-                                const wSpan = document.createElement('span');
-                                wSpan.className = 'm3-word';
-                                wSpan.style.opacity = '0.35';
-                                wSpan.textContent = w.text;
-                                wSpan.id = `w-${idx}-${bIdx}-${wIdx}`;
-                                wSpan.dataset.time = w.time;
-                                senDiv.appendChild(wSpan);
-                            });
-                            containerEl.appendChild(senDiv);
-                        });
-                    }
-
-                    function updateHighlights() {
-                        if (audio.paused) return;
-                        const t = audio.currentTime;
-                        let activeWordSpan = null;
-                        
-                        transcriptData.forEach((block, bIdx) => {
-                            let blockStartTime = block.blockStartTime;
-                            block.words.forEach((w, wIdx) => {
-                                const span = document.getElementById(`w-${index}-${bIdx}-${wIdx}`);
-                                if (!span) return;
-                                
-                                const prevTime = wIdx === 0 ? blockStartTime : block.words[wIdx - 1].time;
-                                const nextTime = w.time;
-                                
-                                if (t >= prevTime && t < nextTime) {
-                                    span.classList.add('highlight');
-                                    span.style.opacity = '1';
-                                    activeWordSpan = span;
-                                } else if (t >= nextTime) {
-                                    span.classList.remove('highlight');
-                                    span.style.opacity = '0.5';
-                                } else {
-                                    span.classList.remove('highlight');
-                                    span.style.opacity = '0.35';
-                                }
-                            });
-                        });
-                        
-                        if (activeWordSpan) {
-                            tsBox.scrollTop = activeWordSpan.offsetTop - tsBox.offsetTop - 80;
-                        }
-                        rAF = requestAnimationFrame(updateHighlights);
-                    }
-
-                    btn.addEventListener('click', () => {
-                        document.querySelectorAll('audio').forEach(a => {
-                            if (a !== audio) {
-                                a.pause();
-                                a.currentTime = 0;
-                            }
-                        });
-                        document.querySelectorAll('.m3-play-btn').forEach(b => {
-                            if (b !== btn) {
-                                b.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg><span>Listen to Call</span>';
-                            }
-                        });
-                        document.querySelectorAll('.m3-status-dot').forEach(d => {
-                            d.classList.remove('playing');
-                        });
-
-                        if (audio.paused) {
-                            audio.play().then(() => {
-                                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16" fill="currentColor"></rect><rect x="14" y="4" width="4" height="16" fill="currentColor"></rect></svg><span>Pause Call</span>';
-                                dot.classList.add('playing');
-                                updateHighlights();
-                            }).catch(err => {
-                                console.error('Audio play failed', err);
-                            });
-                        } else {
-                            audio.pause();
-                            btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg><span>Listen to Call</span>';
-                            dot.classList.remove('playing');
-                            cancelAnimationFrame(rAF);
-                        }
-                    });
-
-                    audio.addEventListener('ended', () => {
-                        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg><span>Listen to Call</span>';
-                        dot.classList.remove('playing');
-                        cancelAnimationFrame(rAF);
-                        tsBox.querySelectorAll('.m3-word').forEach(span => {
-                            span.classList.remove('highlight');
-                            span.style.opacity = '0.35';
-                        });
-                        tsBox.scrollTop = 0;
                     });
                 });
-            }
-        });
-    </script>
+            </script>
 
 
 
