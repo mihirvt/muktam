@@ -849,7 +849,7 @@
                             <path d="M22 4h-4"></path>
                             <circle cx="4" cy="20" r="2"></circle>
                         </svg>
-                        <span>Muktam AI is now GUSEC-incubated startup</span>
+                        <span>New Launch: M4 model just went live</span>
                     </div>
                     <h1
                         class="leading-[1.05] sm:text-5xl md:text-6xl lg:text-6xl text-5xl font-semibold text-slate-950 tracking-tighter font-instrument-serif">
@@ -2101,7 +2101,8 @@
                     <div class="group relative">
                         <div class="absolute -inset-1 rounded-[1.2rem] bg-gradient-to-r from-slate-200 to-slate-100 opacity-50 blur-sm group-hover:opacity-100 transition duration-500"></div>
                         <div class="relative flex items-center p-1.5 bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200 shadow-sm">
-                            <button onclick="updatePricingModel('m2')" id="btn-m2-new" class="px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 bg-slate-950 text-white shadow-lg">M2 Flagship</button>
+                            <button onclick="updatePricingModel('m4')" id="btn-m4-new" class="px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 bg-slate-950 text-white shadow-lg">M4 Nuance</button>
+                            <button onclick="updatePricingModel('m2')" id="btn-m2-new" class="px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-900">M2 Flagship</button>
                             <button onclick="updatePricingModel('m3')" id="btn-m3-new" class="px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-900">M3 Expressive</button>
                         </div>
                     </div>
@@ -2441,10 +2442,16 @@
 
     <!-- New Pricing Logic -->
     <script>
-        let curModel = 'm2';
+        let curModel = 'm4';
         let curCurrency = 'inr';
 
         const pData = {
+            m4: {
+                exp: { inr: '₹846', usd: '$9', r_inr: '7', r_usd: '$0.075' },
+                c99: { inr: '₹9,306', usd: '$99', r_inr: '5', r_usd: '$0.054' },
+                c600: { inr: '₹56,400', usd: '$600', r_inr: '4.2', r_usd: '$0.045' },
+                c1200: { inr: '₹1,12,800', usd: '$1,200', r_inr: '3.79', r_usd: '$0.041' }
+            },
             m2: {
                 exp: { inr: '₹846', usd: '$9', r_inr: '5', r_usd: '$0.053' },
                 c99: { inr: '₹9,306', usd: '$99', r_inr: '3.5', r_usd: '$0.037' },
@@ -2490,11 +2497,13 @@
 
         function updatePricingModel(model) {
             curModel = model;
+            const btnM4 = document.getElementById('btn-m4-new');
             const btnM2 = document.getElementById('btn-m2-new');
             const btnM3 = document.getElementById('btn-m3-new');
             const active = 'px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 bg-slate-950 text-white shadow-lg';
             const inactive = 'px-8 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 text-slate-500 hover:text-slate-900';
             
+            if(btnM4) btnM4.className = model === 'm4' ? active : inactive;
             if(btnM2) btnM2.className = model === 'm2' ? active : inactive;
             if(btnM3) btnM3.className = model === 'm3' ? active : inactive;
             updatePricingUI();
