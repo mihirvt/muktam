@@ -449,12 +449,6 @@
           }
         };
 
-        const response = await fetch('/api/submit-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
         // Fire and forget to Supabase Edge Function for LinkedIn Conversions
         fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
           method: 'POST',
@@ -465,34 +459,40 @@
           body: JSON.stringify(payload)
         }).catch(err => console.error('LinkedIn Conversion API error:', err));
 
-        if (response.ok) {
-          if (typeof fbq === 'function') {
-            let fn = firstName;
-            let ln = lastName;
-            let ph = normalizedPhone;
-            let em = normalizedEmail;
+        if (typeof fbq === 'function') {
+          let fn = firstName;
+          let ln = lastName;
+          let ph = normalizedPhone;
+          let em = normalizedEmail;
 
-            let fbInitData = {
-              em: em,
-              ph: ph,
-              fn: fn,
-              ln: ln,
-              external_id: ph || em,
-              client_user_agent: navigator.userAgent
-            };
-            let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
-            if (fbp) fbInitData.fbp = fbp;
-            let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
-            if (!fbc) {
-              let fbclid = new URLSearchParams(window.location.search).get('fbclid');
-              if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
-            }
-            if (fbc) fbInitData.fbc = fbc;
-
-            fbq('init', '747197838381810', fbInitData);
-            fbq('track', 'Lead');
+          let fbInitData = {
+            em: em,
+            ph: ph,
+            fn: fn,
+            ln: ln,
+            external_id: ph || em,
+            client_user_agent: navigator.userAgent
+          };
+          let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+          if (fbp) fbInitData.fbp = fbp;
+          let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+          if (!fbc) {
+            let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+            if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
           }
+          if (fbc) fbInitData.fbc = fbc;
 
+          fbq('init', '747197838381810', fbInitData);
+          fbq('track', 'Lead');
+        }
+
+        const response = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
           msg.textContent = 'Thank you! We will be in touch shortly.';
           msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
           e.target.reset();

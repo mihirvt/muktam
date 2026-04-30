@@ -3317,6 +3317,62 @@
                     }
                 };
 
+                // Collect Facebook Click/Pixel Data
+                let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+                let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+                if (!fbc) {
+                    let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+                    if (fbclid) fbc = 'fb.1.' + submittedAtMs + '.' + fbclid;
+                }
+
+                const userData = {
+                    em: normalizedEmail,
+                    ph: normalizedPhone,
+                    fn: firstName,
+                    ln: lastName,
+                    external_id: externalId,
+                    client_user_agent: navigator.userAgent,
+                    fbp: fbp,
+                    fbc: fbc
+                };
+
+                // Send to Facebook CAPI (Server-side)
+                fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-capi', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
+                    },
+                    body: JSON.stringify({
+                        event_name: 'Lead',
+                        event_time: Math.floor(submittedAtMs / 1000),
+                        event_id: eventId,
+                        user_data: userData,
+                        custom_data: {
+                            company: data.company || '',
+                            website: normalizedWebsite,
+                            category: data.category || '',
+                            volume: data.volume || '',
+                            page_url: window.location.href
+                        }
+                    })
+                }).catch(err => console.error('CAPI Error:', err));
+
+                if (typeof fbq === 'function') {
+                    fbq('init', '747197838381810', userData);
+                    fbq('track', 'Lead', {}, { eventID: eventId });
+                }
+
+                // Send to LinkedIn Conversions Edge Function
+                fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
+                    },
+                    body: JSON.stringify(payload)
+                }).catch(err => console.error('LinkedIn CAPI Error:', err));
+
                 const response = await fetch('/api/submit-lead', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -3324,63 +3380,6 @@
                 });
 
                 if (response.ok) {
-                    // Collect Facebook Click/Pixel Data
-                    let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
-                    let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
-                    if (!fbc) {
-                        let fbclid = new URLSearchParams(window.location.search).get('fbclid');
-                        if (fbclid) fbc = 'fb.1.' + submittedAtMs + '.' + fbclid;
-                    }
-
-                    const userData = {
-                        em: normalizedEmail,
-                        ph: normalizedPhone,
-                        fn: firstName,
-                        ln: lastName,
-                        external_id: externalId,
-                        client_user_agent: navigator.userAgent,
-                        fbp: fbp,
-                        fbc: fbc
-                    };
-
-                    // Send to Facebook CAPI (Server-side)
-                    fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-capi', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
-                        },
-                        body: JSON.stringify({
-                            event_name: 'Lead',
-                            event_time: Math.floor(submittedAtMs / 1000),
-                            event_id: eventId,
-                            user_data: userData,
-                            custom_data: {
-                                company: data.company || '',
-                                website: normalizedWebsite,
-                                category: data.category || '',
-                                volume: data.volume || '',
-                                page_url: window.location.href
-                            }
-                        })
-                    }).catch(err => console.error('CAPI Error:', err));
-
-                    if (typeof fbq === 'function') {
-                        fbq('init', '747197838381810', userData);
-                        fbq('track', 'Lead', {}, { eventID: eventId });
-                    }
-
-                    // Send to LinkedIn Conversions Edge Function
-                    fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
-                        },
-                        body: JSON.stringify(payload)
-                    }).catch(err => console.error('LinkedIn CAPI Error:', err));
-
-
                     msg.textContent = 'Thank you! We will be in touch shortly.';
                     msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
                     e.target.reset();
