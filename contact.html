@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Muktaṁ AI</title>
   <meta name="description" content="Contact Muktaṁ AI for demos, integrations, and enterprise support.">
+  <!-- Meta Pixel Code -->
+  <script>
+      !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return; n = f.fbq = function () {
+              n.callMethod ?
+                  n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+          n.queue = []; t = b.createElement(e); t.async = !0;
+          t.src = v; s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '747197838381810');
+      fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=747197838381810&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -402,6 +421,15 @@
 
       try {
         const emailSha256 = await sha256Hex(normalizedEmail);
+
+        // Get Facebook cookies for CAPI
+        let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
+        let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
+        if (!fbc) {
+            let fbclid = new URLSearchParams(window.location.search).get('fbclid');
+            if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+        }
+
         const payload = {
           ...data,
           email: normalizedEmail,
@@ -446,6 +474,21 @@
               company_category: data.category || '',
               website: normalizedWebsite
             }
+          },
+          facebook: {
+              event_id: eventId,
+              conversion_happened_at: submittedAtMs,
+              page_url: window.location.href,
+              external_id: externalId,
+              fbp: fbp,
+              fbc: fbc,
+              client_user_agent: navigator.userAgent,
+              user: {
+                  email: normalizedEmail,
+                  phone: normalizedPhone,
+                  first_name: firstName,
+                  last_name: lastName
+              }
           }
         };
 
@@ -460,31 +503,30 @@
         }).catch(err => console.error('LinkedIn Conversion API error:', err));
 
         if (typeof fbq === 'function') {
-          let fn = firstName;
-          let ln = lastName;
-          let ph = normalizedPhone;
-          let em = normalizedEmail;
-
           let fbInitData = {
-            em: em,
-            ph: ph,
-            fn: fn,
-            ln: ln,
-            external_id: ph || em,
-            client_user_agent: navigator.userAgent
+            em: normalizedEmail,
+            ph: normalizedPhone,
+            fn: firstName,
+            ln: lastName,
+            external_id: externalId,
+            client_user_agent: navigator.userAgent,
+            fbp: fbp,
+            fbc: fbc
           };
-          let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
-          if (fbp) fbInitData.fbp = fbp;
-          let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
-          if (!fbc) {
-            let fbclid = new URLSearchParams(window.location.search).get('fbclid');
-            if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
-          }
-          if (fbc) fbInitData.fbc = fbc;
 
           fbq('init', '747197838381810', fbInitData);
-          fbq('track', 'Lead');
+          fbq('track', 'Lead', {}, { eventID: eventId });
         }
+
+        // Send to Facebook CAPI (Server-side)
+        fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/facebook-capi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
+            },
+            body: JSON.stringify(payload)
+        }).catch(err => console.error('CAPI Error:', err));
 
         const response = await fetch('/api/submit-lead', {
           method: 'POST',

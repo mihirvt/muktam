@@ -3343,19 +3343,7 @@
                         'Content-Type': 'application/json',
                         'apikey': 'sb_publishable_4fF4ZZE_ezPB9qNoEXMq2A_Y2ePp51U'
                     },
-                    body: JSON.stringify({
-                        event_name: 'Lead',
-                        event_time: Math.floor(submittedAtMs / 1000),
-                        event_id: eventId,
-                        user_data: userData,
-                        custom_data: {
-                            company: data.company || '',
-                            website: normalizedWebsite,
-                            category: data.category || '',
-                            volume: data.volume || '',
-                            page_url: window.location.href
-                        }
-                    })
+                    body: JSON.stringify(payload)
                 }).catch(err => console.error('CAPI Error:', err));
 
                 if (typeof fbq === 'function') {
