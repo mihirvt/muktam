@@ -3317,14 +3317,6 @@
                     }
                 };
 
-                // Collect Facebook Click/Pixel Data
-                let fbp = document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1];
-                let fbc = document.cookie.split('; ').find(row => row.startsWith('_fbc='))?.split('=')[1];
-                if (!fbc) {
-                    let fbclid = new URLSearchParams(window.location.search).get('fbclid');
-                    if (fbclid) fbc = 'fb.1.' + submittedAtMs + '.' + fbclid;
-                }
-
                 const userData = {
                     em: normalizedEmail,
                     ph: normalizedPhone,
