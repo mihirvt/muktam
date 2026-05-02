@@ -3320,6 +3320,15 @@
                             first_name: firstName,
                             last_name: lastName
                         }
+                    },
+                    reddit: {
+                        conversion_happened_at: submittedAtMs,
+                        event_id: eventId,
+                        external_id: externalId,
+                        user: {
+                            email: normalizedEmail,
+                            phone: normalizedPhone
+                        }
                     }
                 };
 
@@ -3355,7 +3364,9 @@
                         phoneNumber: normalizedPhone,
                         externalId: externalId
                     });
-                    rdt('track', 'Lead');
+                    rdt('track', 'Lead', {
+                        conversionId: eventId
+                    });
                 }
 
                 // Send to LinkedIn Conversions Edge Function
@@ -3367,6 +3378,15 @@
                     },
                     body: JSON.stringify(payload)
                 }).catch(err => console.error('LinkedIn CAPI Error:', err));
+
+                // Send to Reddit Conversions API (Cloudflare Function)
+                fetch('/api/reddit-conversions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }).catch(err => console.error('Reddit CAPI Error:', err));
 
                 const response = await fetch('/api/submit-lead', {
                     method: 'POST',
