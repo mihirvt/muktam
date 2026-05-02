@@ -22,6 +22,11 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=747197838381810&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+    <!-- Reddit Pixel -->
+    <script>
+    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_ixvl5g5kxanc",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_ixvl5g5kxanc');rdt('track', 'PageVisit');
+    </script>
+    <!-- End Reddit Pixel -->
     <link id="all-fonts-link-font-geist" rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap">
     <style id="all-fonts-style-font-geist">
@@ -3341,6 +3346,15 @@
                 if (typeof fbq === 'function') {
                     fbq('init', '747197838381810', userData);
                     fbq('track', 'Lead', {}, { eventID: eventId });
+                }
+
+                if (typeof rdt === 'function') {
+                    rdt('init', 'a2_ixvl5g5kxanc', {
+                        email: normalizedEmail,
+                        phoneNumber: normalizedPhone,
+                        externalId: externalId
+                    });
+                    rdt('track', 'Lead');
                 }
 
                 // Send to LinkedIn Conversions Edge Function
