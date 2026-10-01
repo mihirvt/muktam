@@ -1452,7 +1452,7 @@
     <style>
         .pricing-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 320px;
+            min-width: 0;
         }
         .pricing-card:hover {
             transform: translateY(-8px);
@@ -1504,9 +1504,9 @@
                 <p class="text-orange-600 font-semibold max-w-2xl text-lg">No Pulse Charges. No Ringing Minute Charges.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+            <div class="flex sm:grid sm:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto items-stretch overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-4 sm:pb-0">
                 <!-- Card 1: Pay as you go -->
-                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative">
+                <div class="pricing-card flex flex-col p-8 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:border-slate-300 transition-all duration-500 group relative w-[80%] max-w-[320px] flex-shrink-0 snap-center sm:w-auto sm:max-w-none">
                     <div class="mb-6">
                         <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
                             <span class="w-2 h-2 rounded-full bg-slate-200"></span>
@@ -1563,7 +1563,7 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-950 flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-3 h-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             Unlimited Voice Agents
                         </li>
@@ -1585,7 +1585,7 @@
                 </div>
 
                 <!-- Card 2: Unlimited Calling -->
-                <div class="pricing-card flex flex-col p-8 bg-slate-950 border border-slate-800 rounded-[2.5rem] shadow-2xl transition-all duration-500 group relative overflow-hidden">
+                <div class="pricing-card flex flex-col p-8 bg-slate-950 border border-slate-800 rounded-[2.5rem] shadow-2xl transition-all duration-500 group relative overflow-hidden w-[80%] max-w-[320px] flex-shrink-0 snap-center sm:w-auto sm:max-w-none">
                     <div class="absolute top-0 right-0 w-40 h-40 bg-amber-500/10 blur-[70px] rounded-full"></div>
                     <div class="mb-6 relative z-10">
                         <div class="flex items-center justify-between gap-3 mb-4 flex-wrap">
@@ -1670,7 +1670,7 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="flex-shrink-0 w-5 h-5 rounded-full bg-white flex items-center justify-center">
-                                <svg class="w-3 h-3 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-3 h-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             Unlimited Voice Agents
                         </li>
