@@ -2011,6 +2011,12 @@
                             </div>
                             + ₹3,500 for each dedicated parallel line
                         </li>
+                        <li class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center">
+                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            No extra 18% GST
+                        </li>
                     </ul>
 
                     <button onclick="openCustomForm(event)" class="w-full py-4 px-6 bg-slate-950 text-white rounded-2xl font-bold shadow-lg shadow-slate-200 hover:bg-slate-800 transition-all duration-300 active:scale-[0.98] mt-auto">Get Started</button>
@@ -2105,6 +2111,12 @@
                                 <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             Unlimited Voice Agents
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-orange-600 flex items-center justify-center">
+                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            No extra 18% GST
                         </li>
                     </ul>
 
@@ -3010,26 +3022,26 @@
                         placeholder="+1 234 567 8900">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Company Name</label>
-                    <input type="text" name="company"
+                    <label class="block text-sm font-medium mb-1">Company Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="company" required
                         class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
                         placeholder="Acme Corp">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Website</label>
-                    <input type="url" name="website" autocomplete="url"
+                    <label class="block text-sm font-medium mb-1">Website <span class="text-red-500">*</span></label>
+                    <input type="url" name="website" autocomplete="url" required
                         class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
                         placeholder="https://acme.com">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Company Category</label>
-                    <input type="text" name="category"
+                    <label class="block text-sm font-medium mb-1">Company Category <span class="text-red-500">*</span></label>
+                    <input type="text" name="category" required
                         class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20"
                         placeholder="e.g. E-commerce, Healthcare">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Estimated Call Volume (per day)</label>
-                    <select name="volume"
+                    <label class="block text-sm font-medium mb-1">Estimated Call Volume (per day) <span class="text-red-500">*</span></label>
+                    <select name="volume" required
                         class="w-full px-3 py-2 border border-black/10 rounded-md bg-black/5 focus:outline-none focus:ring-1 focus:ring-black/20">
                         <option value="">Select volume...</option>
                         <option value="0-100">0 - 100</option>
