@@ -147,6 +147,14 @@
             font-family: 'Nunito', sans-serif !important;
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-868966475"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-868966475');
+    </script>
 </head>
 
 <body class="antialiased selection:bg-black/10 selection:text-black overflow-x-hidden text-black font-[Inter] bg-white">
@@ -2907,6 +2915,9 @@
 
                 if (response.ok) {
                     msg.textContent = 'Thank you! We will be in touch shortly.';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', { 'send_to': 'AW-868966475/nj6MCKqh244dEMvArZ4D' });
+                    }
                     msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
                     e.target.reset();
                     setTimeout(() => { closeCustomForm(); }, 3000);
