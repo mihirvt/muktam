@@ -1,3 +1,5 @@
+import { createQualifyToken, hashIdentifiers } from "./_meta.js";
+
 export async function onRequestOptions(context) {
   return new Response(null, {
     status: 204,
@@ -12,11 +14,49 @@ export async function onRequestOptions(context) {
 export async function onRequestPost(context) {
   try {
     const data = await context.request.json();
-    
+
     // Attempt to pull key from Cloudflare Env
     const BREVO_API_KEY = context.env.BREVO_API_KEY;
     if (!BREVO_API_KEY) {
         return new Response(JSON.stringify({ error: 'Brevo API key not configured in environment' }), { status: 500 });
+    }
+
+    // Build a signed one-click "Mark as Qualified" link for the notification email.
+    let qualifyButton = '';
+    try {
+      const fb = data.facebook || {};
+      const user = fb.user || {};
+      const hashed = await hashIdentifiers({
+        email: user.email,
+        phone: user.phone,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        external_id: fb.external_id,
+      });
+      const ip = context.request.headers.get('CF-Connecting-IP') || '';
+      const token = await createQualifyToken(context.env, {
+        eid: fb.event_id || '',
+        t: fb.conversion_happened_at || Date.now(),
+        url: fb.page_url || data.page_url || '',
+        em: hashed.em,
+        ph: hashed.ph,
+        fn: hashed.fn,
+        ln: hashed.ln,
+        external_id: hashed.external_id,
+        fbp: fb.fbp || '',
+        fbc: fb.fbc || '',
+        ip,
+        ua: fb.client_user_agent || '',
+      });
+      const origin = new URL(context.request.url).origin;
+      const qualifyUrl = origin + '/api/qualify-lead?token=' + encodeURIComponent(token);
+      qualifyButton = `
+            <div style="margin: 24px 0; text-align: center;">
+                <a href="${qualifyUrl}" style="display:inline-block;background:#16a34a;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;">&#9989; Mark as High-Quality Lead</a>
+                <p style="color:#94a3b8;font-size:12px;margin:8px 0 0;">Clicking this sends a Qualified_Lead signal to Meta.</p>
+            </div>`;
+    } catch (e) {
+      console.error('qualify token error:', e);
     }
 
     const payload = {
@@ -44,6 +84,8 @@ export async function onRequestPost(context) {
                 <tr><td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Volume:</strong></td><td style="padding: 8px; border-bottom: 1px solid #ddd;">${data.volume || 'N/A'}</td></tr>
                 <tr><td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Source:</strong></td><td style="padding: 8px; border-bottom: 1px solid #ddd;">${data.source || 'N/A'}</td></tr>
             </table>
+
+            ${qualifyButton}
 
             <h3 style="color: #555;">Attribution Info</h3>
             <table style="width: 100%; border-collapse: collapse;">
