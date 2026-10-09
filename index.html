@@ -11,6 +11,23 @@
         gtag('js', new Date());
         gtag('config', 'AW-18499024857');
     </script>
+    <!-- Event snippet for Submit lead form conversion -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18499024857/1hX4CKj-jpQdENnvgvVE',
+                'value': 1.0,
+                'currency': 'INR',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
     <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -3350,12 +3367,8 @@
 
                 if (response.ok) {
                     msg.textContent = 'Thank you! We will be in touch shortly.';
-                    if (typeof gtag === 'function') {
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-18499024857/1hX4CKj-jpQdENnvgvVE',
-                            'value': 1.0,
-                            'currency': 'INR'
-                        });
+                    if (typeof gtag_report_conversion === 'function') {
+                        gtag_report_conversion();
                     }
                     msg.className = 'text-sm text-center font-medium p-2 rounded bg-green-100 text-green-800 mt-3';
                     e.target.reset();
