@@ -516,7 +516,7 @@
         };
 
         // Fire and forget to Supabase Edge Function for LinkedIn Conversions
-        fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+        fetch('/api/linkedin-conversions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -608,7 +608,7 @@
     // Track Page Visit to LinkedIn via Edge Function
     window.addEventListener('load', function () {
       const tracking = captureAttribution();
-      fetch('https://ntzmpavsughwcrttpcxt.supabase.co/functions/v1/linkedin-conversions', {
+      fetch('/api/linkedin-conversions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
